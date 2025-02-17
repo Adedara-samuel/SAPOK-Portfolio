@@ -1,0 +1,7 @@
+{
+    "files.autoSave": "afterDelay",
+    "editor.fontFamily": "Consolas, 'Courier New', monospace, arial",
+    "editor.bracketPairColorization.enabled": false,
+    "editor.fontSize": 12,
+    "editor.tabSize": 2
+}

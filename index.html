@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/mystyle.css">
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="shortcut icon" href="/images/logo2.png">
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <title>SAPOK PORTFOLIO</title>
+  </head>
+
+  <body>
+    <!-- HEADER DESIGN -->
+    <header>
+      <!-- LOGO -->
+      <a href="#" class="logo">
+        <img src="/images/logo.png" style="max-width: 15vw;">
+      </a>
+
+      <!-- MENUN BAR SECTION -->
+      <i class="fa-solid fa-bars" id="menu-bar"></i>
+
+      <!-- NAV BAR SECTION -->
+      <nav>
+        <a href="#home" class="active">HOME</a>
+        <a href="#about">ABOUT</a>
+        <a href="#service">SERVICE</a>
+        <a href="#portfolio">PORTFOLIO</a>
+        <a href="#contact">CONTACT</a>
+      </nav>
+    </header>
+
+    <!-- HOME SECTION DESIGN -->
+    <section class="home" id="home">
+      <!-- HOME CONTENT -->
+      <div class="home-content">
+        <h3>Hello, Its Me</h3>
+        <h1>Adedara S.P SAPOK</h1>
+        <h3>I'm a
+          <span class="multiple-text">Software Developer</span>
+        </h3>
+        <p>
+          Welcome to my portfolio! I'm a programmer specializing
+          in web/software development, database engineering, and
+          software engineering. I'm also a graphics designer and
+          cinematographer, bringing creativity and innovation to
+          every project. Let's build something amazing together!
+        </p>
+        <div class="socials">
+          <a href="https://m.me/adedaraprecious.psalmuel" target="_blank">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/adedara-samuel-46a601242"
+            target="_blank">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="https://www.pinterest.com/adedarapsalmuel/_pins/"
+            target="_blank">
+            <i class="fa-brands fa-pinterest"></i>
+          </a>
+          <a href="https://x.com/AdedaraSP" target="_blank">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+          <a href="https://wa.me/2348135013995" target="_blank">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+        </div>
+
+        <a id="download-cv" href="cv/AdedaraSamuel-CV.pdf"
+          download="AdedaraSamuel-CV.pdf" class="btn">Download CV</a>
+
+      </div>
+      <!-- HOME IMAGE DDESIGN -->
+      <div class="home-image">
+        <img src="/images/hero-pics.jpg" alt=" hero-pics">
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION DESIGN -->
+    <section class="about" id="about">
+      <div class="about-img">
+        <img src="/images/hero-pics.jpg" alt>
+      </div>
+      <div class="about-content">
+        <h2 class="heading">About <span>Me</span></h2>
+        <h3>Software Engineer!</h3>
+        <p>I am a passionate and detail-oriented Software Engineer
+          specializing in frontend development, web application
+          design, and database engineering. With expertise in HTML,
+          CSS, SCSS, JavaScript, React, Java (JSF PrimeFaces),
+          and MSSQL, I thrive on crafting intuitive user experiences
+          and building innovative digital solutions.
+          Beyond coding, I am also a graphics designer and
+          cinematographer, bringing creativity and visual
+          storytelling
+          into my work. My background in computer science and
+          real-world projects such as developing a departmental
+          ebook system, a staff management record system, and a
+          vendor wallet application showcases my problem-solving
+          skills and dedication to impactful technology solutions.
+          Let's collaborate to create something exceptional!
+        </p>
+        <a href="aboutme.html" class="btn">Read More</a>
+      </div>
+    </section>
+
+    <!-- SERVICE SECTION DESIGN -->
+    <section class="service" id="service">
+      <h2 class="heading">Our <span>service</span></h2>
+
+      <div class="service-container">
+        <div class="service-box">
+          <i class="fa-solid fa-code"></i>
+          <h3>Software Developer</h3>
+          <p>We design and develop scalable, secure, and robust
+            custom software solutions tailored to meet your
+            business requirements. From initial concept to
+            deployment, we ensure smooth integration and
+            excellent user experiences.
+          </p>
+          <a href="aboutme.html" class="btn">Read More</a>
+        </div>
+        <div class="service-box">
+          <i class="fa-solid fa-laptop-code"></i>
+          <h3>Frontend Developer</h3>
+          <p>I offer interactive interfaces using modern
+            frameworks and best practices. Our front-end solutions
+            prioritize performance, responsiveness, and seamless
+            user experiences, ensuring a smooth and engaging
+            journey across all devices and platforms.
+          </p>
+          <a href="aboutme.html" class="btn">Read More</a>
+        </div>
+        <div class="service-box">
+          <i class="fa-solid fa-palette"></i>
+          <h3>Graphics Designer</h3>
+          <p>I create visually stunning and professional designs
+            tailored to your brand. From logos to marketing
+            materials, we bring creativity and precision to
+            every project, ensuring a lasting impact. Our
+            designs blend innovation and strategy to effectively
+            communicate your brand’s message.
+          </p>
+          <a href="aboutme.html" class="btn">Read More</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO SECTION DESIGN -->
+    <section class="portfolio" id="portfolio">
+      <h2 class="heading">Latest <span>Project</span></h2>
+
+      <div class="portfolio-container">
+        <div class="portfolio-box">
+          <img src="/images/portfolio1.png">
+          <div class="layers">
+            <h4>E-Library System</h4>
+            <p>An advanced e-library system designed for my
+              department as my final year project, offering
+              seamless access to books and learning resources.
+            </p>
+            <a href="https://e-library-system-six.vercel.app/"><i
+                class="fa-solid fa-up-right-from-square"></i></a>
+          </div>
+        </div>
+
+        <div id="projectModal" class="modal">
+          <div class="modal-content">
+            <span class="close">
+              <i class="fa-solid fa-times"></i>
+            </span>
+            <h2>E-Library System</h2>
+
+            <div class="modal-gallery">
+              <div class="slide">
+                <img src="/images/pt2.1.png" class="modal-img">
+                <p><strong>❓ FAQ Section:</strong> Comprehensive guide
+                  addressing common user questions, system
+                  navigation, and troubleshooting tips.</p>
+              </div>
+
+              <div class="slide">
+                <img src="/images/pt2.2.png" class="modal-img">
+                <p><strong>❓ FAQ Section:</strong> Comprehensive guide
+                  addressing common user questions, system
+                  navigation, and troubleshooting tips.</p>
+              </div>
+
+              <div class="slide">
+                <img src="/images/pt2.3.png" class="modal-img">
+                <p><strong>❓ FAQ Section:</strong> Comprehensive guide
+                  addressing common user questions, system
+                  navigation, and troubleshooting tips.</p>
+              </div>
+
+              <div class="slide">
+                <img src="/images/pt2.4.png" class="modal-img">
+                <p><strong>❓ FAQ Section:</strong> Comprehensive guide
+                  addressing common user questions, system
+                  navigation, and troubleshooting tips.</p>
+              </div>
+
+            </div>
+
+            <div class="navigation">
+              <button class="prev">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+              <button class="next">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-box">
+          <img src="/images/portfolio2.png">
+          <div class="layers">
+            <h4>Gaming Site</h4>
+            <p>An interactive gaming site interface for purchasing
+              packages, designed and developed using HTML and CSS.
+            </p>
+            <a href="https://lugx-gaming-site.vercel.app/"><i
+                class="fa-solid fa-up-right-from-square"></i></a>
+          </div>
+        </div>
+        <div class="portfolio-box">
+          <img src="/images/portfolio3.png">
+          <div class="layers">
+            <h4>Graphics Design</h4>
+            <p>Creative Graphic Designer, expert in Adobe
+              Illustrator, Photoshop. Crafting logos, flyers,
+              posters, social media designs, and more
+              View My Past Works
+            </p>
+            <a href="https://www.pinterest.com/adedarapsalmuel/_pins/"
+              target="__blank">
+              <i class="fa-solid fa-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+        <div class="portfolio-box">
+          <img src="/images/portfolio4.png">
+          <div class="layers">
+            <h4>Real Estate</h4>
+            <p>A user-friendly platform where you can explore and
+              choose your desired home, built with HTML and inline
+              CSS.
+            </p>
+            <a href="https://real-estate-gamma-coral.vercel.app/">
+              <i class="fa-solid fa-up-right-from-square"></i></a>
+          </div>
+        </div>
+        <div class="portfolio-box">
+          <img src="/images/portfolio5.png">
+          <div class="layers">
+            <h4>Estate Arrears</h4>
+            <p>A system developed in Java for updating estate
+              arrears, check it out
+            </p>
+            <a href class="open-modal">
+              <i class="fa-solid fa-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+        <div class="portfolio-box">
+          <img src="/images/portfolio6.png">
+          <div class="layers">
+            <h4>SMRS</h4>
+            <p>A robust system developed in Java for managing
+              staff records efficiently, fully functional,
+              check it out
+            </p>
+            <a href="#" class="open-modal">
+              <i class="fa-solid fa-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION DESIGN -->
+    <section class="contact" id="contact">
+      <h2 class="heading">Contact <span>Me</span></h2>
+      <form id="contact-form">
+        <div class="input-data">
+          <input type="text" id="name" placeholder="Full Name" required>
+          <input type="email" id="email" placeholder="Enter Email Address"
+            required>
+        </div>
+        <div class="input-data">
+          <input type="number" id="phone" placeholder="Mobile Number">
+          <input type="text" id="subject" placeholder="Email Subject">
+        </div>
+        <textarea id="message" cols="30" rows="10" placeholder="Your Message"
+          required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+      <!-- <button class="appointmentbtn">
+      Book Appointment
+    </button> -->
+    </section>
+
+    <!-- FOOTR SECTION DESIGN -->
+    <footer>
+      <div class="txt">
+        <p>CopyRight &copy; 2023 By SAPOK | All Right Reserved</p>
+      </div>
+      <div class="itop">
+        <a href="#home"><i class="fa-solid fa-arrow-up"></i></a>
+      </div>
+    </footer>
+
+    <!-- MY SCRIPT -->
+    <script src="/js/script.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+    emailjs.init("W6z-f_nbHSrrhFapR");
+  </script>
+    <script src="/js/contact.js"></script>
+    <script src="/js/modalImg.js"></script>
+
+    <!-- Typed.js -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+    <!-- ScrollReveal -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      gsap.from("header", {
+        opacity: 0,
+        y: -50,
+        duration: 1,
+        ease: "power2.out"
+      });
+
+      gsap.from(".home-content, .home-image img", {
+        opacity: 0,
+        y: 50,
+        duration: 1.5,
+        stagger: 0.3,
+        ease: "power2.out",
+      });
+
+      gsap.utils.toArray("section").forEach((section) => {
+        gsap.from(section, {
+          opacity: 0,
+          y: 50,
+          duration: 1,
+          scrollTrigger: {
+            trigger: section,
+            start: "top 80%",
+            toggleActions: "play none none reverse",
+          },
+        });
+      });
+
+      gsap.utils.toArray(".service-box").forEach((box) => {
+        gsap.from(box, {
+          opacity: 1,
+          scale: 0.9,
+          duration: 1,
+          stagger: 0.2,
+          scrollTrigger: {
+            trigger: box,
+            start: "top 90%",
+            toggleActions: "play none none reverse",
+          },
+        });
+      });
+
+      gsap.utils.toArray(".portfolio-box").forEach((box) => {
+        gsap.from(box, {
+          opacity: 0,
+          y: 30,
+          duration: 1,
+          stagger: 0.2,
+          scrollTrigger: {
+            trigger: box,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+        });
+      });
+    });
+  </script>
+
+  </body>
+
+</html>
