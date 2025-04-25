@@ -1,3 +1,7 @@
+(function() {
+    emailjs.init("W6z-f_nbHSrrhFapR");
+})();
+
 document.getElementById("contact-form").addEventListener("submit", function (event) {
     event.preventDefault();
 
@@ -9,11 +13,11 @@ document.getElementById("contact-form").addEventListener("submit", function (eve
         message: document.getElementById("message").value,
         reply_to: document.getElementById("email").value
     })
-        .then(function (response) {
-            alert("Message Sent Successfully! ✅");
-            document.getElementById("contact-form").reset(); // Clear form
-        }, function (error) {
-            alert("Failed to send message. ❌ Please try again.");
-        });
+    .then(function (response) {
+        alert("Message Sent Successfully! ✅");
+        document.getElementById("contact-form").reset();
+    }, function (error) {
+        alert("Failed to send message. ❌ Please try again.");
+        console.error("EmailJS Error:", error);
+    });
 });
-
