@@ -110,14 +110,17 @@ filterBtns.forEach(btn => {
   btn.addEventListener('click', function() {
       // Remove active class from all buttons
       filterBtns.forEach(btn => btn.classList.remove('active'));
-      
+
       // Add active class to clicked button
       this.classList.add('active');
-      
+
       const filterValue = this.getAttribute('data-filter');
-      
+
       portfolioItems.forEach(item => {
-          if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+          const matchesFilter = filterValue === 'all' || item.getAttribute('data-category') === filterValue;
+          const isHidden = item.classList.contains('hidden-project') && !allProjectsVisible;
+
+          if (matchesFilter && !isHidden) {
               item.style.display = 'block';
               item.classList.add('fade-in');
           } else {
@@ -126,6 +129,45 @@ filterBtns.forEach(btn => {
           }
       });
   });
+});
+
+// View All Projects functionality
+const viewAllBtn = document.querySelector('.portfolio-cta a');
+let allProjectsVisible = false;
+
+viewAllBtn.addEventListener('click', function(e) {
+  e.preventDefault();
+
+  const hiddenProjects = document.querySelectorAll('.hidden-project');
+
+  if (!allProjectsVisible) {
+      // Show hidden projects
+      hiddenProjects.forEach(project => {
+          project.style.display = 'block';
+          project.classList.add('fade-in');
+      });
+      viewAllBtn.textContent = 'Show Less';
+      allProjectsVisible = true;
+  } else {
+      // Hide projects again and reapply current filter
+      const activeFilter = document.querySelector('.filter-btn.active');
+      const filterValue = activeFilter ? activeFilter.getAttribute('data-filter') : 'all';
+
+      portfolioItems.forEach(item => {
+          const matchesFilter = filterValue === 'all' || item.getAttribute('data-category') === filterValue;
+          const isHidden = item.classList.contains('hidden-project');
+
+          if (matchesFilter && !isHidden) {
+              item.style.display = 'block';
+              item.classList.add('fade-in');
+          } else {
+              item.style.display = 'none';
+              item.classList.remove('fade-in');
+          }
+      });
+      viewAllBtn.textContent = 'View All Projects';
+      allProjectsVisible = false;
+  }
 });
 
 // Current Year in Footer
@@ -202,12 +244,12 @@ const projects = {
       ],
       technologies: ["React", "Node.js", "Express", "MSSQL", "Redux", "JWT"],
       images: [
-          "/images/pt2.1.png",
-          "/images/pt2.2.png",
-          "/images/pt2.3.png",
-          "/images/pt2.4.png",
-          "/images/p1.png",
-          "/images/portfolio6.png"
+          "images/pt2.1.png",
+          "images/pt2.2.png",
+          "images/pt2.3.png",
+          "images/pt2.4.png",
+          "images/p1.png",
+          "images/portfolio6.png"
       ],
       liveUrl: "https://e-library-system-six.vercel.app/",
       codeUrl: "https://github.com/yourusername/e-library-system"
@@ -226,14 +268,78 @@ const projects = {
       ],
       technologies: ["HTML5", "CSS3", "JavaScript", "jQuery", "Bootstrap"],
       images: [
-          "/images/portfolio2.png",
-          "/images/p2.png",
-          "/images/p3.png"
+          "images/portfolio2.png",
+          "images/p2.png",
+          "images/p3.png"
       ],
       liveUrl: "https://lugx-gaming-site.vercel.app/",
       codeUrl: "https://github.com/yourusername/gaming-ecommerce"
   },
-  // Add more projects as needed
+  design: {
+      title: "Brand Identity Design",
+      category: "Design",
+      date: "2023",
+      description: "Complete brand identity package including logo design, business cards, and social media graphics for various clients.",
+      features: [
+          "Logo design and variations",
+          "Business card layouts",
+          "Social media templates",
+          "Brand color palette",
+          "Typography selection"
+      ],
+      technologies: ["Photoshop", "Illustrator", "Figma", "InDesign"],
+      images: [
+          "images/p1.png",
+          "images/portfolio3.png",
+          "images/p4.png",
+          "images/p5.png"
+      ],
+      liveUrl: "https://www.pinterest.com/adedarapsalmuel/_pins/",
+      codeUrl: "#"
+  },
+  portfolio: {
+      title: "Personal Portfolio Website",
+      category: "Web Development",
+      date: "2024",
+      description: "A responsive personal portfolio website showcasing development skills, projects, and design work with modern animations.",
+      features: [
+          "Responsive design",
+          "GSAP animations",
+          "Interactive portfolio gallery",
+          "Contact form integration",
+          "Modern UI/UX design"
+      ],
+      technologies: ["HTML5", "CSS3", "JavaScript", "GSAP", "EmailJS"],
+      images: [
+          "images/p2.png",
+          "images/portfolio1.png",
+          "images/portfolio4.png"
+      ],
+      liveUrl: "#",
+      codeUrl: "#"
+  },
+  studentacademic: {
+      title: "Student Academic Management System",
+      category: "Web Application",
+      date: "2024",
+      description: "A comprehensive system for managing student academic records and administrative tasks",
+      features: [
+          "Student registration",
+          "Course management",
+          "Grade tracking",
+          "Admin dashboard"
+      ],
+      technologies: ["HTML", "CSS", "JavaScript", "Node.js", "Firebase"],
+      images: [
+          "images/prt2.png",
+          "images/pt2.1.png",
+          "images/pt2.2.png",
+          "images/pt2.3.png",
+          "images/pt2.4.png"
+      ],
+      liveUrl: "https://student-academic-system25.netlify.app/",
+      codeUrl: "https://github.com/Adedara-samuel/Student-Academic-Management-System"
+  }
 };
 
 portfolioModals.forEach(modal => {
@@ -356,6 +462,19 @@ setInterval(() => {
     currentTestimonial = (currentTestimonial + 1) % testimonials.length;
     showTestimonial(currentTestimonial);
 }, 5000);
+
+// Lazy loading for images
+const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+
+lazyImages.forEach(img => {
+    img.addEventListener('load', () => {
+        img.classList.add('loaded');
+    });
+    // If already loaded
+    if (img.complete && img.naturalHeight !== 0) {
+        img.classList.add('loaded');
+    }
+});
 
 // Initial display
 showTestimonial(0);

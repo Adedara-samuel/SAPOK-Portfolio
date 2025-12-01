@@ -88,6 +88,15 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+  transition: opacity 0.3s ease;
+}
+
+img[loading="lazy"] {
+  opacity: 0;
+}
+
+img[loading="lazy"].loaded {
+  opacity: 1;
 }
 
 ul {
@@ -155,13 +164,30 @@ ul {
 }
 
 .btn-primary {
-  background-color: var(--primary-color);
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
   color: white;
   box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
 }
 
 .btn-primary:hover {
-  background-color: var(--primary-dark);
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
@@ -330,6 +356,17 @@ ul {
   background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
   position: relative;
   overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23e2e8f0" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23e2e8f0" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  pointer-events: none;
 }
 
 .hero .container {
@@ -727,7 +764,20 @@ ul {
 
 /* ===== Expertise Section ===== */
 .expertise {
-  background-color: #f8fafc;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.expertise::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="%23e2e8f0" opacity="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+  pointer-events: none;
 }
 
 .expertise-grid {
@@ -737,11 +787,30 @@ ul {
 }
 
 .expertise-card {
-  background-color: white;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
   border-radius: var(--radius-lg);
   padding: 3rem;
   box-shadow: var(--shadow);
   transition: var(--transition);
+  border: 1px solid rgba(37, 99, 235, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.expertise-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.expertise-card:hover::before {
+  opacity: 1;
 }
 
 .expertise-card:hover {
@@ -898,6 +967,10 @@ ul {
   transition: var(--transition);
 }
 
+.hidden-project {
+  display: none;
+}
+
 .portfolio-card {
   background-color: white;
   border-radius: var(--radius-lg);
@@ -908,8 +981,12 @@ ul {
 }
 
 .portfolio-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: var(--shadow-lg);
+}
+
+.portfolio-card:hover .portfolio-image img {
+  transform: scale(1.1);
 }
 
 .portfolio-image {
@@ -923,6 +1000,12 @@ ul {
   height: 100%;
   object-fit: cover;
   transition: var(--transition);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  filter: brightness(1) contrast(1.1);
+}
+
+.portfolio-card:hover .portfolio-image img {
+  filter: brightness(1.1) contrast(1.2) saturate(1.1);
 }
 
 .portfolio-overlay {
@@ -1012,7 +1095,19 @@ ul {
 
 /* ===== Testimonials Section ===== */
 .testimonials {
-  background-color: #f8fafc;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  position: relative;
+}
+
+.testimonials::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="waves" width="100" height="20" patternUnits="userSpaceOnUse"><path d="M0,10 Q25,0 50,10 T100,10 V20 H0 Z" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23waves)"/></svg>');
+  pointer-events: none;
 }
 
 .testimonials-slider {
@@ -1083,7 +1178,20 @@ ul {
 
 /* ===== Contact Section ===== */
 .contact {
-  background-color: white;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="circuit" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M10,10 L40,10 M10,25 L25,25 L25,40 M35,25 L35,40" stroke="%23e2e8f0" stroke-width="0.5" opacity="0.2" fill="none"/></pattern></defs><rect width="100" height="100" fill="url(%23circuit)"/></svg>');
+  pointer-events: none;
 }
 
 .contact-grid {

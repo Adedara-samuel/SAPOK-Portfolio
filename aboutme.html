@@ -4,103 +4,219 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SAPOK portfolio</title>
-  <link rel="stylesheet" href="/css/aboutme.css">
+  <title>Adedara S.P SAPOK | About Me</title>
+  <link rel="stylesheet" href="/css/mystyle.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="shortcut icon" href="/images/logo2.png">
+  <link rel="shortcut icon" href="images/logo2.png">
 </head>
 
 <body>
-  <!-- HEADER DESIGN -->
-  <header>
-    <!-- LOGO -->
-    <a href="#" class="logo">
-      <img src="/images/logo.png" style="max-width: 15vw;">
-    </a>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="SAPOK Logo" width="180">
+      </a>
 
-    <!-- MENUN BAR SECTION -->
-    <I class="fa-solid fa-bars" id="menu-bar"></I>
+      <button class="menu-toggle" aria-label="Toggle navigation">
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+      </button>
 
-    <!-- NAV BAR SECTION -->
-    <nav>
-      <a href="index.html">HOME</a>
-      <a href="aboutme.html" class="active">ABOUT</a>
-      <a href="#service">SERVICE</a>
-      <a href="#portfolio">PORTFOLIO</a>
-      <a href="#contact">CONTACT</a>
-    </nav>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="aboutme.html" class="nav-link active">About</a></li>
+          <li><a href="index.html#expertise" class="nav-link">Expertise</a></li>
+          <li><a href="index.html#portfolio" class="nav-link">Portfolio</a></li>
+          <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <!-- About body section -->
-
-  <section class="about">
-    <div class="about-img">
-      <img src="/images/hero-pics.jpg">
-    </div>
-    <div class="about-content">
-      <h2 class="heading">About <span>Me</span></h2>
-      <h3 class="typing-text">Software Developer</h3>
-      <p>
-        I am <b>Adedara Samuel Precious</b>, a passionate and innovative software engineer with a strong focus on
-        frontend development and web application design.
-        With expertise in <b>HTML, CSS, SCSS, JavaScript, React, Java (JSF PrimeFaces), and MSSQL</b>, I build seamless,
-        interactive, and responsive digital experiences.
-      </p>
-
-      <p>
-        My journey into technology started with a deep curiosity for problem-solving and a drive to create solutions
-        that enhance user experience.
-        Over the years, I have worked on projects ranging from my <b>departmental ebook system</b>, designed to provide
-        students with books, videos, and audio tutorials,
-        to a <b>staff management record system</b> at MEMMCOL and an <b>estate arrears & electricity meter management
-          system</b> in Java.
-      </p>
-
-      <p>
-        Beyond software development, I am a <b>graphic designer, cinematographer, and video editor</b>, allowing me to
-        blend technology with creativity.
-        This unique combination helps me build visually appealing and functional digital solutions.
-      </p>
-
-      <p>
-        I am a firm believer in continuous learning and innovation. Whether coding, designing, or problem-solving, I
-        strive to push boundaries and
-        create impactful solutions that make a difference. My goal is to contribute meaningfully to the tech industry
-        while growing as a professional and inspiring others along the way.
-      </p>
-
-
-      <!-- Skills Section -->
-      <h2 class="heading">My <span>Skills</span></h2>
-      <div class="skills">
-        <div class="skill">
-          <span>HTML & CSS</span>
-          <div class="progress">
-            <div class="bar" style="width: 97%;">97%</div>
+  <!-- About Section -->
+  <section id="about" class="about section">
+    <div class="container">
+      <div class="about-image">
+        <div class="image-wrapper">
+          <img src="images/hero-pics.jpg" alt="About Adedara" width="400" height="500">
+          <div class="image-badge">
+            <span>3+</span>
+            <small>Years Experience</small>
           </div>
         </div>
-        <div class="skill">
-          <span>Java</span>
-          <div class="progress">
-            <div class="bar" style="width: 78%;">78%</div>
+      </div>
+
+      <div class="about-content">
+        <h2 class="section-title">Professional <span>Profile</span></h2>
+
+        <div class="about-tabs">
+          <button class="tab-btn active" data-tab="about">About</button>
+          <button class="tab-btn" data-tab="experience">Skills</button>
+          <button class="tab-btn" data-tab="education">Education</button>
+          <button class="tab-btn" data-tab="work">Experience</button>
+        </div>
+
+        <div class="tab-content active" id="about-tab">
+          <h3 class="about-heading">Software Developer & Graphics Designer</h3>
+          <p class="about-text">
+            I am <b>Adedara Samuel Precious</b>, a passionate and innovative software engineer with a strong focus on
+            frontend development and web application design.
+            With expertise in <b>HTML, CSS, SCSS, JavaScript, React, Java (JSF PrimeFaces), and MSSQL</b>, I build seamless,
+            interactive, and responsive digital experiences.
+          </p>
+
+          <p class="about-text">
+            My journey into technology started with a deep curiosity for problem-solving and a drive to create solutions
+            that enhance user experience.
+            Over the years, I have worked on projects ranging from my <b>departmental ebook system</b>, designed to provide
+            students with books, videos, and audio tutorials,
+            to a <b>staff management record system</b> at MEMMCOL and an <b>estate arrears & electricity meter management
+              system</b> in Java.
+          </p>
+
+          <p class="about-text">
+            Beyond software development, I am a <b>graphic designer, cinematographer, and video editor</b>, allowing me to
+            blend technology with creativity.
+            This unique combination helps me build visually appealing and functional digital solutions.
+          </p>
+
+          <p class="about-text">
+            I am a firm believer in continuous learning and innovation. Whether coding, designing, or problem-solving, I
+            strive to push boundaries and
+            create impactful solutions that make a difference. My goal is to contribute meaningfully to the tech industry
+            while growing as a professional and inspiring others along the way.
+          </p>
+
+          <div class="about-details">
+            <div class="detail-item">
+              <i class="fas fa-chevron-right"></i>
+              <div>
+                <h4>Name:</h4>
+                <p>Adedara Samuel Precious</p>
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-chevron-right"></i>
+              <div>
+                <h4>Email:</h4>
+                <p>adedarasapok@gmail.com</p>
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-chevron-right"></i>
+              <div>
+                <h4>From:</h4>
+                <p>Lagos, Nigeria</p>
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-chevron-right"></i>
+              <div>
+                <h4>Freelance:</h4>
+                <p>Available</p>
+              </div>
+            </div>
+          </div>
+
+          <a href="cv/adedara-samuel.pdf" download class="btn btn-primary">
+            <i class="fas fa-download"></i> Download CV
+          </a>
+        </div>
+
+        <div class="tab-content" id="experience-tab">
+          <h2 class="heading">My <span>Skills</span></h2>
+          <div class="skills">
+            <div class="skill">
+              <span>HTML & CSS</span>
+              <div class="progress">
+                <div class="bar" style="width: 97%;">97%</div>
+              </div>
+            </div>
+            <div class="skill">
+              <span>Java</span>
+              <div class="progress">
+                <div class="bar" style="width: 78%;">78%</div>
+              </div>
+            </div>
+            <div class="skill">
+              <span>JavaScript</span>
+              <div class="progress">
+                <div class="bar" style="width: 50%;">50%</div>
+              </div>
+            </div>
+            <div class="skill">
+              <span>TypeScript</span>
+              <div class="progress">
+                <div class="bar" style="width: 60%;">60%</div>
+              </div>
+            </div>
+            <div class="skill">
+              <span>NextJs</span>
+              <div class="progress">
+                <div class="bar" style="width: 80%;">80%</div>
+              </div>
+            </div>
+            <div class="skill">
+              <span>MSSQL</span>
+              <div class="progress">
+                <div class="bar" style="width: 90%;">90%</div>
+              </div>
+            </div>
+            <div class="skill">
+              <span>Graphic Design</span>
+              <div class="progress">
+                <div class="bar" style="width: 80%;">80%</div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="skill">
-          <span>JavaScript</span>
-          <div class="progress">
-            <div class="bar" style="width: 50%;">50%</div>
+
+        <div class="tab-content" id="education-tab">
+          <h2 class="heading">My <span>Education</span></h2>
+          <div class="education">
+            <div class="education-item">
+              <h3>Bachelor of Science in Computer Science</h3>
+              <p>Bamidele olumilua university of education science and technology, ikere.</p>
+              <span class="education-date">2021 - 2024</span>
+              <p>Graduated with 2nd class upper division, focusing on software development, Graphics Designing and
+                Database systems.</p>
+            </div>
+            <div class="education-item">
+              <h3>Frontend Development Certification</h3>
+              <p>FreeCodeCamp</p>
+              <span class="education-date">2023</span>
+              <p>Completed a comprehensive program on HTML, CSS, JavaScript, and responsive web design.</p>
+            </div>
           </div>
         </div>
-        <div class="skill">
-          <span>MSSQL</span>
-          <div class="progress">
-            <div class="bar" style="width: 80%;">80%</div>
-          </div>
-        </div>
-        <div class="skill">
-          <span>Graphic Design</span>
-          <div class="progress">
-            <div class="bar" style="width: 80%;">80%</div>
+
+        <div class="tab-content" id="work-tab">
+          <h2 class="heading">My <span>Experience</span></h2>
+          <div class="experience">
+            <div class="experience-item">
+              <h3>Software Engineer Intern</h3>
+              <p>Mommas Electricity Meter Manufacturing Company Ltd.</p>
+              <span class="experience-date">2023 - 2024</span>
+              <p>Gained hands-on experience in Java development and worked extensively with JSF to build
+                enterprise-grade applications.</p>
+            </div>
+            <div class="experience-item">
+              <h3>Freelance Developer & Designer</h3>
+              <p>Self-Employed</p>
+              <span class="experience-date">2023 - Present</span>
+              <p>Utilized cinematography, video-editing, and graphic design skills to deliver creative solutions for
+                clients, while also developing web applications.</p>
+            </div>
+            <div class="experience-item">
+              <h3>Frontend Developer</h3>
+              <p>Various Projects</p>
+              <span class="experience-date">2021 - Present</span>
+              <p>Specialized in building responsive and user-friendly interfaces using HTML, CSS, and JavaScript, with a
+                focus on delivering seamless user experiences.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -108,18 +224,67 @@
   </section>
 
 
-  <footer>
-    <div class="txt">
-      <p>CopyRight &copy; 2023 By SAPOK | All Right Reserved</p>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-about">
+          <a href="#" class="footer-logo">
+            <img src="images/logo.png" alt="SAPOK Logo" width="150">
+          </a>
+          <p>
+            Creating digital solutions that combine technical excellence with creative design.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <h3 class="footer-title">Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutme.html">About</a></li>
+            <li><a href="#service">Service</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-services">
+          <h3 class="footer-title">Services</h3>
+          <ul>
+            <li><a href="#">Web Development</a></li>
+            <li><a href="#">Mobile Development</a></li>
+            <li><a href="#">UI/UX Design</a></li>
+            <li><a href="#">Database Design</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-newsletter">
+          <h3 class="footer-title">Newsletter</h3>
+          <p>Subscribe to my newsletter for the latest updates.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your Email">
+            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; <span id="current-year"></span> Adedara S.P SAPOK. All Rights Reserved.</p>
+
+        <div class="footer-backtop">
+          <a href="#home" aria-label="Back to top">
+            <i class="fas fa-arrow-up"></i>
+          </a>
+        </div>
+      </div>
     </div>
   </footer>
 </body>
-<!-- Script -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-<script src="script.js"></script>
-
+<!-- JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 <script src="/js/script.js"></script>
+<script src="js/contact.js"></script>
+<script src="/js/modal.js"></script>
+<script src="/js/filter.js"></script>
 
 <script>
   // Wait for the page to load before running animations
