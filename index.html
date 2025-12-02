@@ -28,10 +28,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
   <!-- EmailJS -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-  <script type="text/javascript" src="script.js"></script>
-</head>
+  </head>
 
 <body>
   <!-- Preloader -->
@@ -64,7 +67,8 @@
           <li><a href="#expertise" class="nav-link">Expertise</a></li>
           <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
           <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
-          <li><a href="#contact" class="nav-link">Contact</a></li>
+           <li><a href="#booking" class="nav-link">Book Appointment</a></li>
+           <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -217,6 +221,12 @@
               </div>
             </div>
             <div class="skill">
+              <span>Java</span>
+              <div class="progress">
+                <div class="bar" style="width: 85%;">85%</div>
+              </div>
+            </div>
+            <div class="skill">
               <span>MSSQL</span>
               <div class="progress">
                 <div class="bar" style="width: 90%;">90%</div>
@@ -320,6 +330,8 @@
           <div class="skills-list">
             <span>Next.js</span>
             <span>Java</span>
+            <span>Node.js</span>
+            <span>Express.js</span>
           </div>
         </div>
 
@@ -620,9 +632,65 @@
              </div>
            </div>
          </div>
-      </div>
-    </div>
-  </section>
+
+         <div class="testimonial-card">
+           <div class="testimonial-content">
+             <div class="quote-icon">
+               <i class="fas fa-quote-left"></i>
+             </div>
+             <p class="testimonial-text">
+               "Adedara demonstrated exceptional customer relationship management throughout our collaboration. In hindsight,
+               partnering with him from the outset would have been the optimal choice. I'm eager to witness the quality of
+               his delivery and look forward to implementing additional features as we scale our web application."
+             </p>
+           </div>
+           <div class="testimonial-author">
+             <div class="author-image">
+               <img src="images/testimonial1.jpeg" alt="Client" loading="lazy">
+             </div>
+             <div class="author-info">
+               <h4>CEO</h4>
+               <p>Epilux Water</p>
+             </div>
+           </div>
+         </div>
+       </div>
+
+       <!-- Modern Calendar Component -->
+       <div class="calendar-overlay" id="calendar-overlay">
+         <div class="calendar-container">
+           <div class="calendar-header">
+             <button type="button" class="calendar-nav" id="prev-month">
+               <i class="fas fa-chevron-left"></i>
+             </button>
+             <h3 class="calendar-title" id="calendar-title">December 2024</h3>
+             <button type="button" class="calendar-nav" id="next-month">
+               <i class="fas fa-chevron-right"></i>
+             </button>
+           </div>
+
+           <div class="calendar-weekdays">
+             <div>Sun</div>
+             <div>Mon</div>
+             <div>Tue</div>
+             <div>Wed</div>
+             <div>Thu</div>
+             <div>Fri</div>
+             <div>Sat</div>
+           </div>
+
+           <div class="calendar-days" id="calendar-days">
+             <!-- Days will be populated by JavaScript -->
+           </div>
+
+           <div class="calendar-actions">
+             <button type="button" class="btn btn-outline" id="calendar-cancel">Cancel</button>
+             <button type="button" class="btn btn-primary" id="calendar-confirm" disabled>Confirm Date</button>
+           </div>
+         </div>
+       </div>
+     </div>
+   </section>
 
   <!-- Contact Section -->
   <section id="contact" class="contact section">
@@ -711,6 +779,138 @@
     </div>
   </section>
 
+  <!-- Appointment Booking Section -->
+  <section id="booking" class="booking section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Book An <span>Appointment</span></h2>
+        <p class="section-subtitle">Schedule a consultation or project discussion</p>
+      </div>
+
+      <div class="booking-grid">
+        <div class="booking-info">
+          <h3 class="booking-heading">Why Book With Me?</h3>
+          <p class="booking-text">
+            Get personalized consultation for your project needs. Whether it's web development, backend solutions,
+            or design services, I'll help you bring your vision to life.
+          </p>
+
+          <div class="booking-features">
+            <div class="booking-feature">
+              <div class="feature-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="feature-content">
+                <h4>Flexible Scheduling</h4>
+                <p>Choose from multiple time slots that work for you</p>
+              </div>
+            </div>
+
+            <div class="booking-feature">
+              <div class="feature-icon">
+                <i class="fas fa-video"></i>
+              </div>
+              <div class="feature-content">
+                <h4>Virtual Consultation</h4>
+                <p>Meet online from anywhere in the world</p>
+              </div>
+            </div>
+
+            <div class="booking-feature">
+              <div class="feature-icon">
+                <i class="fas fa-lightbulb"></i>
+              </div>
+              <div class="feature-content">
+                <h4>Expert Advice</h4>
+                <p>Get insights from 3+ years of development experience</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="booking-availability">
+            <h4>Available Hours</h4>
+            <div class="availability-grid">
+              <div class="availability-item">
+                <span class="day">Monday - Friday</span>
+                <span class="time">9:00 AM - 6:00 PM</span>
+              </div>
+              <div class="availability-item">
+                <span class="day">Saturday</span>
+                <span class="time">10:00 AM - 4:00 PM</span>
+              </div>
+              <div class="availability-item">
+                <span class="day">Sunday</span>
+                <span class="time">By Appointment</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="booking-form">
+          <form id="booking-form">
+            <div class="form-row">
+              <div class="form-group">
+                <input type="text" id="booking-name" placeholder="Your Name" required>
+              </div>
+              <div class="form-group">
+                <input type="email" id="booking-email" placeholder="Your Email" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <input type="tel" id="booking-phone" placeholder="Phone Number" required>
+              </div>
+              <div class="form-group">
+                <select id="booking-service" required>
+                  <option value="">Select Service</option>
+                  <option value="web-development">Web Development</option>
+                  <option value="backend-development">Backend Development</option>
+                  <option value="fullstack-development">Full-Stack Development</option>
+                  <option value="ui-ux-design">UI/UX Design</option>
+                  <option value="graphic-design">Graphic Design</option>
+                  <option value="consultation">General Consultation</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="date-input-wrapper">
+                <input type="text" id="booking-date-display" placeholder="Select Date" readonly required>
+                <input type="hidden" id="booking-date" name="date">
+                <button type="button" class="calendar-toggle" id="calendar-toggle">
+                  <i class="fas fa-calendar-alt"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <select id="booking-time" required>
+                <option value="">Select Time</option>
+                <option value="09:00">9:00 AM</option>
+                <option value="10:00">10:00 AM</option>
+                <option value="11:00">11:00 AM</option>
+                <option value="14:00">2:00 PM</option>
+                <option value="15:00">3:00 PM</option>
+                <option value="16:00">4:00 PM</option>
+                <option value="17:00">5:00 PM</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <textarea id="booking-message" rows="4" placeholder="Tell me about your project or questions..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+              <span>Book Appointment</span>
+              <i class="fas fa-calendar-check"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
@@ -731,6 +931,7 @@
             <li><a href="#about">About</a></li>
             <li><a href="#expertise">Expertise</a></li>
             <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#booking">Book Appointment</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
         </div>
@@ -744,7 +945,7 @@
             <li><a href="#">Database Design</a></li>
           </ul>
         </div>
-
+<!-- 
         <div class="footer-newsletter">
           <h3 class="footer-title">Newsletter</h3>
           <p>Subscribe to my newsletter for the latest updates.</p>
@@ -752,7 +953,7 @@
             <input type="email" placeholder="Your Email">
             <button type="submit"><i class="fas fa-paper-plane"></i></button>
           </form>
-        </div>
+        </div> -->
       </div>
 
       <div class="footer-bottom">
@@ -766,6 +967,17 @@
       </div>
     </div>
   </footer>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast">
+    <div class="toast-content">
+      <i class="toast-icon"></i>
+      <span class="toast-message"></span>
+    </div>
+    <button class="toast-close" onclick="hideToast()">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
 
   <!-- Project Modal -->
   <div class="modal" id="projectModal">
@@ -817,10 +1029,10 @@
 
   <!-- JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-  <script src="/js/script.js"></script>
+  <script src="js/script.js"></script>
   <script src="js/contact.js"></script>
-  <script src="/js/modal.js"></script>
-  <script src="/js/filter.js"></script>
+  <script src="js/booking.js"></script>
+  <script src="js/calendar.js"></script>
 </body>
 
 </html>

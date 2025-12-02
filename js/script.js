@@ -447,9 +447,40 @@ function prevSlide() {
   showSlide(currentSlide - 1);
 }
 
-// Initialize a simple testimonial slider
+// Add swipe support for portfolio modal
+let modalTouchStartX = 0;
+let modalTouchEndX = 0;
+
+function handleModalTouchStart(e) {
+    modalTouchStartX = e.changedTouches[0].screenX;
+}
+
+function handleModalTouchEnd(e) {
+    modalTouchEndX = e.changedTouches[0].screenX;
+    handleModalSwipe();
+}
+
+function handleModalSwipe() {
+    const swipeThreshold = 50;
+    const diff = modalTouchStartX - modalTouchEndX;
+
+    if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+            nextSlide();
+        } else {
+            prevSlide();
+        }
+    }
+}
+
+// Add modal swipe listeners
+projectModal.addEventListener('touchstart', handleModalTouchStart, false);
+projectModal.addEventListener('touchend', handleModalTouchEnd, false);
+
+// Initialize testimonial slider with swipe support
 let currentTestimonial = 0;
 const testimonials = document.querySelectorAll('.testimonial-card');
+const testimonialsSlider = document.querySelector('.testimonials-slider');
 
 function showTestimonial(index) {
     testimonials.forEach((testimonial, i) => {
@@ -457,11 +488,59 @@ function showTestimonial(index) {
     });
 }
 
-// Add navigation buttons or auto-rotation
-setInterval(() => {
+// Touch/swipe functionality for testimonials
+let touchStartX = 0;
+let touchEndX = 0;
+
+function handleTouchStart(e) {
+    touchStartX = e.changedTouches[0].screenX;
+}
+
+function handleTouchEnd(e) {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+}
+
+function handleSwipe() {
+    const swipeThreshold = 50;
+    const diff = touchStartX - touchEndX;
+
+    if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+            // Swipe left - next testimonial
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+        } else {
+            // Swipe right - previous testimonial
+            currentTestimonial = currentTestimonial === 0 ? testimonials.length - 1 : currentTestimonial - 1;
+        }
+        showTestimonial(currentTestimonial);
+    }
+}
+
+// Add touch event listeners
+if (testimonialsSlider) {
+    testimonialsSlider.addEventListener('touchstart', handleTouchStart, false);
+    testimonialsSlider.addEventListener('touchend', handleTouchEnd, false);
+}
+
+// Auto-rotation with pause on interaction
+let testimonialInterval = setInterval(() => {
     currentTestimonial = (currentTestimonial + 1) % testimonials.length;
     showTestimonial(currentTestimonial);
 }, 5000);
+
+// Pause auto-rotation on touch
+testimonialsSlider.addEventListener('touchstart', () => {
+    clearInterval(testimonialInterval);
+});
+
+// Resume auto-rotation after touch
+testimonialsSlider.addEventListener('touchend', () => {
+    testimonialInterval = setInterval(() => {
+        currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+        showTestimonial(currentTestimonial);
+    }, 5000);
+});
 
 // Lazy loading for images
 const lazyImages = document.querySelectorAll('img[loading="lazy"]');
@@ -478,3 +557,34 @@ lazyImages.forEach(img => {
 
 // Initial display
 showTestimonial(0);
+
+// Toast notification functions
+function showToast(message, type = 'success') {
+  const toast = document.getElementById('toast');
+  const toastMessage = toast.querySelector('.toast-message');
+  const toastIcon = toast.querySelector('.toast-icon');
+
+  // Remove existing classes
+  toast.classList.remove('success', 'error', 'show');
+
+  // Add type class
+  toast.classList.add(type);
+
+  // Set message
+  toastMessage.textContent = message;
+
+  // Show toast
+  setTimeout(() => {
+    toast.classList.add('show');
+  }, 100);
+
+  // Auto hide after 5 seconds
+  setTimeout(() => {
+    hideToast();
+  }, 5000);
+}
+
+function hideToast() {
+  const toast = document.getElementById('toast');
+  toast.classList.remove('show');
+}
