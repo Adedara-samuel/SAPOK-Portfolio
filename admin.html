@@ -1290,6 +1290,11 @@
                             </ul>
                         </div>
                         <textarea id="meeting-details-input" rows="4" placeholder="Enter meeting details here..." required></textarea>
+
+                        <div class="meeting-details-hints" style="margin-top: 1.5rem;">
+                            <small>Optional: Contact instructions for the client</small>
+                        </div>
+                        <textarea id="contact-instructions-input" rows="3" placeholder="Enter contact instructions (e.g., 'Contact me via WhatsApp at +1234567890 or reply to this email')..."></textarea>
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-outline" onclick="closeConfirmationModal()">Cancel</button>
@@ -1315,6 +1320,7 @@
 
         async function submitConfirmation(appointmentId) {
             const meetingDetails = document.getElementById('meeting-details-input').value.trim();
+            const contactInstructions = document.getElementById('contact-instructions-input').value.trim();
 
             if (!meetingDetails) {
                 showNotification('Please enter meeting details to confirm the appointment.', 'error');
@@ -1322,17 +1328,17 @@
             }
 
             closeConfirmationModal();
-            await updateStatus(appointmentId, 'confirmed', meetingDetails);
+            await updateStatus(appointmentId, 'confirmed', meetingDetails, contactInstructions);
         }
 
-        async function updateStatus(appointmentId, status, meetingDetails = '') {
+        async function updateStatus(appointmentId, status, meetingDetails = '', contactInstructions = '') {
             try {
                 const response = await fetch(`/api/appointments/${appointmentId}`, {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ status, meetingDetails })
+                    body: JSON.stringify({ status, meetingDetails, contactInstructions })
                 });
 
                 if (response.ok) {

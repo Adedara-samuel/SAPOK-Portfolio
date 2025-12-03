@@ -313,7 +313,7 @@ app.get('/api/appointments', async (req, res) => {
 // Update appointment status
 app.patch('/api/appointments/:id', async (req, res) => {
   const { id } = req.params;
-  const { status, meetingDetails } = req.body;
+  const { status, meetingDetails, contactInstructions } = req.body;
 
   if (!['pending', 'confirmed', 'completed', 'cancelled'].includes(status)) {
     return res.status(400).json({ error: 'Invalid status' });
@@ -332,7 +332,7 @@ app.patch('/api/appointments/:id', async (req, res) => {
       }
 
       appointment = doc.data();
-      await appointmentRef.update({ status, meetingDetails, confirmedAt: new Date().toISOString() });
+      await appointmentRef.update({ status, meetingDetails, contactInstructions, confirmedAt: new Date().toISOString() });
     } else {
       // Fallback to JSON file
       const appointments = await readAppointments();
@@ -345,6 +345,7 @@ app.patch('/api/appointments/:id', async (req, res) => {
       appointment = appointments[appointmentIndex];
       appointments[appointmentIndex].status = status;
       appointments[appointmentIndex].meetingDetails = meetingDetails;
+      appointments[appointmentIndex].contactInstructions = contactInstructions;
       appointments[appointmentIndex].confirmedAt = new Date().toISOString();
       await writeAppointments(appointments);
     }
@@ -366,9 +367,13 @@ app.patch('/api/appointments/:id', async (req, res) => {
             <li><strong>Date:</strong> ${new Date(appointment.date).toLocaleDateString()}</li>
             <li><strong>Time:</strong> ${appointment.time}</li>
           </ul>
-          ${meetingDetails ? `<p><strong>Meeting Details:</strong> ${meetingDetails}</p>` : ''}
+          ${meetingDetails ? `<p><strong>Meeting Details:</strong> ${meetingDetails.replace(/\n/g, '<br>')}</p>` : ''}
           <p><strong>Your Message:</strong></p>
           <p>${appointment.message.replace(/\n/g, '<br>')}</p>
+          ${contactInstructions ? `<div style="background: #f0f9ff; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #2563eb;">
+            <h3 style="margin: 0 0 10px 0; color: #2563eb;">📞 Contact Instructions</h3>
+            <p style="margin: 0; color: #374151;">${contactInstructions.replace(/\n/g, '<br>')}</p>
+          </div>` : ''}
           <p>I'm looking forward to our meeting! If you have any questions, feel free to reply to this email.</p>
           <p>Best regards,<br>Adedara Samuel Precious<br>Software Developer</p>
         `
