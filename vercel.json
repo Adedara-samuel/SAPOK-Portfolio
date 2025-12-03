@@ -13,19 +13,19 @@
     },
     {
       "src": "/css/(.*)",
-      "dest": "/css/$1"
+      "dest": "server.js"
     },
     {
       "src": "/js/(.*)",
-      "dest": "/js/$1"
+      "dest": "server.js"
     },
     {
       "src": "/images/(.*)",
-      "dest": "/images/$1"
+      "dest": "server.js"
     },
     {
       "src": "/cv/(.*)",
-      "dest": "/cv/$1"
+      "dest": "server.js"
     },
     {
       "src": "/(.*)",

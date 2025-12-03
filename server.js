@@ -15,6 +15,23 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname)));
 
+// Serve static files
+app.get('/css/*', (req, res) => {
+  res.sendFile(path.join(__dirname, req.path));
+});
+
+app.get('/js/*', (req, res) => {
+  res.sendFile(path.join(__dirname, req.path));
+});
+
+app.get('/images/*', (req, res) => {
+  res.sendFile(path.join(__dirname, req.path));
+});
+
+app.get('/cv/*', (req, res) => {
+  res.sendFile(path.join(__dirname, req.path));
+});
+
 // Helper functions for appointment management
 async function readAppointments() {
   try {
