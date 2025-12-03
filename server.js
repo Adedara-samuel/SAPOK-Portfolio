@@ -503,14 +503,14 @@ app.get('/admin', (req, res) => {
           .login-container {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
-            border-radius: 2rem;
+            border-radius: 1.5rem;
             box-shadow:
-              0 25px 50px rgba(0, 0, 0, 0.15),
-              0 10px 25px rgba(0, 0, 0, 0.1),
+              0 20px 40px rgba(0, 0, 0, 0.12),
+              0 8px 20px rgba(0, 0, 0, 0.08),
               inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            max-width: 480px;
+            max-width: 420px;
             width: 90%;
-            padding: 4rem 3rem;
+            padding: 3rem 2.5rem;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -529,19 +529,19 @@ app.get('/admin', (req, res) => {
           }
 
           .logo-section {
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
           }
 
           .logo {
-            width: 80px;
-            height: 80px;
+            width: 60px;
+            height: 60px;
             background: var(--gradient-primary);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 2.5rem;
+            font-size: 1.8rem;
             margin: 0 auto 1.5rem;
             box-shadow: var(--shadow-lg);
             position: relative;
@@ -550,7 +550,7 @@ app.get('/admin', (req, res) => {
           .logo::after {
             content: '';
             position: absolute;
-            inset: -4px;
+            inset: -3px;
             border-radius: 50%;
             background: var(--gradient-primary);
             opacity: 0.3;
@@ -558,7 +558,7 @@ app.get('/admin', (req, res) => {
           }
 
           .login-title {
-            font-size: 2.8rem;
+            font-size: 2.2rem;
             font-weight: 700;
             color: var(--darker-color);
             margin-bottom: 0.5rem;
@@ -567,8 +567,8 @@ app.get('/admin', (req, res) => {
 
           .login-subtitle {
             color: var(--gray-color);
-            font-size: 1.6rem;
-            margin-bottom: 3rem;
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
             opacity: 0.8;
           }
 
@@ -577,16 +577,16 @@ app.get('/admin', (req, res) => {
           }
 
           .form-group {
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             position: relative;
           }
 
           .form-group input {
             width: 100%;
-            padding: 1.5rem 2rem 1.5rem 5rem;
+            padding: 1.2rem 1.5rem 1.2rem 4rem;
             border: 2px solid var(--light-gray);
             border-radius: var(--radius-lg);
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             font-family: var(--font-primary);
             color: var(--dark-color);
             background: white;
@@ -602,17 +602,17 @@ app.get('/admin', (req, res) => {
 
           .form-group input:focus {
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
-            transform: translateY(-2px);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+            transform: translateY(-1px);
           }
 
           .form-group i {
             position: absolute;
-            left: 2rem;
+            left: 1.5rem;
             top: 50%;
             transform: translateY(-50%);
             color: var(--gray-color);
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             transition: var(--transition);
           }
 
@@ -623,12 +623,12 @@ app.get('/admin', (req, res) => {
 
           .login-btn {
             width: 100%;
-            padding: 1.5rem 2rem;
+            padding: 1.2rem 1.5rem;
             background: var(--gradient-primary);
             color: white;
             border: none;
             border-radius: var(--radius-lg);
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 600;
             font-family: var(--font-secondary);
             cursor: pointer;
@@ -664,21 +664,21 @@ app.get('/admin', (req, res) => {
 
           .back-link {
             display: inline-block;
-            margin-top: 2rem;
-            padding: 1rem 2rem;
+            margin-top: 1.5rem;
+            padding: 0.8rem 1.5rem;
             color: var(--primary-color);
             text-decoration: none;
             border: 2px solid var(--primary-color);
             border-radius: var(--radius);
             font-weight: 600;
             transition: var(--transition);
-            font-size: 1.4rem;
+            font-size: 1.3rem;
           }
 
           .back-link:hover {
             background: var(--primary-color);
             color: white;
-            transform: translateY(-2px);
+            transform: translateY(-1px);
             box-shadow: var(--shadow);
           }
 
@@ -738,51 +738,64 @@ app.get('/admin', (req, res) => {
           /* Responsive */
           @media (max-width: 768px) {
             .login-container {
-              padding: 3rem 2rem;
-              margin: 2rem;
+              padding: 2.5rem 2rem;
+              margin: 1.5rem;
+              max-width: 380px;
             }
 
             .login-title {
-              font-size: 2.4rem;
+              font-size: 2rem;
             }
 
             .login-subtitle {
-              font-size: 1.4rem;
+              font-size: 1.3rem;
             }
 
             .form-group input {
-              padding: 1.3rem 1.5rem 1.3rem 4.5rem;
-              font-size: 1.4rem;
+              padding: 1.1rem 1.3rem 1.1rem 3.8rem;
+              font-size: 1.3rem;
             }
 
             .form-group i {
-              left: 1.5rem;
-              font-size: 1.6rem;
+              left: 1.3rem;
+              font-size: 1.5rem;
             }
 
             .login-btn {
-              padding: 1.3rem 1.5rem;
-              font-size: 1.6rem;
+              padding: 1.1rem 1.3rem;
+              font-size: 1.4rem;
             }
           }
 
           @media (max-width: 480px) {
             .login-container {
-              padding: 2.5rem 1.5rem;
+              padding: 2rem 1.5rem;
+              max-width: 340px;
             }
 
             .logo {
-              width: 70px;
-              height: 70px;
-              font-size: 2rem;
+              width: 55px;
+              height: 55px;
+              font-size: 1.6rem;
             }
 
             .login-title {
-              font-size: 2rem;
+              font-size: 1.8rem;
             }
 
             .form-group input {
               font-size: 1.2rem;
+              padding: 1rem 1.2rem 1rem 3.5rem;
+            }
+
+            .form-group i {
+              left: 1.2rem;
+              font-size: 1.4rem;
+            }
+
+            .login-btn {
+              padding: 1rem 1.2rem;
+              font-size: 1.3rem;
             }
           }
         </style>
