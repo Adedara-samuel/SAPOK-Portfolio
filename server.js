@@ -438,78 +438,378 @@ app.get('/admin', (req, res) => {
   if (req.query.password !== ADMIN_PASSWORD) {
     return res.send(`
       <!DOCTYPE html>
-      <html>
+      <html lang="en">
       <head>
-        <title>Admin Login - Adedara S.P SAPOK</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Admin Access - Adedara S.P SAPOK</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
         <style>
-          body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          :root {
+            --primary-color: #2563eb;
+            --secondary-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --gray-color: #64748b;
+            --light-color: #f8fafc;
+            --dark-color: #1e293b;
+            --darker-color: #0f172a;
+            --light-gray: #e2e8f0;
+            --font-primary: 'Poppins', sans-serif;
+            --font-secondary: 'Montserrat', sans-serif;
+            --gradient-primary: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            --gradient-secondary: linear-gradient(135deg, #10b981 0%, #047857 100%);
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 25px rgba(0, 0, 0, 0.1);
+            --radius: 0.5rem;
+            --radius-lg: 0.75rem;
+            --transition: all 0.3s ease;
+          }
+
+          * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
+
+          body {
+            font-family: var(--font-primary);
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            overflow-x: hidden;
           }
+
+          body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+              radial-gradient(circle at 20% 80%, rgba(37, 99, 235, 0.03) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+          }
+
           .login-container {
-            background: white;
-            padding: 3rem;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            max-width: 400px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 2rem;
+            box-shadow:
+              0 25px 50px rgba(0, 0, 0, 0.15),
+              0 10px 25px rgba(0, 0, 0, 0.1),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            max-width: 480px;
             width: 90%;
+            padding: 4rem 3rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.2);
           }
-          .login-container h2 {
-            margin-bottom: 2rem;
-            color: #1e293b;
+
+          .login-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #2563eb, #10b981, #f59e0b);
+            border-radius: 2rem 2rem 0 0;
           }
-          .login-container input {
-            width: 100%;
-            padding: 1rem;
-            margin: 0.5rem 0;
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
-            font-size: 1.6rem;
-            transition: border-color 0.3s ease;
+
+          .logo-section {
+            margin-bottom: 3rem;
           }
-          .login-container input:focus {
-            outline: none;
-            border-color: #2563eb;
-          }
-          .login-container button {
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+
+          .logo {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1.6rem;
-            font-weight: 600;
-            width: 100%;
-            margin-top: 1rem;
-            transition: transform 0.2s ease;
+            font-size: 2.5rem;
+            margin: 0 auto 1.5rem;
+            box-shadow: var(--shadow-lg);
+            position: relative;
           }
-          .login-container button:hover {
+
+          .logo::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            opacity: 0.3;
+            z-index: -1;
+          }
+
+          .login-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--darker-color);
+            margin-bottom: 0.5rem;
+            font-family: var(--font-secondary);
+          }
+
+          .login-subtitle {
+            color: var(--gray-color);
+            font-size: 1.6rem;
+            margin-bottom: 3rem;
+            opacity: 0.8;
+          }
+
+          .login-form {
+            width: 100%;
+          }
+
+          .form-group {
+            margin-bottom: 2rem;
+            position: relative;
+          }
+
+          .form-group input {
+            width: 100%;
+            padding: 1.5rem 2rem 1.5rem 5rem;
+            border: 2px solid var(--light-gray);
+            border-radius: var(--radius-lg);
+            font-size: 1.6rem;
+            font-family: var(--font-primary);
+            color: var(--dark-color);
+            background: white;
+            transition: var(--transition);
+            outline: none;
+            position: relative;
+          }
+
+          .form-group input::placeholder {
+            color: var(--gray-color);
+            opacity: 0.7;
+          }
+
+          .form-group input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
             transform: translateY(-2px);
           }
-          .login-container .logo {
-            font-size: 2.5rem;
-            color: #2563eb;
-            margin-bottom: 1rem;
+
+          .form-group i {
+            position: absolute;
+            left: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-color);
+            font-size: 1.8rem;
+            transition: var(--transition);
+          }
+
+          .form-group input:focus + i,
+          .form-group input:focus ~ i {
+            color: var(--primary-color);
+          }
+
+          .login-btn {
+            width: 100%;
+            padding: 1.5rem 2rem;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius-lg);
+            font-size: 1.8rem;
+            font-weight: 600;
+            font-family: var(--font-secondary);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+          }
+
+          .login-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s;
+          }
+
+          .login-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+          }
+
+          .login-btn:hover::before {
+            left: 100%;
+          }
+
+          .login-btn:active {
+            transform: translateY(-1px);
+          }
+
+          .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            border: 2px solid var(--primary-color);
+            border-radius: var(--radius);
+            font-weight: 600;
+            transition: var(--transition);
+            font-size: 1.4rem;
+          }
+
+          .back-link:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+          }
+
+          .error-message {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--danger-color);
+            padding: 1rem;
+            border-radius: var(--radius);
+            margin-bottom: 2rem;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            font-size: 1.4rem;
+          }
+
+          /* Animations */
+          @keyframes fadeInUp {
+            from {
+              opacity: 0;
+              transform: translateY(30px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+
+          @keyframes slideInScale {
+            from {
+              opacity: 0;
+              transform: scale(0.9) translateY(20px);
+            }
+            to {
+              opacity: 1;
+              transform: scale(1) translateY(0);
+            }
+          }
+
+          .login-container {
+            animation: slideInScale 0.8s ease-out;
+          }
+
+          .logo {
+            animation: fadeInUp 0.6s ease-out 0.2s both;
+          }
+
+          .login-title {
+            animation: fadeInUp 0.6s ease-out 0.4s both;
+          }
+
+          .login-subtitle {
+            animation: fadeInUp 0.6s ease-out 0.6s both;
+          }
+
+          .login-form {
+            animation: fadeInUp 0.6s ease-out 0.8s both;
+          }
+
+          /* Responsive */
+          @media (max-width: 768px) {
+            .login-container {
+              padding: 3rem 2rem;
+              margin: 2rem;
+            }
+
+            .login-title {
+              font-size: 2.4rem;
+            }
+
+            .login-subtitle {
+              font-size: 1.4rem;
+            }
+
+            .form-group input {
+              padding: 1.3rem 1.5rem 1.3rem 4.5rem;
+              font-size: 1.4rem;
+            }
+
+            .form-group i {
+              left: 1.5rem;
+              font-size: 1.6rem;
+            }
+
+            .login-btn {
+              padding: 1.3rem 1.5rem;
+              font-size: 1.6rem;
+            }
+          }
+
+          @media (max-width: 480px) {
+            .login-container {
+              padding: 2.5rem 1.5rem;
+            }
+
+            .logo {
+              width: 70px;
+              height: 70px;
+              font-size: 2rem;
+            }
+
+            .login-title {
+              font-size: 2rem;
+            }
+
+            .form-group input {
+              font-size: 1.2rem;
+            }
           }
         </style>
       </head>
       <body>
         <div class="login-container">
-          <div class="logo">
-            <i class="fas fa-calendar-check"></i>
+          <div class="logo-section">
+            <div class="logo">
+              <i class="fas fa-calendar-check"></i>
+            </div>
+            <h1 class="login-title">Admin Access</h1>
+            <p class="login-subtitle">Enter your credentials to access the admin panel</p>
           </div>
-          <h2>Admin Access Required</h2>
-          <form method="get" action="/admin">
-            <input type="password" name="password" placeholder="Enter admin password" required>
-            <button type="submit">Access Admin Panel</button>
+
+          <form class="login-form" method="get" action="/admin">
+            <div class="form-group">
+              <input type="password" name="password" placeholder="Enter admin password" required>
+              <i class="fas fa-lock"></i>
+            </div>
+            <button type="submit" class="login-btn">
+              <i class="fas fa-sign-in-alt"></i> Access Admin Panel
+            </button>
           </form>
+
+          <a href="/" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Website
+          </a>
         </div>
       </body>
       </html>
