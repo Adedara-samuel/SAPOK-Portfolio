@@ -31,17 +31,8 @@ async function readAppointments() {
       let appointments = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       console.log(`Found ${appointments.length} appointments in Firebase`);
 
-      // If Firebase is empty, seed with JSON data
-      if (appointments.length === 0) {
-        console.log('Firebase collection is empty, seeding with JSON data');
-        const jsonData = await fs.readFile(APPOINTMENTS_FILE, 'utf8');
-        const jsonAppointments = JSON.parse(jsonData);
-        for (const appointment of jsonAppointments) {
-          await db.collection('appointments').doc(appointment.id).set(appointment);
-        }
-        appointments = jsonAppointments;
-        console.log(`Seeded Firebase with ${appointments.length} appointments`);
-      }
+      // Note: Firebase collection is empty - no seeding with mock data
+      console.log('Firebase collection is empty - using empty appointments list');
 
       return appointments;
     } else {
