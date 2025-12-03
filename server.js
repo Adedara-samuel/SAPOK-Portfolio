@@ -16,21 +16,10 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname)));
 
 // Serve static files
-app.get('/css/*', (req, res) => {
-  res.sendFile(path.join(__dirname, req.path));
-});
-
-app.get('/js/*', (req, res) => {
-  res.sendFile(path.join(__dirname, req.path));
-});
-
-app.get('/images/*', (req, res) => {
-  res.sendFile(path.join(__dirname, req.path));
-});
-
-app.get('/cv/*', (req, res) => {
-  res.sendFile(path.join(__dirname, req.path));
-});
+app.use('/css', express.static(path.join(__dirname, 'css')));
+app.use('/js', express.static(path.join(__dirname, 'js')));
+app.use('/images', express.static(path.join(__dirname, 'images')));
+app.use('/cv', express.static(path.join(__dirname, 'cv')));
 
 // Helper functions for appointment management
 async function readAppointments() {
