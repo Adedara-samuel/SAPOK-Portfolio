@@ -589,6 +589,36 @@ function hideToast() {
   toast.classList.remove('show');
 }
 
+// Animated Skill Bars
+function animateSkillBars() {
+  const skillBars = document.querySelectorAll('.skill-fill');
+
+  skillBars.forEach(bar => {
+    const width = bar.getAttribute('data-width');
+    bar.style.width = width + '%';
+  });
+}
+
+// Intersection Observer for skill bars
+const skillsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        animateSkillBars();
+      }, 500);
+      skillsObserver.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.5
+});
+
+// Observe the skills section
+const skillsSection = document.querySelector('.skills');
+if (skillsSection) {
+  skillsObserver.observe(skillsSection);
+}
+
 // Theme Toggle Functionality
 const themeToggle = document.getElementById('theme-toggle');
 const html = document.documentElement;
