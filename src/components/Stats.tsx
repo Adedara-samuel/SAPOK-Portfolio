@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import { Users, ProjectorIcon, Coffee, Award } from "lucide-react";
 
 const stats = [
-  { icon: Users, value: "50+", label: "Happy Clients", color: "from-blue-500 to-cyan-500" },
-  { icon: ProjectorIcon, value: "60+", label: "Projects Completed", color: "from-purple-500 to-pink-500" },
+  { icon: Users, value: "84+", label: "Happy Clients", color: "from-blue-500 to-cyan-500" },
+  { icon: ProjectorIcon, value: "64+", label: "Projects Completed", color: "from-purple-500 to-pink-500" },
   { icon: Coffee, value: "100+", label: "Cups of Coffee", color: "from-orange-500 to-amber-500" },
   { icon: Award, value: "5+", label: "Awards Won", color: "from-green-500 to-emerald-500" },
 ];
