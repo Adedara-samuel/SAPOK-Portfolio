@@ -36,8 +36,8 @@ export default function CVPage() {
             Results-driven Software Developer with 3+ years of experience in building scalable web applications
             and digital solutions. Specialized in full-stack development using Next.js, React, Node.js, and
             cloud technologies. Proven track record of delivering high-quality projects across various industries
-            including e-commerce, energy management, and IoT solutions. Strong focus on UI/UX design and
-            creating exceptional user experiences.
+            including healthcare, e-commerce, energy management, and IoT solutions. Strong focus on UI/UX design
+            and creating exceptional user experiences.
           </p>
         </section>
 
@@ -84,8 +84,22 @@ export default function CVPage() {
 
           <div className="experience-item">
             <div className="experience-header">
-              <h3>Frontend Developer & Engineer (Pre-NYSC)</h3>
-              <span className="period">Feb 2024 - Present</span>
+              <h3>Software Engineer & Application Support Officer</h3>
+              <span className="period">Feb 2025 - Present</span>
+            </div>
+            <p className="company">Redeemers Health Village</p>
+            <ul>
+              <li>Developing and maintaining hospital management software and health information systems.</li>
+              <li>Providing technical support for application deployment and troubleshooting.</li>
+              <li>Collaborating with healthcare teams to optimize workflow processes through technology.</li>
+              <li>Ensuring system reliability, data security, and seamless integration of medical applications.</li>
+            </ul>
+          </div>
+
+          <div className="experience-item">
+            <div className="experience-header">
+              <h3>Frontend Developer & Engineer</h3>
+              <span className="period">Feb 2024 - Jan 2025</span>
             </div>
             <p className="company">Momas Electricity Meter Manufacturing Company (MEMMCOL), R&D Software Department</p>
             <ul>
@@ -191,8 +205,8 @@ export default function CVPage() {
       </div>
 
       {/* Print Button */}
-      <div className="print-button-container">
-        <button onClick={() => window.print()} className="print-button">
+      <div className="Print-button-container">
+        <button onClick={() => window.print()} className="Print-button">
           Download as PDF
         </button>
       </div>
