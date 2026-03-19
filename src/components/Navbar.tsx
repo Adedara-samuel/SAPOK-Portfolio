@@ -57,7 +57,6 @@ export default function Navbar() {
   };
 
   // Set mounted state and add scroll listener
-  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => {
     setMounted(true);
     const handleScroll = () => {
