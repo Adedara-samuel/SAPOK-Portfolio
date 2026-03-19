@@ -185,8 +185,8 @@ export default function About() {
 
             {/* Download CV */}
             <motion.a
-              href="/cv/Adedara_Samuel_Resume.pdf"
-              download
+              href="/cv"
+              target="_blank"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-primary to-secondary text-white font-medium shadow-lg hover:shadow-xl transition-shadow"

@@ -1,0 +1,373 @@
+/* CV Page Styles */
+.cv-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+}
+
+.cv-content {
+  max-width: 850px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+/* Header */
+.cv-header {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  color: white;
+  padding: 3rem 2.5rem;
+  text-align: center;
+}
+
+.cv-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.025em;
+}
+
+.cv-header .title {
+  font-size: 1.25rem;
+  color: #94a3b8;
+  margin-bottom: 1.5rem;
+}
+
+.contact-info {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #cbd5e1;
+  margin-bottom: 1rem;
+}
+
+.contact-info .separator {
+  color: #475569;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.social-links a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.social-links a:hover {
+  color: white;
+}
+
+/* Sections */
+.cv-section {
+  padding: 2rem 2.5rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.cv-section:last-child {
+  border-bottom: none;
+}
+
+.cv-section h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid #667eea;
+  display: inline-block;
+}
+
+.cv-section > p {
+  color: #475569;
+  line-height: 1.75;
+}
+
+/* Skills */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.skill-category h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 0.75rem;
+}
+
+.skill-category ul {
+  list-style: none;
+  padding: 0;
+}
+
+.skill-category li {
+  color: #64748b;
+  font-size: 0.9rem;
+  padding: 0.25rem 0;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.skill-category li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: #667eea;
+}
+
+/* Projects */
+.project-item {
+  margin-bottom: 1.5rem;
+  padding: 1.25rem;
+  background: #f8fafc;
+  border-radius: 8px;
+  border-left: 4px solid #667eea;
+}
+
+.project-item:last-child {
+  margin-bottom: 0;
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.project-header h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.tech-stack {
+  font-size: 0.75rem;
+  color: #667eea;
+  background: #eef2ff;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.project-item p {
+  color: #64748b;
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
+/* Experience */
+.experience-item {
+  margin-bottom: 1.5rem;
+}
+
+.experience-item:last-child {
+  margin-bottom: 0;
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.experience-header h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.experience-header .period {
+  font-size: 0.85rem;
+  color: #667eea;
+  font-weight: 500;
+}
+
+.experience-item .company {
+  color: #64748b;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+
+.experience-item ul {
+  list-style: none;
+  padding: 0;
+}
+
+.experience-item li {
+  color: #64748b;
+  font-size: 0.9rem;
+  padding: 0.25rem 0;
+  padding-left: 1.25rem;
+  position: relative;
+  line-height: 1.5;
+}
+
+.experience-item li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #667eea;
+  font-weight: bold;
+}
+
+/* Education */
+.education-item {
+  padding: 1rem;
+  background: #f8fafc;
+  border-radius: 8px;
+}
+
+.education-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.education-header h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.education-header .period {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.education-item .institution {
+  color: #64748b;
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+/* Achievements */
+.achievements-list {
+  list-style: none;
+  padding: 0;
+}
+
+.achievements-list li {
+  color: #64748b;
+  font-size: 0.9rem;
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.achievements-list li::before {
+  content: "★";
+  position: absolute;
+  left: 0;
+  color: #f59e0b;
+}
+
+/* Print Button */
+.print-button-container {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 100;
+}
+
+.print-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 10px 25px -5px rgba(102, 126, 234, 0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.print-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px -5px rgba(102, 126, 234, 0.5);
+}
+
+/* Print Styles */
+@media print {
+  .cv-container {
+    background: white;
+    padding: 0;
+  }
+  
+  .print-button-container {
+    display: none;
+  }
+  
+  .cv-content {
+    box-shadow: none;
+    border-radius: 0;
+  }
+  
+  .cv-header {
+    padding: 2rem;
+  }
+  
+  .cv-section {
+    padding: 1.5rem 2rem;
+  }
+  
+  .project-item,
+  .education-item {
+    break-inside: avoid;
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 640px) {
+  .cv-container {
+    padding: 1rem;
+  }
+  
+  .cv-header {
+    padding: 2rem 1.5rem;
+  }
+  
+  .cv-header h1 {
+    font-size: 1.75rem;
+  }
+  
+  .cv-section {
+    padding: 1.5rem;
+  }
+  
+  .project-header,
+  .experience-header,
+  .education-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .print-button-container {
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+  }
+  
+  .print-button {
+    width: 100%;
+  }
+}
