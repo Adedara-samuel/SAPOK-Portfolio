@@ -46,35 +46,81 @@ export default function CVPage() {
           <h2>Technical Skills</h2>
           <div className="skills-grid">
             <div className="skill-category">
-              <h3>Frontend</h3>
+              <h3>Programming Languages</h3>
               <ul>
-                <li>React / Next.js</li>
-                <li>TypeScript / JavaScript</li>
-                <li>HTML5 / CSS3 / Tailwind</li>
-                <li>UI/UX Design</li>
-                <li>Framer Motion</li>
+                <li>Java</li>
+                <li>JavaScript (ES6+)</li>
+                <li>TypeScript</li>
+                <li>HTML5 / CSS3</li>
+                <li>SQL</li>
               </ul>
             </div>
             <div className="skill-category">
-              <h3>Backend</h3>
+              <h3>Frameworks & Libraries</h3>
               <ul>
-                <li>Node.js / Express</li>
-                <li>Java (Spring Boot)</li>
-                <li>PostgreSQL / MongoDB</li>
-                <li>REST API Development</li>
-                <li>GraphQL</li>
+                <li>Next.js / React</li>
+                <li>Redux / Context API</li>
+                <li>Node.js</li>
+                <li>JSF PrimeFaces</li>
+                <li>Tailwind CSS</li>
               </ul>
             </div>
             <div className="skill-category">
-              <h3>Tools & Cloud</h3>
+              <h3>Tools & Technologies</h3>
               <ul>
                 <li>Git / GitHub</li>
-                <li>AWS / Cloud Services</li>
-                <li>Docker</li>
                 <li>Figma</li>
-                <li>Adobe Creative Suite</li>
+                <li>Adobe Photoshop</li>
+                <li>Adobe Illustrator</li>
+                <li>RESTful APIs</li>
               </ul>
             </div>
+          </div>
+        </section>
+
+        {/* Experience */}
+        <section className="cv-section">
+          <h2>Work Experience</h2>
+
+          <div className="experience-item">
+            <div className="experience-header">
+              <h3>Frontend Developer & Engineer (Pre-NYSC)</h3>
+              <span className="period">Feb 2024 - Present</span>
+            </div>
+            <p className="company">Momas Electricity Meter Manufacturing Company (MEMMCOL), R&D Software Department</p>
+            <ul>
+              <li>Developed an enterprise eCommerce platform and GridFlex Application using Next.js, integrating four distinct systems into one user-centric product.</li>
+              <li>Contributed to Smart Breaker Module design for intelligent energy monitoring and control.</li>
+              <li>Worked in Agile sprints to implement UI logic, REST API endpoints, and frontend optimizations.</li>
+              <li>Built reusable components, applied session and cookie management, and versioned deliverables using Git.</li>
+            </ul>
+          </div>
+
+          <div className="experience-item">
+            <div className="experience-header">
+              <h3>Freelance Frontend Developer & UI Designer</h3>
+              <span className="period">Jan 2021 - Present</span>
+            </div>
+            <p className="company">Remote</p>
+            <ul>
+              <li>Delivered full-stack UI/UX projects using HTML, CSS, JavaScript, and Next.js.</li>
+              <li>Developed responsive interfaces for client dashboards, educational portals, and retail brands.</li>
+              <li>Integrated third-party APIs, managed app state with Redux and Context API.</li>
+              <li>Designed wireframes and mockups using Figma and Adobe XD.</li>
+            </ul>
+          </div>
+
+          <div className="experience-item">
+            <div className="experience-header">
+              <h3>Freelance Graphic Designer & Cinematographer</h3>
+              <span className="period">Jan 2021 - Present</span>
+            </div>
+            <p className="company">Remote</p>
+            <ul>
+              <li>Produced motion graphics, marketing visuals, and cinematographic content for fashion and tech clients.</li>
+              <li>Managed brand identities and created social media kits using Illustrator and Photoshop.</li>
+              <li>Edited promotional videos, reels, and product highlights with CapCut and Adobe Premiere.</li>
+            </ul>
           </div>
         </section>
 
@@ -119,49 +165,16 @@ export default function CVPage() {
           </div>
         </section>
 
-        {/* Experience */}
-        <section className="cv-section">
-          <h2>Work Experience</h2>
-
-          <div className="experience-item">
-            <div className="experience-header">
-              <h3>Senior Software Developer</h3>
-              <span className="period">2023 - Present</span>
-            </div>
-            <p className="company">Tech Solutions Inc.</p>
-            <ul>
-              <li>Lead development of enterprise web applications using modern technologies</li>
-              <li>Mentor junior developers and conduct code reviews</li>
-              <li>Architect scalable solutions for client projects</li>
-              <li>Collaborate with design teams to implement pixel-perfect UIs</li>
-            </ul>
-          </div>
-
-          <div className="experience-item">
-            <div className="experience-header">
-              <h3>Full Stack Developer</h3>
-              <span className="period">2021 - 2023</span>
-            </div>
-            <p className="company">Digital Agency</p>
-            <ul>
-              <li>Built 50+ client websites and web applications</li>
-              <li>Developed custom e-commerce solutions and CMS platforms</li>
-              <li>Implemented responsive designs and optimized performance</li>
-              <li>Integrated third-party APIs and payment gateways</li>
-            </ul>
-          </div>
-        </section>
-
         {/* Education */}
         <section className="cv-section">
           <h2>Education</h2>
 
           <div className="education-item">
             <div className="education-header">
-              <h3>Computer Science / Software Engineering</h3>
-              <span className="period">2018 - 2022</span>
+              <h3>Bachelor of Science in Computer Science</h3>
+              <span className="period">November 29, 2024</span>
             </div>
-            <p className="institution">University of Lagos</p>
+            <p className="institution">Bamidele Olumilua University of Education, Science & Technology, Ikere Ekiti</p>
           </div>
         </section>
 
@@ -170,9 +183,9 @@ export default function CVPage() {
           <h2>Achievements</h2>
           <ul className="achievements-list">
             <li>Successfully delivered 60+ projects for clients across various industries</li>
-            <li>Developed innovative solutions for energy management and IoT applications</li>
+            <li>Developed innovative solutions for energy management and IoT applications (GridFlex, Smart Breaker)</li>
+            <li>Created enterprise e-commerce platform with wallet integration (Epilux)</li>
             <li>Recognized for exceptional UI/UX design and user experience</li>
-            <li>Maintained 98% client satisfaction rate</li>
           </ul>
         </section>
       </div>
