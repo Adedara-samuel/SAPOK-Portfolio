@@ -40,13 +40,7 @@ const experience = [
   },
 ];
 
-const education = [
-  {
-    degree: "Computer Science",
-    school: "University of Technology",
-    year: "2020",
-  },
-];
+
 
 export default function About() {
   return (
@@ -62,7 +56,7 @@ export default function About() {
             About <span className="gradient-text">Me</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            I'm a dedicated software developer with a strong focus on both frontend
+            I&apos;m a dedicated software developer with a strong focus on both frontend
             and backend development. My work blends technical expertise with
             innovative problem-solving to craft outstanding digital solutions.
           </p>

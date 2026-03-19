@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -136,17 +136,16 @@ export default function Portfolio() {
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
   const [visibleProjects, setVisibleProjects] = useState(6);
 
-  const filteredProjects = activeCategory === "All"
-    ? projects
-    : projects.filter((p) => p.category === activeCategory);
+  // Use useMemo to derive displayedProjects based on category
+  const filteredProjects = useMemo(() =>
+    activeCategory === "All"
+      ? projects
+      : projects.filter((p) => p.category === activeCategory),
+    [activeCategory]
+  );
 
   const displayedProjects = filteredProjects.slice(0, visibleProjects);
   const hasMore = visibleProjects < filteredProjects.length;
-
-  // Reset visible projects when category changes
-  useEffect(() => {
-    setVisibleProjects(6);
-  }, [activeCategory]);
 
   return (
     <section id="portfolio" className="section-padding bg-muted/30">
@@ -161,7 +160,7 @@ export default function Portfolio() {
             My <span className="gradient-text">Portfolio</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Here are some of the projects I've worked on. Each project represents
+            Here are some of the projects I&apos;ve worked on. Each project represents
             a unique piece of development, crafted with attention to detail.
           </p>
         </motion.div>

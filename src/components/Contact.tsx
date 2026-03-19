@@ -99,8 +99,8 @@ export default function Contact() {
             Get In <span className="gradient-text">Touch</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Have a project in mind? Let's discuss how I can help bring your ideas to life.
-            I'm always open to new opportunities and collaborations.
+            Have a project in mind? Let&apos;s discuss how I can help bring your ideas to life.
+            I&apos;m always open to new opportunities and collaborations.
           </p>
         </motion.div>
 
@@ -113,9 +113,9 @@ export default function Contact() {
             className="space-y-8"
           >
             <div className="space-y-4">
-              <h3 className="text-2xl font-semibold">Let's talk about everything!</h3>
+              <h3 className="text-2xl font-semibold">Let&apos;s talk about everything!</h3>
               <p className="text-muted-foreground">
-                Don't like forms? Send me an email. 👋 I'm currently available for
+                Don&apos;t like forms? Send me an email. 👋 I&apos;m currently available for
                 freelance work and full-time positions.
               </p>
             </div>
@@ -245,11 +245,10 @@ export default function Contact() {
                   {/* Status Message */}
                   {status !== "idle" && (
                     <div
-                      className={`flex items-center gap-2 p-3 rounded-lg ${
-                        status === "success"
+                      className={`flex items-center gap-2 p-3 rounded-lg ${status === "success"
                           ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
                           : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"
-                      }`}
+                        }`}
                     >
                       {status === "success" ? (
                         <CheckCircle className="w-5 h-5" />

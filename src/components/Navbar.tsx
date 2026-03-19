@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable react-hooks/set-state-in-effect */
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -6,7 +7,7 @@ import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Sun, Moon, ChartNoAxesGantt } from "lucide-react";
+import { Sun, Moon, ChartNoAxesGantt } from "lucide-react";
 
 const navLinks = [
   { name: "Home", href: "#home" },
@@ -55,6 +56,8 @@ export default function Navbar() {
     applyTheme(newTheme);
   };
 
+  // Set mounted state and add scroll listener
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => {
     setMounted(true);
     const handleScroll = () => {
@@ -137,7 +140,7 @@ export default function Navbar() {
             )}
             <Link href="#contact">
               <Button className="bg-gradient-to-r from-primary to-secondary hover:opacity-90">
-                Let's Talk
+                Let&apos;s Talk
               </Button>
             </Link>
           </div>
@@ -182,7 +185,7 @@ export default function Navbar() {
                 )}
                 <Link href="#contact" onClick={() => setIsOpen(false)}>
                   <Button className="mt-4 bg-gradient-to-r from-primary to-secondary w-full">
-                    Let's Talk
+                    Let&apos;s Talk
                   </Button>
                 </Link>
               </div>

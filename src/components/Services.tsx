@@ -8,9 +8,7 @@ import {
   Smartphone,
   Server,
   Cloud,
-  Search,
-  ShoppingCart,
-  BarChart
+  ShoppingCart
 } from "lucide-react";
 
 const services = [

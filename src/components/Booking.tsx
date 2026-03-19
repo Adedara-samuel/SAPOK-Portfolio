@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -52,10 +52,22 @@ interface Booking {
 }
 
 export default function Booking() {
-  const [currentDate, setCurrentDate] = useState(new Date());
+  const getInitialBookings = (): Booking[] => {
+    if (typeof window === 'undefined') return [];
+    const savedBookings = localStorage.getItem("appointments");
+    if (savedBookings) {
+      try {
+        return JSON.parse(savedBookings);
+      } catch {
+        return [];
+      }
+    }
+    return [];
+  };
+
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
-  const [bookings, setBookings] = useState<Booking[]>([]);
+  const [bookings, setBookings] = useState<Booking[]>(getInitialBookings);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -67,14 +79,6 @@ export default function Booking() {
   const [showForm, setShowForm] = useState(false);
   const [viewDate, setViewDate] = useState(new Date());
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  // Load bookings from localStorage
-  useEffect(() => {
-    const savedBookings = localStorage.getItem("appointments");
-    if (savedBookings) {
-      setBookings(JSON.parse(savedBookings));
-    }
-  }, []);
 
   // Save bookings to localStorage
   const saveBookings = (newBookings: Booking[]) => {
@@ -259,7 +263,7 @@ export default function Booking() {
             Schedule Your <span className="gradient-text">Appointment</span>
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto text-lg">
-            Select a date and time that works best for you. I'll send you a confirmation once your appointment is confirmed.
+            Select a date and time that works best for you. I&apos;ll send you a confirmation once your appointment is confirmed.
           </p>
         </motion.div>
 
