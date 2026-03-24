@@ -87,7 +87,7 @@
   display: inline-block;
 }
 
-.cv-section > p {
+.cv-section>p {
   color: #475569;
   line-height: 1.75;
 }
@@ -280,56 +280,143 @@
   color: #f59e0b;
 }
 
-/* Print Button */
-.print-button-container {
+/* Download Button */
+.download-button-container {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
   z-index: 100;
 }
 
-.print-button {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+.download-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
   color: white;
   border: none;
   padding: 1rem 2rem;
-  border-radius: 50px;
+  border-radius: 12px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 10px 25px -5px rgba(102, 126, 234, 0.4);
-  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.4);
+  transition: all 0.3s ease;
+  text-decoration: none;
 }
 
-.print-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 15px 30px -5px rgba(102, 126, 234, 0.5);
+.download-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px -5px rgba(16, 185, 129, 0.5);
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+}
+
+.download-button:active {
+  transform: translateY(-1px);
+}
+
+.download-icon {
+  transition: transform 0.3s ease;
+}
+
+.download-button:hover .download-icon {
+  transform: translateY(3px);
 }
 
 /* Print Styles */
 @media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  html,
+  body {
+    background: white !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
   .cv-container {
-    background: white;
-    padding: 0;
+    background: white !important;
+    padding: 0 !important;
+    min-height: auto !important;
   }
-  
-  .print-button-container {
-    display: none;
+
+  .download-button-container {
+    display: none !important;
   }
-  
+
   .cv-content {
-    box-shadow: none;
-    border-radius: 0;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    max-width: 100% !important;
+    margin: 0 !important;
   }
-  
+
   .cv-header {
-    padding: 2rem;
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%) !important;
+    color: white !important;
+    padding: 3rem 2.5rem !important;
   }
-  
+
+  .cv-header .title {
+    color: #94a3b8 !important;
+  }
+
+  .cv-header .contact-info {
+    color: #cbd5e1 !important;
+  }
+
+  .cv-header .contact-info .separator {
+    color: #475569 !important;
+  }
+
+  .cv-header .social-links a {
+    color: #94a3b8 !important;
+  }
+
   .cv-section {
-    padding: 1.5rem 2rem;
+    padding: 2rem 2.5rem !important;
   }
-  
+
+  .cv-section h2 {
+    color: #1e293b !important;
+    border-bottom-color: #667eea !important;
+  }
+
+  .cv-section>p {
+    color: #475569 !important;
+  }
+
+  .skill-category li::before {
+    color: #667eea !important;
+  }
+
+  .experience-item li::before {
+    color: #667eea !important;
+  }
+
+  .achievements-list li::before {
+    color: #f59e0b !important;
+  }
+
+  .project-item {
+    background: #f8fafc !important;
+    border-left-color: #667eea !important;
+  }
+
+  .tech-stack {
+    background: #eef2ff !important;
+    color: #667eea !important;
+  }
+
   .project-item,
   .education-item {
     break-inside: avoid;
@@ -341,33 +428,33 @@
   .cv-container {
     padding: 1rem;
   }
-  
+
   .cv-header {
     padding: 2rem 1.5rem;
   }
-  
+
   .cv-header h1 {
     font-size: 1.75rem;
   }
-  
+
   .cv-section {
     padding: 1.5rem;
   }
-  
+
   .project-header,
   .experience-header,
   .education-header {
     flex-direction: column;
     align-items: flex-start;
   }
-  
-  .print-button-container {
+
+  .download-button-container {
     bottom: 1rem;
     right: 1rem;
     left: 1rem;
   }
-  
-  .print-button {
+
+  .download-button {
     width: 100%;
   }
 }

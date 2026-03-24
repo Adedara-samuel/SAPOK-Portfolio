@@ -1,4 +1,21 @@
+"use client";
+
+import { useState, useEffect } from "react";
+
 export default function Loading() {
+  const [showLoading, setShowLoading] = useState(true);
+
+  useEffect(() => {
+    // Keep loading screen visible for 2.5 seconds for better visibility
+    const timer = setTimeout(() => {
+      setShowLoading(false);
+    }, 2500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (!showLoading) return null;
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-background dark:bg-background">
       {/* Background animation */}

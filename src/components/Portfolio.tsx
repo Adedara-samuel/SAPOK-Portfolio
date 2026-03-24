@@ -116,6 +116,16 @@ const projects = [
     tags: ["Java PrimeFace", "MSSQL", "Backend"],
     link: "#",
     github: "https://github.com",
+    gallery: [
+      "/images/p1.png",
+      "/images/p2.png",
+      "/images/p3.png",
+      "/images/p4.png",
+      "/images/p5.png",
+      "/images/p6.png",
+      "/images/ps.png",
+      "/images/portfolio6.png",
+    ],
   },
   {
     id: 12,
@@ -129,12 +139,35 @@ const projects = [
   },
 ];
 
+interface Project {
+  id: number;
+  title: string;
+  category: string;
+  image: string;
+  description: string;
+  tags: string[];
+  link: string;
+  github: string;
+  gallery?: string[];
+}
+
 const categories = ["All", "Web Development", "Mobile App", "UI/UX & Graphics", "Web Application"];
 
 export default function Portfolio() {
   const [activeCategory, setActiveCategory] = useState("All");
-  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [visibleProjects, setVisibleProjects] = useState(6);
+  const [galleryOpen, setGalleryOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const handleLiveDemo = (project: Project) => {
+    if (project.gallery && project.gallery.length > 0) {
+      setCurrentImageIndex(0);
+      setGalleryOpen(true);
+    } else {
+      window.open(project.link, '_blank');
+    }
+  };
 
   // Use useMemo to derive displayedProjects based on category
   const filteredProjects = useMemo(() =>
@@ -253,7 +286,7 @@ export default function Portfolio() {
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.9, opacity: 0 }}
-                className="bg-background rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
+                className="bg-background rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl"
                 onClick={(e) => e.stopPropagation()}
               >
                 <div className="relative">
@@ -288,7 +321,7 @@ export default function Portfolio() {
                   <div className="flex gap-4">
                     <Button
                       className="bg-gradient-to-r from-primary to-secondary"
-                      onClick={() => window.open(selectedProject.link, '_blank')}
+                      onClick={() => handleLiveDemo(selectedProject as Project)}
                     >
                       <ExternalLink className="mr-2 h-4 w-4" />
                       Live Demo
@@ -301,6 +334,115 @@ export default function Portfolio() {
                       View Code
                     </Button>
                   </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Gallery Modal */}
+        <AnimatePresence>
+          {galleryOpen && selectedProject?.gallery && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[60] flex items-center justify-center bg-black/95"
+              onClick={() => setGalleryOpen(false)}
+            >
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.8, opacity: 0 }}
+                className="relative w-full max-w-6xl mx-4"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Close Button */}
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="absolute -top-12 right-0 text-white hover:bg-white/20 z-10"
+                  onClick={() => setGalleryOpen(false)}
+                >
+                  <X className="h-6 w-6" />
+                </Button>
+
+                {/* Main Image */}
+                <div className="relative aspect-[16/9] bg-black rounded-lg overflow-hidden">
+                  <AnimatePresence mode="wait">
+                    <motion.img
+                      key={currentImageIndex}
+                      src={selectedProject.gallery[currentImageIndex]}
+                      alt={`Gallery ${currentImageIndex + 1}`}
+                      initial={{ opacity: 0, x: 100 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -100 }}
+                      transition={{ duration: 0.3 }}
+                      className="w-full h-full object-contain"
+                    />
+                  </AnimatePresence>
+
+                  {/* Navigation Arrows */}
+                  {selectedProject.gallery.length > 1 && (
+                    <>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setCurrentImageIndex((prev) =>
+                            prev === 0 ? selectedProject.gallery!.length - 1 : prev - 1
+                          );
+                        }}
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6" /></svg>
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setCurrentImageIndex((prev) =>
+                            prev === selectedProject.gallery!.length - 1 ? 0 : prev + 1
+                          );
+                        }}
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6" /></svg>
+                      </Button>
+                    </>
+                  )}
+                </div>
+
+                {/* Thumbnail Strip */}
+                {selectedProject.gallery.length > 1 && (
+                  <div className="flex justify-center gap-2 mt-4 flex-wrap">
+                    {selectedProject.gallery.map((img, idx) => (
+                      <button
+                        key={idx}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setCurrentImageIndex(idx);
+                        }}
+                        className={`w-20 h-14 rounded-md overflow-hidden border-2 transition-all ${idx === currentImageIndex
+                          ? 'border-primary opacity-100'
+                          : 'border-transparent opacity-50 hover:opacity-80'
+                          }`}
+                      >
+                        <img
+                          src={img}
+                          alt={`Thumbnail ${idx + 1}`}
+                          className="w-full h-full object-cover"
+                        />
+                      </button>
+                    ))}
+                  </div>
+                )}
+
+                {/* Image Counter */}
+                <div className="text-center text-white mt-4">
+                  {currentImageIndex + 1} / {selectedProject.gallery.length}
                 </div>
               </motion.div>
             </motion.div>

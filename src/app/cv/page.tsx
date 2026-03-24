@@ -177,6 +177,42 @@ export default function CVPage() {
               scheduling operations, and monitoring real-time power consumption through a mobile-friendly interface.
             </p>
           </div>
+
+          <div className="project-item">
+            <div className="project-header">
+              <h3>E-Book Web Application</h3>
+              <span className="tech-stack">HTML • CSS • JavaScript • Node.js • MSSQL</span>
+            </div>
+            <p>
+              Ebook web application for students to read and manage their digital books. Features include
+              book library management, reading progress tracking, user authentication, and responsive design
+              for seamless reading experience across devices.
+            </p>
+          </div>
+
+          <div className="project-item">
+            <div className="project-header">
+              <h3>Academic Management System</h3>
+              <span className="tech-stack">Next.js • TypeScript • Firebase • Tailwind</span>
+            </div>
+            <p>
+              Academic management system where students can write notes, save materials, schedule their days
+              and get notified. Includes task management, calendar integration, and real-time notifications
+              for assignments and deadlines.
+            </p>
+          </div>
+
+          <div className="project-item">
+            <div className="project-header">
+              <h3>Staff Management Record System</h3>
+              <span className="tech-stack">Java PrimeFace • MSSQL • Backend</span>
+            </div>
+            <p>
+              Staff management record system built with Java PrimeFace and MSSQL for efficient employee data
+              management. Features employee profiles, attendance tracking, performance records, and administrative
+              dashboard for HR operations.
+            </p>
+          </div>
         </section>
 
         {/* Education */}
@@ -204,9 +240,25 @@ export default function CVPage() {
         </section>
       </div>
 
-      {/* Print Button */}
-      <div className="Print-button-container">
-        <button onClick={() => window.print()} className="Print-button">
+      {/* Download Button */}
+      <div className="download-button-container">
+        <button onClick={() => window.print()} className="download-button">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="download-icon"
+          >
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
           Download as PDF
         </button>
       </div>
