@@ -53,7 +53,7 @@ const projects = [
     category: "Web Application",
     image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=500&fit=crop",
     description: "Restaurant management system with menu management, reservations, and analytics.",
-    tags: ["Next.js", "TypeScript", "MongoDB", "Frontend"],
+    tags: ["Next.js 16", "React 19", "TypeScript", "Supabase", "Tailwind CSS", "Framer Motion", "shadcn/ui"],
     link: "#",
     github: "https://github.com",
   },
