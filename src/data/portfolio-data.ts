@@ -264,7 +264,7 @@ export const projects: Project[] = [
     id: 14,
     title: "Nexora",
     category: "Web Application",
-    image: "/images/pt2.4.png",
+    image: "/images/nexora.png",
     description: "Modern web application focused on scalable architecture, responsive user experience, and reliable data-driven workflows.",
     tags: ["Next.js", "TypeScript", "Node.js", "Python", "PostgreSQL"],
     link: "#",
