@@ -98,7 +98,7 @@ export default function Footer() {
             <h4 className="font-semibold mb-4">Contact</h4>
             <ul className="space-y-2 text-muted-foreground">
               <li>adedarasapok@gmail.com</li>
-              <li>+234 812 345 6789</li>
+              <li>+234 813 501 3995</li>
               <li>Lagos, Nigeria</li>
             </ul>
           </div>
