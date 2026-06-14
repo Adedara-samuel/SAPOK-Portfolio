@@ -3,46 +3,13 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import {
-  Code,
-  Palette,
-  Database,
-  Smartphone,
-  Globe,
-  Cloud,
-  GraduationCap,
-  Briefcase,
-  PenTool
-} from "lucide-react";
-
-const skills = [
-  { name: "JavaScript/TypeScript", icon: Code, color: "text-yellow-500" },
-  { name: "React/Next.js", icon: Globe, color: "text-blue-500" },
-  { name: "Node.js", icon: Database, color: "text-green-500" },
-  { name: "UI/UX Design", icon: Palette, color: "text-pink-500" },
-  { name: "Graphics Designing", icon: PenTool, color: "text-cyan-500" },
-  { name: "Mobile Apps", icon: Smartphone, color: "text-purple-500" },
-  { name: "Cloud Services", icon: Cloud, color: "text-orange-500" },
-];
-
-const experience = [
-  {
-    title: "Senior Software Developer",
-    company: "Tech Solutions Inc.",
-    period: "2023 - Present",
-    description: "Leading development of enterprise web applications."
-  },
-  {
-    title: "Full Stack Developer",
-    company: "Digital Agency",
-    period: "2021 - 2023",
-    description: "Built 50+ client websites and web applications."
-  },
-];
-
+import { Briefcase, GraduationCap } from "lucide-react";
+import { experience, getExperienceYears, skills } from "@/data/portfolio-data";
 
 
 export default function About() {
+  const experienceYears = getExperienceYears();
+
   return (
     <section id="about" className="section-padding bg-muted/30">
       <div className="container-custom">
@@ -56,9 +23,8 @@ export default function About() {
             About <span className="gradient-text">Me</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            I&apos;m a dedicated software developer with a strong focus on both frontend
-            and backend development. My work blends technical expertise with
-            innovative problem-solving to craft outstanding digital solutions.
+            I build responsive web applications, scalable APIs, and polished UI/UX
+            experiences with a focus on performance, clean architecture, and business value.
           </p>
         </motion.div>
 
@@ -73,7 +39,7 @@ export default function About() {
             <div className="relative">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <img
-                  src="/images/hero-pics.jpg"
+                  src="/images/hero-pics.jpeg"
                   alt="About Adedara"
                   className="w-full h-auto object-cover"
                 />
@@ -93,7 +59,7 @@ export default function About() {
                     <Briefcase className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <div className="text-2xl font-bold">3+</div>
+                    <div className="text-2xl font-bold">{experienceYears}+</div>
                     <div className="text-sm text-muted-foreground">Years Exp.</div>
                   </div>
                 </div>
@@ -177,7 +143,17 @@ export default function About() {
                       </div>
                       <Badge variant="secondary">{exp.period}</Badge>
                     </div>
-                    <p className="text-sm text-muted-foreground">{exp.description}</p>
+                    <p className="text-sm text-muted-foreground mb-3">{exp.description}</p>
+                    {exp.highlights && exp.highlights.length > 0 && (
+                      <ul className="space-y-2">
+                        {exp.highlights.map((highlight) => (
+                          <li key={highlight} className="text-sm text-muted-foreground flex gap-2">
+                            <span className="text-primary shrink-0">•</span>
+                            <span>{highlight}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </motion.div>
                 ))}
               </div>

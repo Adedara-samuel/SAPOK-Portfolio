@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Github, Linkedin, Twitter } from "lucide-react";
+import { getExperienceYears } from "@/data/portfolio-data";
 
 const typedTexts = [
   "Web Applications",
@@ -14,6 +15,7 @@ const typedTexts = [
 ];
 
 export default function Hero() {
+  const experienceYears = getExperienceYears();
   const [typedIndex, setTypedIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
@@ -132,10 +134,9 @@ export default function Hero() {
               transition={{ delay: 0.5 }}
               className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0"
             >
-              A passionate Software Developer with 3+ years of experience in
-              crafting exceptional digital experiences. I specialize in
-              full-stack development, UI/UX design, and delivering scalable
-              solutions.
+              A passionate Software Developer with {experienceYears}+ years of experience
+              crafting exceptional digital experiences. I specialize in full-stack
+              development, UI/UX design, and scalable solutions.
             </motion.p>
 
             <motion.div
@@ -147,13 +148,13 @@ export default function Hero() {
               <Link href="#contact">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-primary to-secondary hover:opacity-90"
+                  className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 cursor-pointer"
                 >
                   Get Started <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
               <Link href="#portfolio">
-                <Button variant="outline" size="lg">
+                <Button variant="outline" size="lg" className="cursor-pointer">
                   View My Work
                 </Button>
               </Link>
@@ -221,7 +222,7 @@ export default function Hero() {
               >
                 <div className="relative rounded-3xl overflow-hidden shadow-2xl animate-pulse-glow">
                   <img
-                    src="/images/SAMUEL.jpg"
+                    src="/images/SAMUEL.jpeg"
                     alt="Adedara S.P - Software Developer"
                     className="w-full h-auto object-cover"
                   />
@@ -236,7 +237,7 @@ export default function Hero() {
                 transition={{ delay: 1 }}
                 className="absolute -left-4 md:left-8 top-20 glass rounded-xl p-4 shadow-lg"
               >
-                <div className="text-2xl font-bold text-primary">3+</div>
+                <div className="text-2xl font-bold text-primary">{experienceYears}+</div>
                 <div className="text-sm text-muted-foreground">Years Exp.</div>
               </motion.div>
 

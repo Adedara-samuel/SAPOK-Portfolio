@@ -1,154 +1,26 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useEffect, useRef, useState, useMemo, type KeyboardEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github, X } from "lucide-react";
+import { Project, projects } from "@/data/portfolio-data";
 
-const projects = [
-  {
-    id: 1,
-    title: "E-Commerce Platform",
-    category: "Web Development",
-    image: "/images/portfolio5.png",
-    description: "A full-featured e-commerce platform with shopping cart, payment integration, and admin dashboard.",
-    tags: ["Next.js", "TypeScript", "Node.js", "MongoDB", "Tailwind"],
-    link: "https://e-commerce-aq2y.vercel.app/",
-    github: "https://github.com/Adedara-samuel/e-commerce",
-  },
-  {
-    id: 2,
-    title: "Real Estate Website",
-    category: "Web Application",
-    image: "/images/portfolio4.png",
-    description: "Property listing platform with advanced search, filtering, and agent management system.",
-    tags: ["HTML", "CSS", "JavaScript"],
-    link: "https://real-estate-gamma-coral.vercel.app/",
-    github: "https://github.com/Adedara-samuel/Real-Estate",
-  },
-  {
-    id: 3,
-    title: "Fitness Tracking App",
-    category: "Mobile App",
-    image: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&h=500&fit=crop",
-    description: "Mobile application for tracking workouts, nutrition, and fitness goals with social features.",
-    tags: ["React Native", "Node.js", "PostgreSQL"],
-    link: "#",
-    github: "https://github.com",
-  },
-  {
-    id: 4,
-    title: "Gaming Site",
-    category: "Web Application",
-    image: "/images/portfolio2.png",
-    description: "Gaming platform with interactive features and user engagement.",
-    tags: ["HTML", "CSS", "JavaScript"],
-    link: "https://lugx-gaming-site.vercel.app/",
-    github: "https://github.com/Adedara-samuel/Lugx_gaming-site",
-  },
-  {
-    id: 8,
-    title: "Restaurant Management",
-    category: "Web Application",
-    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=500&fit=crop",
-    description: "Restaurant management system with menu management, reservations, and analytics.",
-    tags: ["Next.js 16", "React 19", "TypeScript", "Supabase", "Tailwind CSS", "Framer Motion", "shadcn/ui"],
-    link: "#",
-    github: "https://github.com",
-  },
-  {
-    id: 9,
-    title: "Academic Management System",
-    category: "Web Application",
-    image: "/images/prt2.png",
-    description: "Academic management system where students can write notes, save materials, schedule their days and get notified.",
-    tags: ["Next.js", "TypeScript", "Firebase", "Tailwind"],
-    link: "https://student-academic-system25.netlify.app/",
-    github: "https://github.com/Adedara-samuel/sas-project",
-  },
-  {
-    id: 5,
-    title: "Graphics Design",
-    category: "UI/UX & Graphics",
-    image: "/images/portfolio3.png",
-    description: "Creative graphics design work including logos, branding, and visual identity.",
-    tags: ["Photoshop", "Illustrator", "Figma", "Branding"],
-    link: "https://www.pinterest.com/adedarapsalmuel/",
-    github: "https://github.com",
-  },
-  {
-    id: 6,
-    title: "Portfolio Website",
-    category: "UI/UX & Graphics",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop",
-    description: "Modern portfolio website with smooth animations and responsive design.",
-    tags: ["Next.js", "TypeScript", "Tailwind", "EmailJS"],
-    link: "#",
-    github: "https://github.com",
-  },
-  {
-    id: 10,
-    title: "Ebook Web Application",
-    category: "Web Application",
-    image: "/images/portfolio1.png",
-    description: "Ebook web application for students to read and manage their digital books.",
-    tags: ["HTML", "CSS", "JavaScript", "Node.js", "MSSQL"],
-    link: "https://e-library-system-six.vercel.app/",
-    github: "https://github.com/Adedara-samuel/E-library-System",
-  },
-  {
-    id: 11,
-    title: "Ruomax Properties",
-    category: "Web Application",
-    image: "/images/ruomax.png",
-    description: "Real estate platform for house sales, rentals, and property management.",
-    tags: ["Next.js", "TypeScript", "Node.js", "Firebase"],
-    link: "https://ruomax.vercel.app/",
-    github: "https://github.com/Adedara-samuel/Ruomax",
-  },
-  {
-    id: 7,
-    title: "Staff Management Record System",
-    category: "Web Application",
-    image: "/images/portfolio6.png",
-    description: "Staff management record system built with Java PrimeFace and MSSQL for efficient employee data management.",
-    tags: ["Java PrimeFace", "MSSQL", "Backend"],
-    link: "#",
-    github: "https://github.com",
-    gallery: [
-      "/images/p1.png",
-      "/images/p2.png",
-      "/images/p3.png",
-      "/images/p4.png",
-      "/images/p5.png",
-      "/images/p6.png",
-      "/images/ps.png",
-      "/images/portfolio6.png",
-    ],
-  },
-  {
-    id: 12,
-    title: "BSS Entertainment",
-    category: "Web Application",
-    image: "/images/bss.png",
-    description: "Entertainment industry platform with voting system for audience engagement.",
-    tags: ["Next.js", "TypeScript", "Firebase", "Tailwind"],
-    link: "https://bss-enertainment-industry.netlify.app/",
-    github: "https://github.com/Adedara-samuel/BSS",
-  },
-];
-
-interface Project {
-  id: number;
-  title: string;
-  category: string;
-  image: string;
-  description: string;
-  tags: string[];
-  link: string;
-  github: string;
-  gallery?: string[];
+function DetailSection({ title, items }: { title: string; items: string[] }) {
+  return (
+    <div className="mb-6">
+      <h4 className="text-sm font-semibold uppercase tracking-wide text-primary mb-3">{title}</h4>
+      <ul className="grid gap-2">
+        {items.map((item) => (
+          <li key={item} className="text-muted-foreground text-sm leading-relaxed flex gap-2">
+            <span className="text-primary shrink-0">•</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
 const categories = ["All", "Web Development", "Mobile App", "UI/UX & Graphics", "Web Application"];
@@ -159,13 +31,67 @@ export default function Portfolio() {
   const [visibleProjects, setVisibleProjects] = useState(6);
   const [galleryOpen, setGalleryOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const closeButtonRef = useRef<HTMLButtonElement | null>(null);
+  const modalRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!selectedProject) {
+      return;
+    }
+
+    const activeElement = document.activeElement as HTMLElement | null;
+    const focusTimer = window.setTimeout(() => closeButtonRef.current?.focus(), 0);
+
+    return () => {
+      window.clearTimeout(focusTimer);
+      activeElement?.focus();
+    };
+  }, [selectedProject]);
+
+  const openExternal = (url: string) => {
+    if (url && url !== "#") {
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+  };
+
+  const handleModalKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Escape") {
+      setSelectedProject(null);
+      return;
+    }
+
+    if (event.key !== "Tab" || !modalRef.current) {
+      return;
+    }
+
+    const focusableElements = Array.from(
+      modalRef.current.querySelectorAll<HTMLElement>(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      )
+    ).filter((element) => !element.hasAttribute("disabled") && element.tabIndex !== -1);
+
+    if (focusableElements.length === 0) {
+      return;
+    }
+
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+
+    if (event.shiftKey && document.activeElement === firstElement) {
+      event.preventDefault();
+      lastElement.focus();
+    } else if (!event.shiftKey && document.activeElement === lastElement) {
+      event.preventDefault();
+      firstElement.focus();
+    }
+  };
 
   const handleLiveDemo = (project: Project) => {
     if (project.gallery && project.gallery.length > 0) {
       setCurrentImageIndex(0);
       setGalleryOpen(true);
     } else {
-      window.open(project.link, '_blank');
+      openExternal(project.link);
     }
   };
 
@@ -204,6 +130,7 @@ export default function Portfolio() {
             <Button
               key={category}
               variant={activeCategory === category ? "default" : "outline"}
+              aria-pressed={activeCategory === category}
               onClick={() => setActiveCategory(category)}
               className={activeCategory === category ? "bg-gradient-to-r from-primary to-secondary" : ""}
             >
@@ -225,13 +152,24 @@ export default function Portfolio() {
                 transition={{ delay: index * 0.1 }}
               >
                 <Card
-                  className="group overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-300"
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`Open ${project.title} details`}
+                  className="group overflow-hidden cursor-pointer hover:shadow-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary transition-all duration-300"
                   onClick={() => setSelectedProject(project)}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      event.preventDefault();
+                      setSelectedProject(project);
+                    }
+                  }}
                 >
                   <div className="relative aspect-video overflow-hidden">
                     <img
                       src={project.image}
                       alt={project.title}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
@@ -280,14 +218,20 @@ export default function Portfolio() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-sm"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="project-modal-title"
+              tabIndex={-1}
               onClick={() => setSelectedProject(null)}
             >
               <motion.div
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.9, opacity: 0 }}
+                ref={modalRef}
                 className="bg-background rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl"
                 onClick={(e) => e.stopPropagation()}
+                onKeyDown={handleModalKeyDown}
               >
                 <div className="relative">
                   <img
@@ -298,6 +242,8 @@ export default function Portfolio() {
                   <Button
                     variant="ghost"
                     size="icon"
+                    ref={closeButtonRef}
+                    aria-label="Close project details"
                     className="absolute top-4 right-4 bg-background/80"
                     onClick={() => setSelectedProject(null)}
                   >
@@ -306,8 +252,75 @@ export default function Portfolio() {
                 </div>
                 <div className="p-6">
                   <p className="text-primary font-medium mb-2">{selectedProject.category}</p>
-                  <h3 className="text-2xl font-bold mb-4">{selectedProject.title}</h3>
-                  <p className="text-muted-foreground mb-6">{selectedProject.description}</p>
+                  <h3 id="project-modal-title" className="text-2xl font-bold mb-4">{selectedProject.title}</h3>
+                  <p className="text-muted-foreground mb-6 leading-relaxed">{selectedProject.description}</p>
+
+                  {selectedProject.overview && (
+                    <div className="mb-6">
+                      <h4 className="text-sm font-semibold uppercase tracking-wide text-primary mb-2">Overview</h4>
+                      <p className="text-muted-foreground leading-relaxed">{selectedProject.overview}</p>
+                    </div>
+                  )}
+
+                  {selectedProject.status && (
+                    <div className="mb-6 inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
+                      Status: {selectedProject.status}
+                    </div>
+                  )}
+
+                  {selectedProject.technologies && selectedProject.technologies.length > 0 && (
+                    <div className="mb-6">
+                      <h4 className="text-sm font-semibold uppercase tracking-wide text-primary mb-3">Technologies Used</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {selectedProject.technologies.map((technology) => (
+                          <span
+                            key={technology}
+                            className="text-sm px-3 py-1 rounded-full bg-muted"
+                          >
+                            {technology}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {selectedProject.features && selectedProject.features.length > 0 && (
+                    <DetailSection title="Major Features" items={selectedProject.features} />
+                  )}
+
+                  {selectedProject.architecture && selectedProject.architecture.length > 0 && (
+                    <DetailSection title="Architecture Highlights" items={selectedProject.architecture} />
+                  )}
+
+                  {selectedProject.achievements && selectedProject.achievements.length > 0 && (
+                    <DetailSection title="Achievements and Impact" items={selectedProject.achievements} />
+                  )}
+
+                  {selectedProject.impact && (
+                    <div className="mb-6">
+                      <h4 className="text-sm font-semibold uppercase tracking-wide text-primary mb-2">Business Value and Impact</h4>
+                      <p className="text-muted-foreground leading-relaxed">{selectedProject.impact}</p>
+                    </div>
+                  )}
+
+                  {selectedProject.gallery && selectedProject.gallery.length > 0 && (
+                    <div className="mb-6">
+                      <h4 className="text-sm font-semibold uppercase tracking-wide text-primary mb-3">Screenshots</h4>
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        {selectedProject.gallery.slice(0, 4).map((screenshot) => (
+                          <img
+                            key={screenshot}
+                            src={screenshot}
+                            alt={`${selectedProject.title} screenshot`}
+                            loading="lazy"
+                            decoding="async"
+                            className="w-full h-24 object-cover rounded-lg border"
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
                   <div className="flex flex-wrap gap-2 mb-6">
                     {selectedProject.tags.map((tag) => (
                       <span
@@ -318,9 +331,11 @@ export default function Portfolio() {
                       </span>
                     ))}
                   </div>
-                  <div className="flex gap-4">
+
+                  <div className="flex flex-wrap gap-3">
                     <Button
                       className="bg-gradient-to-r from-primary to-secondary"
+                      disabled={!selectedProject.gallery && (!selectedProject.link || selectedProject.link === "#")}
                       onClick={() => handleLiveDemo(selectedProject as Project)}
                     >
                       <ExternalLink className="mr-2 h-4 w-4" />
@@ -328,7 +343,8 @@ export default function Portfolio() {
                     </Button>
                     <Button
                       variant="outline"
-                      onClick={() => window.open(selectedProject.github, '_blank')}
+                      disabled={selectedProject.github === "#"}
+                      onClick={() => openExternal(selectedProject.github)}
                     >
                       <Github className="mr-2 h-4 w-4" />
                       View Code
@@ -361,6 +377,7 @@ export default function Portfolio() {
                 <Button
                   variant="ghost"
                   size="icon"
+                  aria-label="Close screenshot gallery"
                   className="absolute -top-12 right-0 text-white hover:bg-white/20 z-10"
                   onClick={() => setGalleryOpen(false)}
                 >
@@ -388,6 +405,7 @@ export default function Portfolio() {
                       <Button
                         variant="ghost"
                         size="icon"
+                        aria-label="Previous screenshot"
                         className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white"
                         onClick={(e) => {
                           e.stopPropagation();
@@ -401,6 +419,7 @@ export default function Portfolio() {
                       <Button
                         variant="ghost"
                         size="icon"
+                        aria-label="Next screenshot"
                         className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white"
                         onClick={(e) => {
                           e.stopPropagation();
@@ -425,6 +444,7 @@ export default function Portfolio() {
                           e.stopPropagation();
                           setCurrentImageIndex(idx);
                         }}
+                        aria-label={`View screenshot ${idx + 1}`}
                         className={`w-20 h-14 rounded-md overflow-hidden border-2 transition-all ${idx === currentImageIndex
                           ? 'border-primary opacity-100'
                           : 'border-transparent opacity-50 hover:opacity-80'

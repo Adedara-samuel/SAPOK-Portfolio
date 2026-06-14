@@ -95,8 +95,24 @@
 /* Skills */
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.skill-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.25rem;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid #dbeafe;
+  border-radius: 999px;
+  background: #f8fafc;
+  color: #334155;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: center;
 }
 
 .skill-category h3 {
@@ -167,6 +183,13 @@
   color: #64748b;
   line-height: 1.6;
   font-size: 0.9rem;
+}
+
+.project-status {
+  color: #334155;
+  line-height: 1.5;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
 }
 
 /* Experience */
@@ -399,6 +422,12 @@
     color: #667eea !important;
   }
 
+  .skill-chip {
+    background: #f8fafc !important;
+    border-color: #dbeafe !important;
+    color: #334155 !important;
+  }
+
   .experience-item li::before {
     color: #667eea !important;
   }
@@ -415,6 +444,14 @@
   .tech-stack {
     background: #eef2ff !important;
     color: #667eea !important;
+  }
+
+  .project-item p {
+    color: #64748b !important;
+  }
+
+  .project-status {
+    color: #334155 !important;
   }
 
   .project-item,
