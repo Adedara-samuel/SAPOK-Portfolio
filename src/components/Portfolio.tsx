@@ -172,6 +172,11 @@ export default function Portfolio() {
                       decoding="async"
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
+                    {project.status?.toLowerCase() === "coming soon" && (
+                      <span className="absolute top-3 right-3 rounded-full bg-background/90 px-3 py-1 text-xs font-semibold text-primary shadow-sm">
+                        Coming Soon
+                      </span>
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
                       <div>
                         <p className="text-sm text-primary font-medium">{project.category}</p>
@@ -335,11 +340,19 @@ export default function Portfolio() {
                   <div className="flex flex-wrap gap-3">
                     <Button
                       className="bg-gradient-to-r from-primary to-secondary"
-                      disabled={!selectedProject.gallery && (!selectedProject.link || selectedProject.link === "#")}
-                      onClick={() => handleLiveDemo(selectedProject as Project)}
+                      disabled={
+                        selectedProject.status?.toLowerCase() === "coming soon" ||
+                        (!selectedProject.gallery && (!selectedProject.link || selectedProject.link === "#"))
+                      }
+                      onClick={() => {
+                        if (selectedProject.status?.toLowerCase() === "coming soon") {
+                          return;
+                        }
+                        handleLiveDemo(selectedProject as Project);
+                      }}
                     >
                       <ExternalLink className="mr-2 h-4 w-4" />
-                      Live Demo
+                      {selectedProject.status?.toLowerCase() === "coming soon" ? "Coming Soon" : "Live Demo"}
                     </Button>
                     <Button
                       variant="outline"

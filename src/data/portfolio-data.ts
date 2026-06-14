@@ -264,7 +264,7 @@ export const projects: Project[] = [
     id: 14,
     title: "Nexora",
     category: "Web Application",
-    image: "/images/ruomax.png",
+    image: "/images/pt2.4.png",
     description: "Modern web application focused on scalable architecture, responsive user experience, and reliable data-driven workflows.",
     tags: ["Next.js", "TypeScript", "Node.js", "Python", "PostgreSQL"],
     link: "#",
@@ -291,6 +291,7 @@ export const projects: Project[] = [
       "Delivered a maintainable foundation for future product modules",
     ],
     impact: "Provides a professional, scalable application foundation for business operations and future feature expansion.",
+    status: "Coming Soon",
   },
 ];
 
@@ -405,7 +406,7 @@ export const cvProjects: CVProject[] = [
     title: "Nexora",
     techStack: "Next.js • TypeScript • Node.js • Python • PostgreSQL",
     description: "Modern web application focused on scalable architecture, responsive user experience, and reliable data-driven workflows. Includes component-based frontend modules, API-driven workflows, authentication, dashboards, and maintainable data structures.",
-    status: "Available on request",
+    status: "Coming Soon",
     impact: "Provides a scalable foundation for business operations and future feature expansion.",
   },
 ];
