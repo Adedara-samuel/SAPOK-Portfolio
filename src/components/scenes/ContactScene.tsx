@@ -76,13 +76,13 @@ export default function ContactScene() {
             </a>
           </Reveal>
 
-          <Reveal step={4} className="mt-3 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line">
+          <Reveal step={4} className="mt-3 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2">
             <div className="bg-ink p-5">
               <span className="eyebrow block">Call</span>
-              <a href={profile.phoneHref} className="mt-2 block transition hover:text-accent">
+              <a href={profile.phoneHref} className="mt-2 block whitespace-nowrap transition hover:text-accent">
                 {profile.phone}
               </a>
-              <a href={profile.phone2Href} className="mt-1 block transition hover:text-accent">
+              <a href={profile.phone2Href} className="mt-1 block whitespace-nowrap transition hover:text-accent">
                 {profile.phone2}
               </a>
             </div>
