@@ -8,7 +8,7 @@ import { Atom, Cloud, Code, Database, Globe, Palette, PenTool, Smartphone } from
 export const profile = {
   name: "Adedara Samuel",
   shortName: "Adedara S.P",
-  brand: "SAPOK",
+  brand: "Adedara Sapok",
   role: "Frontend & Full-Stack Engineer",
   location: "Lagos, Nigeria",
   timezone: "Africa/Lagos",

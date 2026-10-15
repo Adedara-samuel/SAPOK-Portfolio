@@ -41,7 +41,7 @@ export default function StatusBar({
     <header className="absolute inset-x-0 top-0 z-40 flex h-14 items-center justify-between border-b border-line/60 px-4 sm:px-6">
       <button onClick={onHome} className="flex items-center gap-2.5" aria-label="Go to index">
         <span className="grid size-7 place-items-center rounded-lg bg-accent font-display text-sm font-bold text-accent-ink">S</span>
-        <span className="font-mono text-xs tracking-[0.2em] text-paper">{profile.brand}</span>
+        <span className="font-mono text-xs uppercase tracking-[0.2em] text-paper">{profile.brand}</span>
       </button>
 
       <div className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-muted md:flex">

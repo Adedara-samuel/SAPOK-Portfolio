@@ -15,7 +15,6 @@ export const metadata: Metadata = {
     "Portfolio of Adedara Samuel (SAPOK): multi-tenant platforms, healthcare systems and fintech infrastructure — designed and engineered end to end.",
   keywords: ["Adedara Samuel", "SAPOK", "software engineer", "full-stack developer", "UI/UX designer", "Next.js", "NestJS", "Lagos"],
   authors: [{ name: "Adedara Samuel" }],
-  icons: { icon: "/images/logo.png" },
   openGraph: {
     title: "Adedara Samuel — Frontend & Full-Stack Engineer",
     description: "Multi-tenant platforms, healthcare systems and fintech infrastructure — designed and engineered end to end.",

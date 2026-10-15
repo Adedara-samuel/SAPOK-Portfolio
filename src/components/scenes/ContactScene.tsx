@@ -143,7 +143,7 @@ export default function ContactScene() {
       </div>
 
       <Reveal step={6} className="mt-20 flex flex-col justify-between gap-2 border-t border-line pt-6 font-mono text-[10px] uppercase tracking-[0.16em] text-faint sm:flex-row">
-        <span>© {new Date().getFullYear()} {profile.brand} · {profile.name}</span>
+        <span>© {new Date().getFullYear()} {profile.brand}</span>
         <span>Designed &amp; engineered in Lagos</span>
       </Reveal>
     </div>
