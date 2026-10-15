@@ -27,8 +27,9 @@ const SCENE_COMPONENTS = {
 } as const;
 
 const EASE = [0.76, 0, 0.24, 1] as const;
-const TRANSITION_LOCK_MS = 1000;
-const WHEEL_THRESHOLD = 120;
+const TRANSITION_LOCK_MS = 950;
+const EDGE_SETTLE_MS = 280;
+const WHEEL_THRESHOLD = 50;
 
 function parseHash(hash: string): { scene: SceneId; project: string | null } {
   const [scene, project] = hash.replace(/^#\/?/, "").split("/");
@@ -56,7 +57,8 @@ export default function Workspace() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const lockUntil = useRef(0);
   const wheelAccum = useRef(0);
-  const touchStart = useRef<{ x: number; y: number; t: number; atTop: boolean; atBottom: boolean } | null>(null);
+  const lastScroll = useRef(0);
+  const touchStart = useRef<{ x: number; y: number; t: number } | null>(null);
   const overlayOpen = paletteOpen || project !== null;
 
   const scene = SCENES[index];
@@ -111,6 +113,7 @@ export default function Workspace() {
   // Reset inner scroll when entering a scene
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: 0 });
+    lastScroll.current = performance.now();
   }, [index]);
 
   // Keyboard
@@ -139,48 +142,40 @@ export default function Workspace() {
     return () => window.removeEventListener("keydown", onKey);
   }, [goTo, index, overlayOpen]);
 
-  const edges = () => {
-    const el = scrollRef.current;
-    if (!el) return { atTop: true, atBottom: true };
-    return { atTop: el.scrollTop <= 1, atBottom: el.scrollTop + el.clientHeight >= el.scrollHeight - 2 };
-  };
-
-  // Wheel: scroll the scene normally; keep scrolling past its end and you move on to the next scene.
+  // Wheel: move scenes only once the inner scroll has settled at an edge
   const onWheel = (e: React.WheelEvent) => {
     if (overlayOpen || Math.abs(e.deltaY) < Math.abs(e.deltaX)) return;
-    if (performance.now() < lockUntil.current) return;
-    const { atTop, atBottom } = edges();
-    const pushingPastEdge = (e.deltaY > 0 && atBottom) || (e.deltaY < 0 && atTop);
-    if (!pushingPastEdge || Math.sign(e.deltaY) !== Math.sign(wheelAccum.current || e.deltaY)) {
+    const now = performance.now();
+    if (now < lockUntil.current) return;
+    const el = scrollRef.current;
+    if (!el) return;
+    const atTop = el.scrollTop <= 1;
+    const atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 2;
+    const settled = now - lastScroll.current > EDGE_SETTLE_MS;
+    if ((e.deltaY > 0 && atBottom && settled) || (e.deltaY < 0 && atTop && settled)) {
+      wheelAccum.current += e.deltaY;
+      if (Math.abs(wheelAccum.current) > WHEEL_THRESHOLD) goTo(index + Math.sign(wheelAccum.current));
+    } else {
       wheelAccum.current = 0;
-      if (!pushingPastEdge) return;
     }
-    wheelAccum.current += e.deltaY;
-    if (Math.abs(wheelAccum.current) > WHEEL_THRESHOLD) goTo(index + Math.sign(wheelAccum.current));
   };
 
-  // Touch: horizontal swipe changes scene; a vertical swipe that starts at a scene's edge and
-  // keeps going past it moves to the next/previous scene, otherwise it's native scrolling.
+  // Touch: horizontal swipe changes scene; vertical stays native scroll
   const onTouchStart = (e: React.TouchEvent) => {
     const t = e.touches[0];
-    const { atTop, atBottom } = edges();
-    touchStart.current = { x: t.clientX, y: t.clientY, t: performance.now(), atTop, atBottom };
+    touchStart.current = { x: t.clientX, y: t.clientY, t: performance.now() };
   };
   const onTouchEnd = (e: React.TouchEvent) => {
     const start = touchStart.current;
     touchStart.current = null;
-    if (!start || overlayOpen || performance.now() < lockUntil.current) return;
-    if ((e.target as Element).closest("[data-swipe-ignore]")) return;
+    if (!start || overlayOpen) return;
     const t = e.changedTouches[0];
     const dx = t.clientX - start.x;
     const dy = t.clientY - start.y;
-    const fast = performance.now() - start.t < 700;
+    const fast = performance.now() - start.t < 600;
     if (fast && Math.abs(dx) > 70 && Math.abs(dx) > Math.abs(dy) * 1.6) {
+      if ((e.target as Element).closest("[data-swipe-ignore]")) return;
       goTo(index + (dx < 0 ? 1 : -1));
-    } else if (Math.abs(dy) > 90 && Math.abs(dy) > Math.abs(dx) * 1.6) {
-      const { atTop, atBottom } = edges();
-      if (dy < 0 && start.atBottom && atBottom) goTo(index + 1);
-      else if (dy > 0 && start.atTop && atTop) goTo(index - 1);
     }
   };
 
@@ -225,6 +220,7 @@ export default function Workspace() {
             >
               <div
                 ref={scrollRef}
+                onScroll={() => (lastScroll.current = performance.now())}
                 className="scene-scroll h-full overflow-y-auto overflow-x-hidden"
               >
                 {booted ? <Scene go={go} openProject={openProject} /> : null}

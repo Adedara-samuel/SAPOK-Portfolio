@@ -3,30 +3,35 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* Design tokens. Dark is the default canvas; .light swaps the surfaces. */
+/* Deep-blue canvas with a warm signal accent for contrast. */
 :root {
-  --ink: #0b0b0d;
-  --surface: #131316;
-  --raised: #1a1a1f;
-  --paper: #f4f1ea;
-  --muted: #a3a09a;
-  --faint: #66645f;
-  --line: #26262b;
+  --ink: #050b1f;
+  --surface: #0a1430;
+  --raised: #101d42;
+  --paper: #eef2fb;
+  --muted: #98a4c6;
+  --faint: #56628a;
+  --line: #1a2850;
   --accent: #ff6b3d;
-  --accent-ink: #0b0b0d;
+  --accent-ink: #050b1f;
+  --blue: #1e40af;
+  --blue-glow: #2563eb;
   --ok: #4ade80;
   color-scheme: dark;
 }
 
 :root.light {
-  --ink: #f3f1ec;
-  --surface: #eae7e0;
+  --ink: #f1f4fb;
+  --surface: #e4eaf7;
   --raised: #ffffff;
-  --paper: #121214;
-  --muted: #55534e;
-  --faint: #8c8982;
-  --line: #d8d4cb;
+  --paper: #0a1a4a;
+  --muted: #3d4a75;
+  --faint: #7d88aa;
+  --line: #cfd8ee;
   --accent: #e8501f;
   --accent-ink: #ffffff;
+  --blue: #1e3a8a;
+  --blue-glow: #3b82f6;
   --ok: #15803d;
   color-scheme: light;
 }
@@ -42,6 +47,8 @@
   --color-accent: var(--accent);
   --color-accent-ink: var(--accent-ink);
   --color-ok: var(--ok);
+  --color-blue-deep: var(--blue);
+  --color-blue-glow: var(--blue-glow);
 
   /* Aliases kept for the shadcn ui primitives in components/ui */
   --color-background: var(--ink);
@@ -202,6 +209,17 @@ html.custom-cursor summary {
     scrollbar-color: var(--line) transparent;
     overscroll-behavior: contain;
   }
+}
+
+/* Deep-blue atmosphere behind every scene */
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 55% at 85% 0%, color-mix(in srgb, var(--blue-glow) 22%, transparent), transparent 70%),
+    radial-gradient(50% 50% at 0% 100%, color-mix(in srgb, var(--blue) 30%, transparent), transparent 70%);
 }
 
 /* Grain overlay keeps flat dark surfaces from looking digital-flat. */

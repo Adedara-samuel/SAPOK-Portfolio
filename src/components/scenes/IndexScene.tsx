@@ -27,7 +27,8 @@ export default function IndexScene({ go, openProject }: SceneProps) {
   return (
     <div className="relative flex min-h-full flex-col" onPointerMove={onMove}>
       {/* Ambient glow */}
-      <div aria-hidden className="pointer-events-none absolute -right-40 -top-40 size-[44rem] rounded-full bg-accent/15 blur-[120px]" />
+      <div aria-hidden className="pointer-events-none absolute -right-40 -top-40 size-176 rounded-full bg-blue-glow/25 blur-[120px]" />
+      <div aria-hidden className="pointer-events-none absolute right-1/4 top-1/3 size-72 rounded-full bg-accent/10 blur-[110px]" />
 
       <div className="relative mx-auto grid w-full max-w-7xl flex-1 items-center gap-10 px-5 pb-28 pt-10 sm:px-10 md:pb-32 lg:grid-cols-[1.25fr_0.75fr]">
         <div>
