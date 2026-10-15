@@ -10,14 +10,14 @@ const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains", 
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://sapok-portfolio.vercel.app"),
-  title: "Adedara Samuel — Software Engineer & UI/UX Designer",
+  title: "Adedara Samuel — Frontend & Full-Stack Engineer",
   description:
     "Portfolio of Adedara Samuel (SAPOK): multi-tenant platforms, healthcare systems and fintech infrastructure — designed and engineered end to end.",
   keywords: ["Adedara Samuel", "SAPOK", "software engineer", "full-stack developer", "UI/UX designer", "Next.js", "NestJS", "Lagos"],
   authors: [{ name: "Adedara Samuel" }],
   icons: { icon: "/images/logo.png" },
   openGraph: {
-    title: "Adedara Samuel — Software Engineer & UI/UX Designer",
+    title: "Adedara Samuel — Frontend & Full-Stack Engineer",
     description: "Multi-tenant platforms, healthcare systems and fintech infrastructure — designed and engineered end to end.",
     type: "website",
     images: ["/work/covers/onegrid.jpg"],

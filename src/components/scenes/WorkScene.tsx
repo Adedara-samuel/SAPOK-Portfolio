@@ -57,7 +57,7 @@ export default function WorkScene({ openProject }: SceneProps) {
         eyebrow="Selected work"
         lines={["Things I've built", "and shipped."]}
         accentIndex={1}
-        aside={<p className="leading-relaxed text-muted">{projects.length} projects across platforms, healthcare, fintech and the web. Open any one for the full story.</p>}
+        aside={<p className="leading-relaxed text-muted">{projects.length}+ projects across platforms, healthcare, fintech and the web. Open any one for the full story.</p>}
       />
 
       {filter === "All" && (

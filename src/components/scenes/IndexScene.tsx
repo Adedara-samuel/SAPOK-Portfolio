@@ -42,7 +42,7 @@ export default function IndexScene({ go, openProject }: SceneProps) {
           </h1>
 
           <Reveal step={3} className="mt-8 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
-            Software engineer and designer in {profile.location.split(",")[0]}. I design and ship multi-tenant platforms,
+            Frontend and full-stack engineer in {profile.location.split(",")[0]}. I design and ship multi-tenant platforms,
             healthcare systems and fintech infrastructure — from database schema to the last pixel.
           </Reveal>
 
@@ -58,7 +58,7 @@ export default function IndexScene({ go, openProject }: SceneProps) {
           <Reveal step={5} className="mt-12 grid max-w-lg grid-cols-3 gap-6 border-t border-line pt-6">
             {[
               [`${years}+`, "Years building"],
-              [`${projects.length}`, "Projects shipped"],
+              [`${projects.length}+`, "Projects shipped"],
               [`${projects.filter((p) => p.live).length}`, "Live deployments"],
             ].map(([n, l]) => (
               <div key={l}>

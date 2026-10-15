@@ -9,7 +9,7 @@ export const profile = {
   name: "Adedara Samuel",
   shortName: "Adedara S.P",
   brand: "SAPOK",
-  role: "Software Engineer & UI/UX Designer",
+  role: "Frontend & Full-Stack Engineer",
   location: "Lagos, Nigeria",
   timezone: "Africa/Lagos",
   email: "adedarasapok@gmail.com",

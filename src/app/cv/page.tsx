@@ -35,7 +35,7 @@ export default function CVPage() {
         <section className="cv-section">
           <h2>Professional Summary</h2>
           <p>
-            Software engineer and UI/UX designer with {experienceYears}+ years of experience designing and shipping
+            Frontend and full-stack engineer with {experienceYears}+ years of experience designing and shipping
             production systems end to end. Builds multi-tenant platforms, hospital systems (IVF clinic management,
             incident reporting, document management) and fintech infrastructure with Next.js, React, NestJS, Express,
             FastAPI, PostgreSQL and MongoDB — plus desktop and mobile apps with Tauri, pywebview and React Native.
