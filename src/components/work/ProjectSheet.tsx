@@ -94,7 +94,7 @@ export default function ProjectSheet({
                 className="relative aspect-[16/10] max-h-[62vh] w-full overflow-hidden bg-raised md:aspect-[16/8]"
               >
                 <button className="block size-full" data-cursor="view" onClick={() => setLightbox(0)} aria-label="Open cover image">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  { }
                   <img src={project.cover} alt={`${project.title} cover`} className="size-full object-cover" />
                 </button>
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-surface to-transparent" />
@@ -167,7 +167,7 @@ export default function ProjectSheet({
                           className="group overflow-hidden rounded-xl border border-line bg-raised"
                           aria-label={`Open screenshot ${i + 1}`}
                         >
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          { }
                           <img src={src} alt="" loading="lazy" className="aspect-[16/10] w-full object-cover object-top transition duration-700 group-hover:scale-[1.03]" />
                         </button>
                       ))}

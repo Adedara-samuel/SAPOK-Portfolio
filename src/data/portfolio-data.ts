@@ -118,6 +118,16 @@ export interface CVExperience {
 
 export const cvExperience: CVExperience[] = [
   {
+    title: "Frontend Engineering Manager",
+    period: "2026 - Present",
+    company: "Turon Technologies",
+    highlights: [
+      "Lead the frontend engineering team across Turon's web and mobile products, owning architecture, code quality and delivery.",
+      "Set frontend standards — component patterns, review practices and release workflow — and mentor engineers on the team.",
+      "Work with backend, design and product to plan features and keep web and mobile experiences consistent.",
+    ],
+  },
+  {
     title: "Software Engineer & Application Support Officer",
     period: "Feb 2025 - Present",
     company: "Redeemer's Health Village (RHV)",

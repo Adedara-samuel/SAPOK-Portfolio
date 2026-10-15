@@ -72,7 +72,7 @@ export default function IndexScene({ go, openProject }: SceneProps) {
         {/* Portrait card */}
         <Reveal step={2} className="relative mx-auto w-full max-w-sm [perspective:1200px] lg:max-w-none">
           <motion.div style={{ rotateX: rx, rotateY: ry }} className="relative overflow-hidden rounded-[28px] border border-line bg-raised shadow-2xl shadow-black/40">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
+            { }
             <img src="/images/SAMUEL.jpeg" alt={profile.name} className="aspect-[4/5] w-full object-cover" />
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent p-5 pt-20">
               <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.16em] text-white/80">
@@ -102,7 +102,7 @@ export default function IndexScene({ go, openProject }: SceneProps) {
                 onClick={() => openProject(p.slug)}
                 className="group flex w-full items-center gap-4 rounded-2xl border border-line bg-surface/60 p-3 text-left transition hover:border-accent/60"
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
+                { }
                 <img src={p.cover} alt="" className="h-14 w-20 shrink-0 rounded-lg object-cover" />
                 <span className="min-w-0">
                   <span className="block truncate font-medium">{p.title}</span>

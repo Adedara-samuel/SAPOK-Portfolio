@@ -24,12 +24,13 @@ export default function AboutScene({ go }: SceneProps) {
       <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
         <div className="space-y-8">
           <Reveal step={2} className="overflow-hidden rounded-3xl border border-line">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
+            { }
             <img src="/images/hero-pics.jpeg" alt={`${profile.name} at work`} className="aspect-[4/3] w-full object-cover" />
           </Reveal>
           <Reveal step={3} className="space-y-4 text-[15px] leading-relaxed text-paper/85">
             <p>
-              I&apos;m {profile.name} — a software engineer at Redeemer&apos;s Health Village and the founder of SAPOK TECH. Most of my
+              I&apos;m {profile.name} — Frontend Engineering Manager at Turon Technologies, software engineer at Redeemer&apos;s Health
+              Village, and founder of SAPOK TECH. Most of my
               work lives where the stakes are real: patient records, incident reports, money moving between accounts.
             </p>
             <p>
@@ -54,7 +55,7 @@ export default function AboutScene({ go }: SceneProps) {
             <ol className="border-l border-line">
               {cvExperience.map((exp, i) => (
                 <Reveal as="li" key={exp.title + exp.company} step={4 + i} className="relative pb-8 pl-6 last:pb-0">
-                  <span className={`absolute -left-[5px] top-1.5 size-[9px] rounded-full border-2 border-ink ${i < 2 ? "bg-accent" : "bg-faint"}`} />
+                  <span className={`absolute -left-[5px] top-1.5 size-[9px] rounded-full border-2 border-ink ${exp.period.endsWith("Present") ? "bg-accent" : "bg-faint"}`} />
                   <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">{exp.period}</div>
                   <h3 className="mt-1 text-lg font-semibold leading-snug">{exp.title}</h3>
                   <div className="text-sm text-muted">{exp.company}</div>

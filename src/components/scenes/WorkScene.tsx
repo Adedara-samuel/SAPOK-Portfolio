@@ -12,7 +12,7 @@ function FeaturedCard({ p, onOpen, step, large }: { p: Project; onOpen: () => vo
     <Reveal step={step} className={large ? "md:col-span-2" : ""}>
       <button data-cursor="view" onClick={onOpen} className="group block w-full text-left">
         <div className="relative overflow-hidden rounded-2xl border border-line bg-raised">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
+          { }
           <img
             src={p.cover}
             alt={`${p.title} cover`}
@@ -139,7 +139,7 @@ export default function WorkScene({ openProject }: SceneProps) {
                 transition={{ type: "spring", stiffness: 260, damping: 24 }}
                 className="ml-8 -mt-24 w-72 overflow-hidden rounded-xl border border-line shadow-2xl shadow-black/50"
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
+                { }
                 <img src={hovered.cover} alt="" className="aspect-[16/10] w-full object-cover" />
               </motion.div>
             )}
@@ -150,7 +150,7 @@ export default function WorkScene({ openProject }: SceneProps) {
         <div className="grid gap-4 sm:grid-cols-2 md:hidden">
           {list.map((p) => (
             <button key={p.slug} onClick={() => openProject(p.slug)} className="overflow-hidden rounded-2xl border border-line bg-surface text-left active:scale-[0.99]">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
+              { }
               <img src={p.cover} alt="" loading="lazy" className="aspect-[16/10] w-full object-cover" />
               <div className="p-4">
                 <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted">
