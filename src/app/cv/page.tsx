@@ -115,7 +115,7 @@ export default function CVPage() {
           <ul className="achievements-list">
             <li>Successfully delivered 60+ projects for clients across various industries</li>
             <li>Built and deployed three in-house systems at Redeemer&apos;s Health Village: RHV IVF, RHV SafeTrack and the Enterprise DMS</li>
-            <li>Founded SAPOK TECH and architected its ecosystem: Sapok OneGrid, SAPOK Pay and SAPOK AI</li>
+            <li>Founder &amp; CEO of SAPOK TECH; architected its ecosystem: Sapok OneGrid, SAPOK Pay and SAPOK AI</li>
             <li>Developed energy management and IoT solutions at MEMMCOL (GridFlex, Smart Breaker)</li>
             <li>Created an enterprise e-commerce platform with wallet integration (Epilux)</li>
           </ul>

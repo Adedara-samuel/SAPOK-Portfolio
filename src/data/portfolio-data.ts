@@ -118,8 +118,8 @@ export interface CVExperience {
 
 export const cvExperience: CVExperience[] = [
   {
-    title: "Frontend Engineering Manager",
-    period: "2026 - Present",
+    title: "Lead Manager, Frontend Engineering",
+    period: "Jul 2026 - Present",
     company: "Turon Technologies",
     highlights: [
       "Lead the frontend engineering team across Turon's web and mobile products, owning architecture, code quality and delivery.",
@@ -129,7 +129,7 @@ export const cvExperience: CVExperience[] = [
   },
   {
     title: "Software Engineer & Application Support Officer",
-    period: "Feb 2025 - Present",
+    period: "Feb 2026 - Present",
     company: "Redeemer's Health Village (RHV)",
     highlights: [
       "Built RHV IVF, a full IVF clinic management system covering front desk, counselling, donors, surrogates, embryology, pharmacy, billing and reporting.",
@@ -140,7 +140,7 @@ export const cvExperience: CVExperience[] = [
     ],
   },
   {
-    title: "Founder & Lead Engineer",
+    title: "Founder & CEO",
     period: "2025 - Present",
     company: "SAPOK TECH",
     highlights: [
@@ -328,7 +328,7 @@ export const projects: Project[] = [
     slug: "dms",
     title: "Enterprise DMS",
     category: "Healthcare",
-    year: "2025",
+    year: "2026",
     client: "Redeemer's Health Village",
     summary: "Document management with versioning, permission-based sharing, a recycle bin and a desktop scanner agent.",
     overview:

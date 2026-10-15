@@ -29,8 +29,8 @@ export default function AboutScene({ go }: SceneProps) {
           </Reveal>
           <Reveal step={3} className="space-y-4 text-[15px] leading-relaxed text-paper/85">
             <p>
-              I&apos;m {profile.name} — Frontend Engineering Manager at Turon Technologies, software engineer at Redeemer&apos;s Health
-              Village, and founder of SAPOK TECH. Most of my
+              I&apos;m {profile.name} — Lead Manager for Frontend Engineering at Turon Technologies, software engineer at Redeemer&apos;s Health
+              Village, and CEO of SAPOK TECH. Most of my
               work lives where the stakes are real: patient records, incident reports, money moving between accounts.
             </p>
             <p>
