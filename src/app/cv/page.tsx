@@ -1,6 +1,6 @@
 "use client";
 
-import { cvExperience, cvProjects, cvSkillGroups, getExperienceYears, skills } from "@/data/portfolio-data";
+import { cvExperience, cvProjects, cvSkillGroups, getExperienceYears, profile } from "@/data/portfolio-data";
 import "./cv.css";
 
 export default function CVPage() {
@@ -13,18 +13,20 @@ export default function CVPage() {
         <header className="cv-header">
           <div className="header-content">
             <h1>Adedara Samuel (S.P)</h1>
-            <p className="title">Software Developer & UI/UX Designer</p>
+            <p className="title">{profile.role}</p>
             <div className="contact-info">
-              <span>adedarasapok@gmail.com</span>
+              <span>{profile.email}</span>
               <span className="separator">|</span>
-              <span>+234 812 345 6789</span>
+              <span>{profile.phone} (WhatsApp)</span>
               <span className="separator">|</span>
-              <span>Lagos, Nigeria</span>
+              <span>{profile.phone2}</span>
+              <span className="separator">|</span>
+              <span>{profile.location}</span>
             </div>
             <div className="social-links">
-              <a href="https://github.com/Adedara-samuel" target="_blank" rel="noopener noreferrer">GitHub</a>
-              <a href="https://linkedin.com/in/adedara-samuel" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              <a href="https://twitter.com/AdedaraSP" target="_blank" rel="noopener noreferrer">Twitter</a>
+              <a href={profile.socials.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a href="https://sapok-portfolio.vercel.app" target="_blank" rel="noopener noreferrer">Portfolio</a>
             </div>
           </div>
         </header>
@@ -33,24 +35,18 @@ export default function CVPage() {
         <section className="cv-section">
           <h2>Professional Summary</h2>
           <p>
-            Results-driven Software Developer with {experienceYears}+ years of experience in building scalable web applications
-            and digital solutions. Specialized in full-stack development using Next.js, React, Node.js, Python,
-            MongoDB, PostgreSQL, and cloud technologies. Proven track record of delivering high-quality projects
-            across various industries including healthcare, e-commerce, energy management, document management,
-            and IoT solutions. Strong focus on UI/UX design and creating exceptional user experiences.
+            Software engineer and UI/UX designer with {experienceYears}+ years of experience designing and shipping
+            production systems end to end. Builds multi-tenant platforms, hospital systems (IVF clinic management,
+            incident reporting, document management) and fintech infrastructure with Next.js, React, NestJS, Express,
+            FastAPI, PostgreSQL and MongoDB — plus desktop and mobile apps with Tauri, pywebview and React Native.
+            Known for role-based access control and audit trails that hold up in practice, and for interfaces that feel
+            obvious on first use.
           </p>
         </section>
 
         {/* Skills */}
         <section className="cv-section">
           <h2>Technical Skills</h2>
-          <div className="skills-grid">
-            {skills.map((skill) => (
-              <div key={skill.name} className="skill-chip">
-                <span>{skill.name}</span>
-              </div>
-            ))}
-          </div>
           {cvSkillGroups.map((group) => (
             <div className="skill-category" key={group.title}>
               <h3>{group.title}</h3>
@@ -95,7 +91,7 @@ export default function CVPage() {
               </div>
               <p>{project.description}</p>
               {project.status && <p className="project-status"><strong>Status:</strong> {project.status}</p>}
-              {project.impact && <p className="project-status"><strong>Impact:</strong> {project.impact}</p>}
+              {project.link && <p className="project-status"><strong>Live:</strong> {project.link}</p>}
             </div>
           ))}
         </section>
@@ -118,9 +114,10 @@ export default function CVPage() {
           <h2>Achievements</h2>
           <ul className="achievements-list">
             <li>Successfully delivered 60+ projects for clients across various industries</li>
-            <li>Developed innovative solutions for energy management and IoT applications (GridFlex, Smart Breaker)</li>
-            <li>Created enterprise e-commerce platform with wallet integration (Epilux)</li>
-            <li>Recognized for exceptional UI/UX design and user experience</li>
+            <li>Built and deployed three in-house systems at Redeemer&apos;s Health Village: RHV IVF, RHV SafeTrack and the Enterprise DMS</li>
+            <li>Founded SAPOK TECH and architected its ecosystem: Sapok OneGrid, SAPOK Pay and SAPOK AI</li>
+            <li>Developed energy management and IoT solutions at MEMMCOL (GridFlex, Smart Breaker)</li>
+            <li>Created an enterprise e-commerce platform with wallet integration (Epilux)</li>
           </ul>
         </section>
       </div>
