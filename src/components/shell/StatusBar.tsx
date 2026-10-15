@@ -5,6 +5,7 @@ import { useTheme } from "next-themes";
 import { AnimatePresence, motion } from "framer-motion";
 import { Moon, Search, Sun } from "lucide-react";
 import { profile } from "@/data/portfolio-data";
+import Logo from "@/components/Logo";
 import type { SceneMeta } from "./scenes";
 
 function lagosTime() {
@@ -40,7 +41,7 @@ export default function StatusBar({
   return (
     <header className="absolute inset-x-0 top-0 z-40 flex h-14 items-center justify-between border-b border-line/60 px-4 sm:px-6">
       <button onClick={onHome} className="flex items-center gap-2.5" aria-label="Go to index">
-        <span className="grid size-7 place-items-center rounded-lg bg-accent font-display text-sm font-bold text-accent-ink">S</span>
+        <Logo className="size-7" />
         <span className="font-mono text-xs uppercase tracking-[0.2em] text-paper">{profile.brand}</span>
       </button>
 

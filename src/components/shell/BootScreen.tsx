@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { profile, projects } from "@/data/portfolio-data";
+import Logo from "@/components/Logo";
 
 const SESSION_KEY = "sapok:booted";
 const EASE = [0.76, 0, 0.24, 1] as const;
@@ -105,6 +106,9 @@ export default function BootScreen({ onDone }: { onDone: () => void }) {
           >
             {/* Boot log */}
             <div className="font-mono text-[11px] leading-6 text-muted sm:text-xs">
+              <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }} className="mb-5">
+                <Logo className="size-10" />
+              </motion.div>
               {LOG.map(([k, v], i) => (
                 <motion.div
                   key={k}
