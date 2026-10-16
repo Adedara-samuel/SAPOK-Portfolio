@@ -6,6 +6,7 @@ import { getExperienceYears, profile, projects } from "@/data/portfolio-data";
 import type { SceneProps } from "@/components/shell/scenes";
 import { MaskedLines, Reveal } from "./Reveal";
 import ShippingMarquee from "@/components/work/ShippingMarquee";
+import LiveBuild from "@/components/brand/LiveBuild";
 
 
 export default function IndexScene({ go, openProject }: SceneProps) {
@@ -82,6 +83,16 @@ export default function IndexScene({ go, openProject }: SceneProps) {
                 </span>
               </div>
             </div>
+          </motion.div>
+
+          {/* Looping design → code → ship vignette, floating over the portrait on desktop */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: reduce ? 0 : [0, -8, 0] }}
+            transition={{ opacity: { delay: 1.1, duration: 0.6 }, y: { delay: 1.1, duration: 6, repeat: Infinity, ease: "easeInOut" } }}
+            className="relative z-10 mt-4 lg:absolute lg:-left-28 lg:bottom-20 lg:mt-0 lg:w-[380px]"
+          >
+            <LiveBuild />
           </motion.div>
         </Reveal>
       </div>
