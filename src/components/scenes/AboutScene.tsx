@@ -139,7 +139,7 @@ export default function AboutScene({ go }: SceneProps) {
 
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <button onClick={() => go("contact")} className="btn-accent">
-                  Work with SAPOK TECH <ArrowUpRight className="size-4" />
+                  Work with me <ArrowUpRight className="size-4" />
                 </button>
                 <a href={sapokTech.website} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.14em] text-muted transition hover:text-[#5eead4]">
                   <span className="relative flex size-2">
