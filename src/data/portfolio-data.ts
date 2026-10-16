@@ -121,7 +121,7 @@ export const sapokTech = {
     "SAPOK TECH is the technology company I run. Businesses come to us to design, build and run their software — from a single website to a full platform — and we ship our own products alongside that work.",
   offers: ["Custom software & platforms", "Web, desktop & mobile apps", "Fintech & payments", "AI integration", "UI/UX & brand"],
   cover: "/work/covers/sapok.jpg",
-  websiteStatus: "Company website — in progress",
+  website: "https://sapoktech.vercel.app",
 };
 
 /* ------------------------------------------------------------------ */
@@ -165,7 +165,7 @@ export const cvExperience: CVExperience[] = [
     highlights: [
       "Lead SAPOK TECH, a technology company businesses engage to design, build and run software — web platforms, desktop and mobile apps, fintech, AI and brand.",
       "Oversee the company's own product line: Sapok OneGrid (organisational management desktop app), SAPOK Pay (fintech), SAPOK AI and WITHU.",
-      "Set product direction, architecture and delivery standards across client engagements and in-house products; the SAPOK TECH website is in progress.",
+      "Set product direction, architecture and delivery standards across client engagements and in-house products, and launched the SAPOK TECH website (sapoktech.vercel.app).",
     ],
   },
   {
@@ -327,13 +327,25 @@ export const projects: Project[] = [
   {
     slug: "sapok-website",
     title: "SAPOK TECH Website",
-    category: "Websites",
+    category: "Web Apps",
     year: "2026",
     client: "SAPOK TECH",
-    summary: "The company site for SAPOK TECH — services, solutions (OneGrid, SAPOK Pay, SAPOK AI, WITHU) and how to engage the team.",
-    stack: ["Next.js", "TypeScript", "Tailwind CSS"],
-    cover: "/work/covers/sapok.jpg",
-    status: "In progress",
+    summary: "The SAPOK TECH company site — type any idea and watch it get built live — with an admin console that runs the whole website.",
+    overview:
+      "Instead of a long scroll, the site moves through full-screen chapters with depth transitions. The hero turns the company's promise into an experience: visitors type an idea, watch it go from thinking to design to a working app, then carry it straight into an enquiry. Every message is saved to the admin inbox and emailed to the team, and the owner edits all site content from the console.",
+    features: [
+      "“Idea → Reality” builder that turns a typed idea into a live mock product",
+      "Chapter navigation with depth transitions, pull-to-continue and a chapter dial",
+      "Orbiting ecosystem of SAPOK products: OneGrid, Pay, AI, WITHU, VibeSphere",
+      "Enquiries saved to an admin inbox and emailed via Gmail",
+      "Admin console: dashboard, inbox, full content editor, hashed owner account",
+      "Light and dark themes",
+    ],
+    stack: ["Next.js 16 (full-stack)", "TypeScript", "MongoDB Atlas", "Nodemailer", "Framer Motion", "Tailwind CSS", "Zod"],
+    cover: "/work/covers/sapoktech.jpg",
+    gallery: ["/work/sapoktech.png", "/work/sapoktech-products.png"],
+    live: "https://sapoktech.vercel.app",
+    featured: true,
   },
   {
     slug: "church-homecells",
@@ -589,6 +601,12 @@ export const cvProjects: CVProject[] = [
     techStack: "Tauri • React • NestJS • Prisma • PostgreSQL • Redis • BullMQ",
     description: "SAPOK TECH's flagship solution: one multi-tenant Tauri desktop app for every organisation, where the signed-in session decides modules, roles and permissions — backed by a single NestJS core API with payroll workers.",
     status: "In progress",
+  },
+  {
+    title: "SAPOK TECH Website & Admin Console",
+    techStack: "Next.js 16 (full-stack) • MongoDB Atlas • Nodemailer • Framer Motion",
+    description: "Company site with an interactive “Idea → Reality” builder and chapter-based navigation; enquiries saved to an admin inbox and emailed, with a console for editing all site content.",
+    link: "sapoktech.vercel.app",
   },
   {
     title: "Future Homes Properties — Real Estate Platform & Admin Panel",

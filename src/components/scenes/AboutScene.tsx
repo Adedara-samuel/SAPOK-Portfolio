@@ -141,13 +141,14 @@ export default function AboutScene({ go }: SceneProps) {
                 <button onClick={() => go("contact")} className="btn-accent">
                   Work with SAPOK TECH <ArrowUpRight className="size-4" />
                 </button>
-                <span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.14em] text-muted">
+                <a href={sapokTech.website} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.14em] text-muted transition hover:text-[#5eead4]">
                   <span className="relative flex size-2">
-                    <span className="absolute inline-flex size-full animate-ping rounded-full bg-accent opacity-60" />
-                    <span className="relative inline-flex size-2 rounded-full bg-accent" />
+                    <span className="absolute inline-flex size-full animate-ping rounded-full bg-ok opacity-60" />
+                    <span className="relative inline-flex size-2 rounded-full bg-ok" />
                   </span>
-                  {sapokTech.websiteStatus}
-                </span>
+                  Live · {sapokTech.website.replace("https://", "")}
+                  <ArrowUpRight className="size-3 transition group-hover:rotate-45" />
+                </a>
               </div>
             </div>
           </div>
