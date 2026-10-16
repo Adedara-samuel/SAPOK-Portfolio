@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { profile, projects } from "@/data/portfolio-data";
+import { profile, projects, projectsShipped } from "@/data/portfolio-data";
 import Logo from "@/components/Logo";
 
 const SESSION_KEY = "sapok:booted";
@@ -12,7 +12,7 @@ const PRELOAD = ["/images/SAMUEL.jpeg", ...projects.filter((p) => p.featured).ma
 
 const LOG = [
   ["sapok.os", "v26.10"],
-  ["mounting /work", `${projects.length} projects`],
+  ["mounting /work", `${projectsShipped} projects`],
   ["linking services", "6 online"],
   ["locale", "WAT · Lagos"],
   ["calibrating cursor", "ok"],

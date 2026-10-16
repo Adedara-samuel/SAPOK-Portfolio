@@ -29,6 +29,9 @@ export const profile = {
   },
 };
 
+// Headline "projects shipped" figure — fixed, not derived from the list below.
+export const projectsShipped = "24+";
+
 // Career started January 2021 (first freelance role in cvExperience).
 export const careerStartYear = 2021;
 

@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion, useMotionValue, useSpring } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { projectCategories, projects, type Project } from "@/data/portfolio-data";
+import { projectCategories, projects, projectsShipped, type Project } from "@/data/portfolio-data";
 import type { SceneProps } from "@/components/shell/scenes";
 import { Reveal, SceneHeader, scenePad } from "./Reveal";
 
@@ -56,7 +56,7 @@ export default function WorkScene({ openProject }: SceneProps) {
         eyebrow="Selected work"
         lines={["Things I've built", "and shipped."]}
         accentIndex={1}
-        aside={<p className="leading-relaxed text-muted">{projects.length}+ projects across platforms, healthcare, fintech and the web. Open any one for the full story.</p>}
+        aside={<p className="leading-relaxed text-muted">{projectsShipped} projects across platforms, healthcare, fintech and the web. Open any one for the full story.</p>}
       />
 
       {filter === "All" && (

@@ -2,7 +2,7 @@
 
 import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { getExperienceYears, profile, projects } from "@/data/portfolio-data";
+import { getExperienceYears, profile, projects, projectsShipped } from "@/data/portfolio-data";
 import type { SceneProps } from "@/components/shell/scenes";
 import { MaskedLines, Reveal } from "./Reveal";
 import ShippingMarquee from "@/components/work/ShippingMarquee";
@@ -60,7 +60,7 @@ export default function IndexScene({ go, openProject }: SceneProps) {
           <Reveal step={5} className="mt-12 grid max-w-lg grid-cols-3 gap-6 border-t border-line pt-6">
             {[
               [`${years}+`, "Years building"],
-              [`${projects.length}+`, "Projects shipped"],
+              [projectsShipped, "Projects shipped"],
               [`${projects.filter((p) => p.live).length}`, "Live deployments"],
             ].map(([n, l]) => (
               <div key={l}>

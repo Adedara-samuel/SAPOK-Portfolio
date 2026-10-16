@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     title: "Adedara Samuel — Frontend & Full-Stack Engineer",
     description: "Multi-tenant platforms, healthcare systems and fintech infrastructure — designed and engineered end to end.",
     type: "website",
-    images: ["/work/covers/onegrid.jpg"],
+    images: ["/work/covers/ivf.jpg"],
   },
 };
 

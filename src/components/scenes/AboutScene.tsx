@@ -1,26 +1,15 @@
 "use client";
 
-import type { ComponentType } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import SapokEcosystem from "@/components/brand/SapokEcosystem";
-import { OneGridMark, SapokAiMark, SapokPayMark, SapokWordmark } from "@/components/brand/SapokMarks";
-import { cvExperience, getExperienceYears, profile, projects, sapokTech, stackGroups, type Project } from "@/data/portfolio-data";
+import { SapokWordmark } from "@/components/brand/SapokMarks";
+import { cvExperience, getExperienceYears, profile, sapokTech, stackGroups } from "@/data/portfolio-data";
 import type { SceneProps } from "@/components/shell/scenes";
 import { Reveal, SceneHeader, scenePad } from "./Reveal";
 
-const MARKS: Record<string, ComponentType<{ className?: string }> | null> = {
-  onegrid: OneGridMark,
-  "sapok-pay": SapokPayMark,
-  "sapok-ai": SapokAiMark,
-  withu: null,
-};
 
-const solutions = sapokTech.solutions
-  .map((slug) => ({ project: projects.find((p) => p.slug === slug), Mark: MARKS[slug] ?? null }))
-  .filter((s): s is { project: Project; Mark: ComponentType<{ className?: string }> | null } => Boolean(s.project));
-
-export default function AboutScene({ go, openProject }: SceneProps) {
+export default function AboutScene({ go }: SceneProps) {
   return (
     <div className={scenePad}>
       <SceneHeader
@@ -112,7 +101,7 @@ export default function AboutScene({ go, openProject }: SceneProps) {
           <div aria-hidden className="eco-grid pointer-events-none absolute inset-0 opacity-40" />
           <div className="relative grid lg:grid-cols-[1fr_1.05fr]">
             <div className="border-b border-line p-6 sm:p-10 lg:border-b-0 lg:border-r">
-              <SapokEcosystem onOpen={openProject} />
+              <SapokEcosystem />
             </div>
 
             <div className="flex flex-col justify-center p-6 sm:p-10">
@@ -164,41 +153,6 @@ export default function AboutScene({ go, openProject }: SceneProps) {
           </div>
         </Reveal>
 
-        <Reveal step={12} className="eyebrow mb-4 mt-12">Our solutions</Reveal>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {solutions.map(({ project: p, Mark }, i) => (
-            <Reveal key={p.slug} step={13 + i}>
-              <button
-                data-cursor="view"
-                onClick={() => openProject(p.slug)}
-                className="group relative block w-full overflow-hidden rounded-2xl p-px text-left transition duration-500 hover:-translate-y-1.5"
-              >
-                <span aria-hidden className="absolute inset-0 rounded-2xl bg-line" />
-                <span aria-hidden className="marquee-ring absolute -inset-1/2 opacity-0 transition-opacity duration-500 group-hover:opacity-90" />
-                <span className="relative block overflow-hidden rounded-[15px] bg-surface">
-                  <span className="relative grid h-36 place-items-center overflow-hidden bg-ink">
-                    <span aria-hidden className="absolute size-40 rounded-full bg-[#00c896]/10 blur-2xl transition duration-700 group-hover:scale-150" />
-                    {Mark ? (
-                      <Mark className="relative size-16 transition duration-700 group-hover:-rotate-6 group-hover:scale-110" />
-                    ) : (
-                      <img src="/work/brand/withu-logo.png" alt="" className="relative size-20 rounded-2xl object-cover transition duration-700 group-hover:scale-110" />
-                    )}
-                  </span>
-                  <span className="block p-4">
-                    <span className="flex items-center justify-between gap-2">
-                      <span className="font-semibold transition group-hover:text-[#5eead4]">{p.title}</span>
-                      <span className="flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-muted">
-                        <span className={`size-1.5 animate-pulse rounded-full ${p.live ? "bg-ok" : "bg-accent"}`} />
-                        {p.live ? "Live" : "In progress"}
-                      </span>
-                    </span>
-                    <span className="mt-1 line-clamp-2 block text-sm text-muted">{p.summary}</span>
-                  </span>
-                </span>
-              </button>
-            </Reveal>
-          ))}
-        </div>
       </section>
     </div>
   );

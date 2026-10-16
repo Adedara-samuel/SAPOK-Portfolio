@@ -2,7 +2,7 @@
 
 import { projects, type Project } from "@/data/portfolio-data";
 
-const ORDER = ["onegrid", "rhv-ivf", "future-homes", "sapok-pay", "safetrack", "sapok-ai", "withu", "dms", "bulkmail", "church-homecells"];
+const ORDER = ["rhv-ivf", "future-homes", "safetrack", "withu", "dms", "bulkmail", "church-homecells", "epilux", "ruomax"];
 const items = ORDER.map((slug) => projects.find((p) => p.slug === slug)).filter((p): p is Project => Boolean(p));
 
 function statusOf(p: Project) {

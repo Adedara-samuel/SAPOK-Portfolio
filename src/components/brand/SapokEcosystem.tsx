@@ -13,9 +13,9 @@ const NODES = [
 
 /**
  * Animated SAPOK TECH ecosystem: the S at the core, its products orbiting on rotating rings,
- * with light travelling along each connection. Nodes open the product's case study.
+ * with light travelling along each connection.
  */
-export default function SapokEcosystem({ onOpen }: { onOpen: (slug: string) => void }) {
+export default function SapokEcosystem() {
   const reduce = useReducedMotion();
 
   return (
@@ -58,9 +58,7 @@ export default function SapokEcosystem({ onOpen }: { onOpen: (slug: string) => v
       {/* Product nodes */}
       {NODES.map((n, i) => (
         <div key={n.slug} className="absolute -translate-x-1/2 -translate-y-1/2" style={{ left: `${n.x}%`, top: `${n.y}%` }}>
-        <motion.button
-          data-cursor="view"
-          onClick={() => onOpen(n.slug)}
+        <motion.div
           initial={{ opacity: 0, scale: 0.6 }}
           animate={{ opacity: 1, scale: 1, y: reduce ? 0 : [0, i % 2 ? 5 : -5, 0] }}
           transition={{
@@ -78,7 +76,7 @@ export default function SapokEcosystem({ onOpen }: { onOpen: (slug: string) => v
           <span className="whitespace-nowrap rounded-full bg-ink/80 px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.14em] text-paper backdrop-blur">
             {n.name}
           </span>
-        </motion.button>
+        </motion.div>
         </div>
       ))}
     </div>
