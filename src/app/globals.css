@@ -264,6 +264,23 @@ html.custom-cursor summary {
   to { transform: rotate(360deg); }
 }
 
+/* SAPOK ecosystem */
+.eco-spin {
+  animation: spin 40s linear infinite;
+}
+
+.eco-spin-rev {
+  animation: spin 28s linear infinite reverse;
+}
+
+.eco-flow {
+  animation: flow 1.6s linear infinite;
+}
+
+@keyframes flow {
+  to { stroke-dashoffset: -11; }
+}
+
 .kenburns {
   animation: kenburns 14s ease-in-out infinite alternate;
 }

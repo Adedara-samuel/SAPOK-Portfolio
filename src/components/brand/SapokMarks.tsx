@@ -70,6 +70,27 @@ export function SapokAiMark({ className, title = "SAPOK AI" }: MarkProps) {
   );
 }
 
+/** Sapok OneGrid — a G drawn as a grid tile closing around its core cell. */
+export function OneGridMark({ className, title = "Sapok OneGrid" }: MarkProps) {
+  const id = useId();
+  return (
+    <svg viewBox="0 0 100 100" className={className} role="img" aria-label={title}>
+      <defs>
+        <Teal id={id} />
+      </defs>
+      <path
+        fill="none"
+        stroke={`url(#${id})`}
+        strokeWidth="13"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M74 22H38C27 22 20 29 20 40V60C20 71 27 78 38 78H62C73 78 80 71 80 60V52H58"
+      />
+      <rect fill={`url(#${id})`} x="40" y="40" width="16" height="16" rx="3" />
+    </svg>
+  );
+}
+
 /**
  * The SAPOK wordmark: geometric caps with the signature open Λ and its teal drop.
  * `suffix` adds a product name in teal (e.g. "TECH", "Pay", "AI").
