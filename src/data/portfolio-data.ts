@@ -623,15 +623,6 @@ export const projects: Project[] = [
     cover: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1200&h=750&fit=crop",
   },
   {
-    slug: "portfolio-site",
-    title: "Portfolio Website",
-    category: "Design",
-    year: "2024",
-    summary: "Modern portfolio website with smooth animations and responsive design.",
-    stack: ["Next.js", "TypeScript", "Tailwind", "EmailJS"],
-    cover: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=750&fit=crop",
-  },
-  {
     slug: "graphics",
     title: "Graphics Design",
     category: "Design",
