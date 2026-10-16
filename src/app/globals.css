@@ -211,15 +211,65 @@ html.custom-cursor summary {
   }
 }
 
-/* Deep-blue atmosphere behind every scene */
+/* Deep-blue atmosphere behind every scene — drifts slowly so the canvas never feels static */
 .grain::before {
   content: "";
   position: fixed;
-  inset: 0;
+  inset: -20%;
   pointer-events: none;
   background:
-    radial-gradient(60% 55% at 85% 0%, color-mix(in srgb, var(--blue-glow) 22%, transparent), transparent 70%),
-    radial-gradient(50% 50% at 0% 100%, color-mix(in srgb, var(--blue) 30%, transparent), transparent 70%);
+    radial-gradient(40% 35% at 80% 10%, color-mix(in srgb, var(--blue-glow) 24%, transparent), transparent 70%),
+    radial-gradient(35% 35% at 10% 90%, color-mix(in srgb, var(--blue) 34%, transparent), transparent 70%),
+    radial-gradient(25% 25% at 55% 55%, color-mix(in srgb, var(--accent) 6%, transparent), transparent 70%);
+  animation: atmosphere 28s ease-in-out infinite alternate;
+}
+
+@keyframes atmosphere {
+  0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(-4%, 3%, 0) rotate(4deg); }
+  100% { transform: translate3d(3%, -2%, 0) rotate(-3deg); }
+}
+
+/* "Now shipping" marquee */
+.marquee-track {
+  animation: marquee 48s linear infinite;
+}
+
+@keyframes marquee {
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+.marquee-mask {
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+
+.marquee-card {
+  background: var(--line);
+  animation: bob 6s ease-in-out infinite;
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.marquee-ring {
+  background: conic-gradient(from 0deg, transparent 0deg, var(--accent) 50deg, var(--blue-glow) 110deg, transparent 170deg, transparent 360deg);
+  animation: spin 6s linear infinite;
+  opacity: 0.85;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.kenburns {
+  animation: kenburns 14s ease-in-out infinite alternate;
+}
+
+@keyframes kenburns {
+  from { transform: scale(1) translate3d(0, 0, 0); }
+  to { transform: scale(1.12) translate3d(-3%, -2%, 0); }
 }
 
 /* Grain overlay keeps flat dark surfaces from looking digital-flat. */

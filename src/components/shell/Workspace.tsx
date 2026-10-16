@@ -1,12 +1,13 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion, useTransform } from "framer-motion";
 import { ArrowDown, ArrowUp, Command } from "lucide-react";
 import BootScreen from "./BootScreen";
 import CommandPalette from "./CommandPalette";
 import StatusBar from "./StatusBar";
 import { SCENES, type SceneId } from "./scenes";
+import { useSceneScroll } from "./useSceneScroll";
 import ProjectSheet from "@/components/work/ProjectSheet";
 import IndexScene from "@/components/scenes/IndexScene";
 import AboutScene from "@/components/scenes/AboutScene";
@@ -27,9 +28,6 @@ const SCENE_COMPONENTS = {
 } as const;
 
 const EASE = [0.76, 0, 0.24, 1] as const;
-const TRANSITION_LOCK_MS = 950;
-const EDGE_SETTLE_MS = 280;
-const WHEEL_THRESHOLD = 50;
 
 function parseHash(hash: string): { scene: SceneId; project: string | null } {
   const [scene, project] = hash.replace(/^#\/?/, "").split("/");
@@ -54,11 +52,6 @@ export default function Workspace() {
   const [project, setProject] = useState<string | null>(null);
   const [paletteOpen, setPaletteOpen] = useState(false);
 
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const lockUntil = useRef(0);
-  const wheelAccum = useRef(0);
-  const lastScroll = useRef(0);
-  const touchStart = useRef<{ x: number; y: number; t: number } | null>(null);
   const overlayOpen = paletteOpen || project !== null;
 
   const scene = SCENES[index];
@@ -72,12 +65,22 @@ export default function Workspace() {
       if (next < 0 || next >= SCENES.length || next === index) return;
       setDirection(next > index ? 1 : -1);
       setIndex(next);
-      lockUntil.current = performance.now() + TRANSITION_LOCK_MS;
-      wheelAccum.current = 0;
       writeHash(next === 0 ? "" : `#${SCENES[next].id}`);
     },
     [index, writeHash],
   );
+
+  const { mainRef, registerScroller, onScrollerScroll, getEl, pull, progress, pullDir } = useSceneScroll({
+    sceneId: scene.id,
+    enabled: booted && !overlayOpen,
+    reduce: !!reduce,
+    canGo: (dir) => Boolean(SCENES[index + dir]),
+    onNavigate: (dir) => goTo(index + dir),
+  });
+  // Pulling past the bottom lifts the scene a little (and vice versa), like it's being drawn onward.
+  const pullLift = useTransform(pull, [-1, 0, 1], [70, 0, -70]);
+  const pullFill = useTransform(pull, (v) => Math.abs(v));
+  const pullTarget = pullDir !== 0 ? SCENES[index + pullDir] : undefined;
 
   const go = useCallback((id: SceneId) => goTo(SCENES.findIndex((s) => s.id === id)), [goTo]);
 
@@ -110,12 +113,6 @@ export default function Workspace() {
     return () => window.removeEventListener("popstate", sync);
   }, []);
 
-  // Reset inner scroll when entering a scene
-  useEffect(() => {
-    scrollRef.current?.scrollTo({ top: 0 });
-    lastScroll.current = performance.now();
-  }, [index]);
-
   // Keyboard
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -125,7 +122,7 @@ export default function Workspace() {
         return;
       }
       if (overlayOpen || isTyping(e.target) || e.metaKey || e.ctrlKey || e.altKey) return;
-      const el = scrollRef.current;
+      const el = getEl();
       const atTop = !el || el.scrollTop <= 1;
       const atBottom = !el || el.scrollTop + el.clientHeight >= el.scrollHeight - 2;
       if (e.key === "ArrowRight" || (e.key === "ArrowDown" && atBottom) || (e.key === "PageDown" && atBottom)) {
@@ -140,44 +137,7 @@ export default function Workspace() {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [goTo, index, overlayOpen]);
-
-  // Wheel: move scenes only once the inner scroll has settled at an edge
-  const onWheel = (e: React.WheelEvent) => {
-    if (overlayOpen || Math.abs(e.deltaY) < Math.abs(e.deltaX)) return;
-    const now = performance.now();
-    if (now < lockUntil.current) return;
-    const el = scrollRef.current;
-    if (!el) return;
-    const atTop = el.scrollTop <= 1;
-    const atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 2;
-    const settled = now - lastScroll.current > EDGE_SETTLE_MS;
-    if ((e.deltaY > 0 && atBottom && settled) || (e.deltaY < 0 && atTop && settled)) {
-      wheelAccum.current += e.deltaY;
-      if (Math.abs(wheelAccum.current) > WHEEL_THRESHOLD) goTo(index + Math.sign(wheelAccum.current));
-    } else {
-      wheelAccum.current = 0;
-    }
-  };
-
-  // Touch: horizontal swipe changes scene; vertical stays native scroll
-  const onTouchStart = (e: React.TouchEvent) => {
-    const t = e.touches[0];
-    touchStart.current = { x: t.clientX, y: t.clientY, t: performance.now() };
-  };
-  const onTouchEnd = (e: React.TouchEvent) => {
-    const start = touchStart.current;
-    touchStart.current = null;
-    if (!start || overlayOpen) return;
-    const t = e.changedTouches[0];
-    const dx = t.clientX - start.x;
-    const dy = t.clientY - start.y;
-    const fast = performance.now() - start.t < 600;
-    if (fast && Math.abs(dx) > 70 && Math.abs(dx) > Math.abs(dy) * 1.6) {
-      if ((e.target as Element).closest("[data-swipe-ignore]")) return;
-      goTo(index + (dx < 0 ? 1 : -1));
-    }
-  };
+  }, [goTo, index, overlayOpen, getEl]);
 
   const Scene = SCENE_COMPONENTS[scene.id];
   const offset = reduce ? 0 : 60;
@@ -197,9 +157,7 @@ export default function Workspace() {
         {/* Stage */}
         <main
           className="absolute inset-x-0 bottom-[calc(64px+env(safe-area-inset-bottom))] top-14 md:bottom-0"
-          onWheel={onWheel}
-          onTouchStart={onTouchStart}
-          onTouchEnd={onTouchEnd}
+          ref={mainRef}
         >
           <AnimatePresence initial={false} custom={direction} mode="popLayout">
             <motion.section
@@ -218,16 +176,42 @@ export default function Workspace() {
               exit="exit"
               transition={{ duration: reduce ? 0.2 : 0.85, ease: EASE }}
             >
-              <div
-                ref={scrollRef}
-                onScroll={() => (lastScroll.current = performance.now())}
-                className="scene-scroll h-full overflow-y-auto overflow-x-hidden"
-              >
-                {booted ? <Scene go={go} openProject={openProject} /> : null}
-              </div>
+              <motion.div className="h-full" style={{ y: pullLift }}>
+                <div
+                  ref={registerScroller(scene.id)}
+                  onScroll={(e) => onScrollerScroll(e.currentTarget)}
+                  className="scene-scroll h-full overflow-y-auto overflow-x-hidden"
+                >
+                  {booted ? <Scene go={go} openProject={openProject} /> : null}
+                </div>
+              </motion.div>
             </motion.section>
           </AnimatePresence>
         </main>
+
+        {/* Reading progress through the current scene */}
+        <motion.div aria-hidden className="absolute inset-x-0 top-14 z-40 h-px origin-left bg-accent" style={{ scaleX: progress }} />
+
+        {/* "Keep scrolling" pull indicator */}
+        <AnimatePresence>
+          {pullTarget && (
+            <motion.div
+              key="pull"
+              initial={{ opacity: 0, y: 12, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 8, scale: 0.97 }}
+              transition={{ duration: 0.2 }}
+              className="pointer-events-none absolute bottom-[calc(84px+env(safe-area-inset-bottom))] left-1/2 z-50 w-60 -translate-x-1/2 overflow-hidden rounded-full border border-line bg-surface/90 shadow-2xl shadow-black/40 backdrop-blur-xl md:bottom-24"
+            >
+              <motion.span aria-hidden className="absolute inset-0 origin-left bg-accent/20" style={{ scaleX: pullFill }} />
+              <span className="relative flex items-center justify-center gap-2 px-4 py-2.5 font-mono text-[11px] uppercase tracking-[0.14em] text-paper">
+                {pullDir > 0 ? <ArrowDown className="size-3.5 text-accent" /> : <ArrowUp className="size-3.5 text-accent" />}
+                {pullDir > 0 ? "Keep scrolling" : "Keep going"}
+                <span className="text-accent">· {pullTarget.label}</span>
+              </span>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Desktop dock */}
         <nav
