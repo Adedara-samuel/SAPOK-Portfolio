@@ -21,7 +21,7 @@ function Card({ p, i, onOpen }: { p: Project; i: number; onOpen: (slug: string) 
       style={{ animationDelay: `${(i % 5) * -1.3}s` }}
     >
       {/* Rotating light that traces the border */}
-      <span aria-hidden className="marquee-ring absolute -inset-1/2" style={{ animationDelay: `${i * -0.9}s` }} />
+      <span aria-hidden className="marquee-ring absolute -inset-1/2 opacity-85" style={{ animationDelay: `${i * -0.9}s` }} />
       <span className="relative block overflow-hidden rounded-[15px] bg-surface">
         <span className="relative block h-36 overflow-hidden">
           <img

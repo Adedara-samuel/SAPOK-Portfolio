@@ -98,7 +98,7 @@ export function OneGridMark({ className, title = "Sapok OneGrid" }: MarkProps) {
 export function SapokWordmark({ className, suffix, color = "currentColor" }: { className?: string; suffix?: string; color?: string }) {
   const id = useId();
   return (
-    <span className={`inline-flex items-center gap-[0.18em] font-brand font-bold leading-none tracking-[0.04em] ${className ?? ""}`} style={{ color }}>
+    <span className={`inline-flex items-center gap-[0.07em] font-brand font-bold leading-none tracking-[0.04em] ${className ?? ""}`} style={{ color }}>
       <span>S</span>
       <svg viewBox="0 0 70 80" className="h-[0.74em] w-auto" aria-hidden>
         <defs>

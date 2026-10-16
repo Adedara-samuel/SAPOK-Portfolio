@@ -257,7 +257,6 @@ html.custom-cursor summary {
 .marquee-ring {
   background: conic-gradient(from 0deg, transparent 0deg, var(--accent) 50deg, var(--blue-glow) 110deg, transparent 170deg, transparent 360deg);
   animation: spin 6s linear infinite;
-  opacity: 0.85;
 }
 
 @keyframes spin {
