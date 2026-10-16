@@ -65,6 +65,7 @@
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-bricolage), var(--font-inter), ui-sans-serif, sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+  --font-brand: var(--font-montserrat), ui-sans-serif, sans-serif;
 }
 
 @layer base {
