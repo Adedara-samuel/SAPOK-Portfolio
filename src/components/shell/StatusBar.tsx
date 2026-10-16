@@ -39,7 +39,7 @@ export default function StatusBar({
   }, []);
 
   return (
-    <header className="absolute inset-x-0 top-0 z-40 flex h-14 items-center justify-between border-b border-line/60 px-4 sm:px-6">
+    <header className="absolute inset-x-0 top-0 z-40 flex h-14 items-center justify-between border-b border-line/60 bg-ink/80 px-4 backdrop-blur-xl sm:px-6">
       <button onClick={onHome} className="flex items-center gap-2.5" aria-label="Go to home">
         <Logo className="size-7" />
         <span className="font-mono text-xs uppercase tracking-[0.2em] text-paper">{profile.brand}</span>
