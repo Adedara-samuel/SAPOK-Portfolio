@@ -118,8 +118,6 @@ export const sapokTech = {
     "SAPOK TECH is the technology company I run. Businesses come to us to design, build and run their software — from a single website to a full platform — and we ship our own products alongside that work.",
   offers: ["Custom software & platforms", "Web, desktop & mobile apps", "Fintech & payments", "AI integration", "UI/UX & brand"],
   cover: "/work/covers/sapok.jpg",
-  // Product slugs from `projects`, shown as the company's solutions
-  solutions: ["onegrid", "sapok-pay", "sapok-ai", "withu"],
   websiteStatus: "Company website — in progress",
 };
 
@@ -236,29 +234,6 @@ export const projectCategories: ("All" | ProjectCategory)[] = ["All", "Platforms
 
 export const projects: Project[] = [
   {
-    slug: "onegrid",
-    title: "Sapok OneGrid",
-    category: "Desktop Apps",
-    year: "2026",
-    client: "SAPOK TECH · formerly Nexora",
-    summary: "Organisational management desktop app — every organisation runs one app, and its sign-in decides the modules, roles and permissions they get.",
-    overview:
-      "OneGrid (formerly Nexora) is SAPOK TECH's flagship solution: a multi-tenant desktop application organisations use to run their operations. One Tauri app serves every tenant — the signed-in session determines organisation identity, subscription, enabled modules, roles and permissions — all backed by a single NestJS core API.",
-    features: [
-      "One Tauri desktop app for every organisation, scoped by session",
-      "Subscriptions and per-organisation modules",
-      "NestJS core API as the single source of truth, with Prisma and PostgreSQL",
-      "Background payroll workers on BullMQ and Redis",
-      "pgvector-ready data layer for the SAPOK AI intelligence phase",
-    ],
-    stack: ["NestJS", "Prisma", "PostgreSQL", "pgvector", "Redis", "BullMQ", "Next.js", "Tauri", "Turborepo", "Docker"],
-    cover: "/work/covers/onegrid.jpg",
-    gallery: ["/images/nexora.png", "/images/pt2.1.png", "/images/pt2.2.png", "/images/pt2.3.png"],
-    repo: "https://github.com/Adedara-samuel/NEXORA",
-    status: "In progress",
-    featured: true,
-  },
-  {
     slug: "rhv-ivf",
     title: "RHV IVF",
     category: "Healthcare",
@@ -279,47 +254,6 @@ export const projects: Project[] = [
     gallery: ["/work/ivf-dashboard.png", "/work/ivf-patients.png", "/work/ivf-billing.png"],
     repo: "https://github.com/Adedara-samuel/sapok-ivf",
     featured: true,
-  },
-  {
-    slug: "sapok-pay",
-    title: "SAPOK Pay",
-    category: "Platforms",
-    year: "2026",
-    client: "SAPOK TECH",
-    summary: "Wallet, ledger, bank-connection and payout infrastructure — a self-service, Paystack-style platform for businesses.",
-    overview:
-      "Any business can sign up, get a merchant account and wallet immediately, and issue its own API keys to move money from its own apps. A separate operator role sees the whole platform. Built to plug into OneGrid for payroll payouts.",
-    features: [
-      "Self-service merchant signup with an instant wallet",
-      "Merchant-issued API keys, separate from dashboard sessions",
-      "Double-entry style ledger and payroll payout flows",
-      "Operator console with platform-wide visibility",
-      "Rate limiting, Helmet hardening and Swagger-documented API",
-    ],
-    stack: ["NestJS", "Prisma", "PostgreSQL", "Redis", "Zod", "Swagger", "Next.js", "TanStack Query", "Zustand"],
-    cover: "/work/covers/sapok-pay.jpg",
-    repo: "https://github.com/Adedara-samuel/Sapok-Pay",
-    status: "In progress",
-    featured: true,
-  },
-  {
-    slug: "sapok-ai",
-    title: "SAPOK AI",
-    category: "Platforms",
-    year: "2026",
-    client: "SAPOK TECH",
-    summary: "Permission-aware AI assistance and knowledge retrieval, offered as a developer platform with its own API keys.",
-    overview:
-      "SAPOK AI brings organisational intelligence to the ecosystem with one non-negotiable rule: AI never bypasses RBAC. If a user can't view payroll, the assistant can't retrieve it for them. Embeddings run locally with a lightweight ONNX runtime instead of a full PyTorch stack.",
-    features: [
-      "Developer signup and API keys, with a separate operator role",
-      "Local embeddings (bge-small via fastembed / ONNX Runtime)",
-      "Permission-checked retrieval and tool execution",
-      "Async FastAPI service on PostgreSQL and Redis",
-    ],
-    stack: ["FastAPI", "Python", "Pydantic", "PostgreSQL", "asyncpg", "Redis", "fastembed", "Next.js"],
-    cover: "/work/covers/sapok-ai.jpg",
-    status: "In progress",
   },
   {
     slug: "safetrack",
