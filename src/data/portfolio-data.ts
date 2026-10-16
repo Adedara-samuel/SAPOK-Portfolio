@@ -51,6 +51,7 @@ export const skills: Skill[] = [
   { name: "React / Next.js", icon: Globe, color: "text-blue-500" },
   { name: "React Native / Expo", icon: Atom, color: "text-[#61DAFB]" },
   { name: "Node.js / NestJS", icon: Database, color: "text-green-500" },
+  { name: "Java", icon: Code, color: "text-orange-600" },
   { name: "Python / FastAPI", icon: Code, color: "text-green-600" },
   { name: "MongoDB", icon: Database, color: "text-emerald-500" },
   { name: "PostgreSQL / Prisma", icon: Database, color: "text-cyan-600" },
@@ -62,9 +63,9 @@ export const skills: Skill[] = [
 
 export const stackGroups = [
   { label: "Frontend", items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "TanStack Query", "Framer Motion", "shadcn/ui"] },
-  { label: "Backend", items: ["Node.js", "NestJS", "Express", "FastAPI", "Socket.IO", "REST APIs", "BullMQ"] },
-  { label: "Data", items: ["PostgreSQL", "Prisma", "MongoDB", "Redis", "pgvector", "MSSQL", "Firebase"] },
-  { label: "Apps & Ops", items: ["React Native / Expo", "Tauri", "Docker", "Vercel", "Playwright", "Vitest"] },
+  { label: "Backend", items: ["Next.js (API routes / full-stack)", "Node.js", "NestJS", "Express", "Java", "Python / FastAPI", "Socket.IO", "REST APIs", "BullMQ"] },
+  { label: "Data", items: ["PostgreSQL", "Prisma", "MongoDB", "Redis", "pgvector", "MSSQL", "Firebase", "Cloudinary"] },
+  { label: "Apps & Ops", items: ["React Native / Expo", "Tauri", "Python desktop (pywebview)", "Docker", "Vercel", "Paystack", "Playwright", "Vitest"] },
   { label: "Design", items: ["Figma", "Adobe XD", "Photoshop", "Illustrator", "Premiere"] },
 ];
 
@@ -106,6 +107,23 @@ export const services = [
 ];
 
 /* ------------------------------------------------------------------ */
+/* SAPOK TECH — the company                                            */
+/* ------------------------------------------------------------------ */
+
+export const sapokTech = {
+  name: "SAPOK TECH",
+  role: "Founder & CEO",
+  tagline: "Building solutions. Empowering futures.",
+  summary:
+    "SAPOK TECH is the technology company I run. Businesses come to us to design, build and run their software — from a single website to a full platform — and we ship our own products alongside that work.",
+  offers: ["Custom software & platforms", "Web, desktop & mobile apps", "Fintech & payments", "AI integration", "UI/UX & brand"],
+  cover: "/work/covers/sapok.jpg",
+  // Product slugs from `projects`, shown as the company's solutions
+  solutions: ["onegrid", "sapok-pay", "sapok-ai", "withu"],
+  websiteStatus: "Company website — in progress",
+};
+
+/* ------------------------------------------------------------------ */
 /* Experience                                                          */
 /* ------------------------------------------------------------------ */
 
@@ -144,9 +162,9 @@ export const cvExperience: CVExperience[] = [
     period: "2025 - Present",
     company: "SAPOK TECH",
     highlights: [
-      "Architecting Sapok OneGrid (formerly Nexora), a multi-tenant organisational management platform with a Next.js control center, a Tauri desktop app and a NestJS core API.",
-      "Building SAPOK Pay, a self-service wallet, ledger and payout platform with merchant API keys.",
-      "Building SAPOK AI, a permission-aware AI and knowledge-retrieval service on FastAPI with local embeddings.",
+      "Lead SAPOK TECH, a technology company businesses engage to design, build and run software — web platforms, desktop and mobile apps, fintech, AI and brand.",
+      "Oversee the company's own product line: Sapok OneGrid (organisational management desktop app), SAPOK Pay (fintech), SAPOK AI and WITHU.",
+      "Set product direction, architecture and delivery standards across client engagements and in-house products; the SAPOK TECH website is in progress.",
     ],
   },
   {
@@ -184,7 +202,7 @@ export const cvExperience: CVExperience[] = [
 export const cvSkillGroups = [
   { title: "Programming Languages", items: ["TypeScript", "JavaScript (ES6+)", "Python", "Java", "SQL", "HTML5 / CSS3"] },
   { title: "Frontend & Mobile", items: ["Next.js", "React", "React Native / Expo", "Tauri", "Tailwind CSS", "TanStack Query", "JSF PrimeFaces"] },
-  { title: "Backend & Data", items: ["Node.js", "NestJS", "Express", "FastAPI", "PostgreSQL / Prisma", "MongoDB", "Redis", "MSSQL", "Socket.IO"] },
+  { title: "Backend & Data", items: ["Next.js (full-stack / API routes)", "Node.js", "NestJS", "Express", "Java", "Python / FastAPI", "PostgreSQL / Prisma", "MongoDB", "Redis", "MSSQL", "Socket.IO", "Cloudinary", "Paystack"] },
   { title: "Tools & Design", items: ["Git / GitHub", "Docker", "Vercel", "Playwright / Vitest", "Figma", "Adobe Photoshop", "Adobe Illustrator", "Adobe XD"] },
 ];
 
@@ -192,7 +210,7 @@ export const cvSkillGroups = [
 /* Projects                                                            */
 /* ------------------------------------------------------------------ */
 
-export type ProjectCategory = "Platforms" | "Healthcare" | "Web Apps" | "Websites" | "Design";
+export type ProjectCategory = "Platforms" | "Healthcare" | "Desktop Apps" | "Web Apps" | "Websites" | "Design";
 
 export interface Project {
   slug: string;
@@ -212,31 +230,30 @@ export interface Project {
   featured?: boolean;
 }
 
-export const projectCategories: ("All" | ProjectCategory)[] = ["All", "Platforms", "Healthcare", "Web Apps", "Websites", "Design"];
+export const projectCategories: ("All" | ProjectCategory)[] = ["All", "Platforms", "Healthcare", "Desktop Apps", "Web Apps", "Websites", "Design"];
 
 export const projects: Project[] = [
   {
     slug: "onegrid",
     title: "Sapok OneGrid",
-    category: "Platforms",
+    category: "Desktop Apps",
     year: "2026",
     client: "SAPOK TECH · formerly Nexora",
-    summary: "Enterprise multi-tenant platform for running organisations — one core API behind a web control center and a desktop app.",
+    summary: "Organisational management desktop app — every organisation runs one app, and its sign-in decides the modules, roles and permissions they get.",
     overview:
-      "OneGrid (formerly Nexora) is the master platform of the SAPOK ecosystem. Platform admins onboard organisations, manage subscriptions and modules in the Control Center; every organisation runs the same Tauri desktop app, where the signed-in session decides identity, enabled modules, roles and permissions.",
+      "OneGrid (formerly Nexora) is SAPOK TECH's flagship solution: a multi-tenant desktop application organisations use to run their operations. One Tauri app serves every tenant — the signed-in session determines organisation identity, subscription, enabled modules, roles and permissions — all backed by a single NestJS core API.",
     features: [
-      "Control Center web app for onboarding, subscriptions and module management",
-      "Single Tauri desktop app for every tenant, scoped by session",
+      "One Tauri desktop app for every organisation, scoped by session",
+      "Subscriptions and per-organisation modules",
       "NestJS core API as the single source of truth, with Prisma and PostgreSQL",
       "Background payroll workers on BullMQ and Redis",
       "pgvector-ready data layer for the SAPOK AI intelligence phase",
     ],
     stack: ["NestJS", "Prisma", "PostgreSQL", "pgvector", "Redis", "BullMQ", "Next.js", "Tauri", "Turborepo", "Docker"],
     cover: "/work/covers/onegrid.jpg",
-    gallery: ["/work/onegrid.png", "/images/nexora.png", "/images/pt2.1.png", "/images/pt2.2.png", "/images/pt2.3.png"],
-    live: "https://sapok-control-center.vercel.app",
+    gallery: ["/images/nexora.png", "/images/pt2.1.png", "/images/pt2.2.png", "/images/pt2.3.png"],
     repo: "https://github.com/Adedara-samuel/NEXORA",
-    status: "In active development",
+    status: "In progress",
     featured: true,
   },
   {
@@ -278,9 +295,9 @@ export const projects: Project[] = [
       "Rate limiting, Helmet hardening and Swagger-documented API",
     ],
     stack: ["NestJS", "Prisma", "PostgreSQL", "Redis", "Zod", "Swagger", "Next.js", "TanStack Query", "Zustand"],
-    cover: "/work/sapok-pay.png",
+    cover: "/work/covers/sapok-pay.jpg",
     repo: "https://github.com/Adedara-samuel/Sapok-Pay",
-    status: "In active development",
+    status: "In progress",
     featured: true,
   },
   {
@@ -299,8 +316,8 @@ export const projects: Project[] = [
       "Async FastAPI service on PostgreSQL and Redis",
     ],
     stack: ["FastAPI", "Python", "Pydantic", "PostgreSQL", "asyncpg", "Redis", "fastembed", "Next.js"],
-    cover: "/work/sapok-ai.png",
-    status: "In active development",
+    cover: "/work/covers/sapok-ai.jpg",
+    status: "In progress",
   },
   {
     slug: "safetrack",
@@ -342,7 +359,7 @@ export const projects: Project[] = [
     ],
     stack: ["Next.js 16", "React 19", "TanStack Query", "shadcn/ui", "Express", "MongoDB", "Socket.IO", "JWT", "Swagger"],
     cover: "/work/covers/dms.jpg",
-    gallery: ["/images/portfolio1.png", "/images/p1.png", "/images/p2.png", "/images/p3.png"],
+    gallery: ["/work/dms-dashboard.png", "/work/brand/rhv-logo.png"],
     repo: "https://github.com/RHV-IT/Document-management-frontend",
   },
   {
@@ -371,6 +388,8 @@ export const projects: Project[] = [
     title: "WITHU",
     category: "Web Apps",
     year: "2026",
+    client: "SAPOK TECH",
+    status: "Live · a SAPOK TECH solution",
     summary: "A private space for two people who are apart — chat, games, watch-together and a shared memory book, on web and mobile.",
     overview:
       "A full-stack monorepo: one Express + Socket.IO + MongoDB backend, a Next.js web app and an Expo React Native app, sharing types, Zod validation and a pluggable game engine.",
@@ -389,10 +408,10 @@ export const projects: Project[] = [
   {
     slug: "bulkmail",
     title: "BulkMail",
-    category: "Web Apps",
+    category: "Desktop Apps",
     year: "2026",
-    client: "Redeemer's Health Village · Desktop app",
-    summary: "Windows desktop app for email campaigns and internal mail — personalised bulk sends and PDF certificates from Excel, all on-device.",
+    client: "Redeemer's Health Village",
+    summary: "Python desktop app for email campaigns and internal mail — personalised bulk sends and PDF certificates from Excel, all on-device.",
     overview:
       "BulkMail runs entirely on the user's own machine: nothing is uploaded anywhere. Teams pick a sender account and template, load a spreadsheet, preview exactly what each recipient will get, then send now or schedule — and the app keeps running in the system tray so scheduled campaigns still go out with the window closed.",
     features: [
