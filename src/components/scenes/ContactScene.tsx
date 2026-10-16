@@ -49,7 +49,7 @@ export default function ContactScene() {
       <div className="grid gap-12 lg:grid-cols-2">
         <div>
           <Reveal step={2}>
-            <a href={`mailto:${profile.email}`} className="group block break-all font-display text-[clamp(1.6rem,4vw,3rem)] font-semibold tracking-tight transition hover:text-accent">
+            <a href={`mailto:${profile.email}`} className="group block whitespace-nowrap font-display text-[clamp(1.3rem,5.6vw,2.6rem)] font-semibold tracking-tight transition hover:text-accent lg:text-[clamp(1.6rem,2.8vw,2.6rem)]">
               {profile.email}
             </a>
             <button onClick={copy} className="mt-4 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-muted hover:text-paper">

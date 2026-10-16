@@ -5,8 +5,8 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { getExperienceYears, profile, projects } from "@/data/portfolio-data";
 import type { SceneProps } from "@/components/shell/scenes";
 import { MaskedLines, Reveal } from "./Reveal";
+import ShippingMarquee from "@/components/work/ShippingMarquee";
 
-const featured = projects.filter((p) => p.featured).slice(0, 3);
 
 export default function IndexScene({ go, openProject }: SceneProps) {
   const reduce = useReducedMotion();
@@ -73,7 +73,6 @@ export default function IndexScene({ go, openProject }: SceneProps) {
         {/* Portrait card */}
         <Reveal step={2} className="relative mx-auto w-full max-w-sm [perspective:1200px] lg:max-w-none">
           <motion.div style={{ rotateX: rx, rotateY: ry }} className="relative overflow-hidden rounded-[28px] border border-line bg-raised shadow-2xl shadow-black/40">
-            { }
             <img src="/images/SAMUEL.jpeg" alt={profile.name} className="aspect-[4/5] w-full object-cover" />
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent p-5 pt-20">
               <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.16em] text-white/80">
@@ -95,24 +94,9 @@ export default function IndexScene({ go, openProject }: SceneProps) {
             All work <ArrowUpRight className="size-3.5" />
           </button>
         </Reveal>
-        <div className="grid gap-3 sm:grid-cols-3">
-          {featured.map((p, i) => (
-            <Reveal key={p.slug} step={7 + i}>
-              <button
-                data-cursor="view"
-                onClick={() => openProject(p.slug)}
-                className="group flex w-full items-center gap-4 rounded-2xl border border-line bg-surface/60 p-3 text-left transition hover:border-accent/60"
-              >
-                { }
-                <img src={p.cover} alt="" className="h-14 w-20 shrink-0 rounded-lg object-cover" />
-                <span className="min-w-0">
-                  <span className="block truncate font-medium">{p.title}</span>
-                  <span className="block truncate font-mono text-[10px] uppercase tracking-[0.14em] text-muted">{p.category}</span>
-                </span>
-              </button>
-            </Reveal>
-          ))}
-        </div>
+        <Reveal step={7}>
+          <ShippingMarquee onOpen={openProject} />
+        </Reveal>
         <Reveal step={10} className="mt-8 hidden font-mono text-[10px] uppercase tracking-[0.18em] text-faint md:block">
           Scroll, use ← → or press 1–6 to move · ⌘K to search
         </Reveal>

@@ -225,6 +225,8 @@ export interface Project {
   cover: string;
   gallery?: string[];
   live?: string;
+  // Extra destinations beyond the main live site (e.g. an admin panel)
+  links?: { label: string; href: string }[];
   repo?: string;
   status?: string;
   featured?: boolean;
@@ -363,6 +365,40 @@ export const projects: Project[] = [
     repo: "https://github.com/RHV-IT/Document-management-frontend",
   },
   {
+    slug: "future-homes",
+    title: "Future Homes Properties",
+    category: "Web Apps",
+    year: "2026",
+    client: "Client project · Real estate",
+    summary: "Real estate platform for buying, renting and listing property across Lagos — with a full admin panel that runs the whole website.",
+    overview:
+      "A full-stack Next.js build: the public site and the backend live in one app. Visitors search and browse listings, save favourites and reach the team; behind it, an admin panel lets the company take charge of everything that happens on the site — listings, media, enquiries and content.",
+    features: [
+      "Property search with buy / rent flows and popular-area shortcuts",
+      "Admin panel that controls listings, content and site activity",
+      "Cloudinary-hosted property images and media",
+      "Paystack payments integration",
+      "Light and dark themes, favourites and quick contact",
+    ],
+    stack: ["Next.js (frontend + backend)", "MongoDB", "shadcn/ui", "Cloudinary", "Paystack", "Tailwind CSS"],
+    cover: "/work/covers/futurehomes.jpg",
+    gallery: ["/work/futurehomes.png", "/work/futurehomes-admin.png"],
+    live: "https://futurehomesproperties.vercel.app",
+    links: [{ label: "Admin panel", href: "https://futurehomesproperties.vercel.app/admin/login?next=%2Fadmin" }],
+    featured: true,
+  },
+  {
+    slug: "sapok-website",
+    title: "SAPOK TECH Website",
+    category: "Websites",
+    year: "2026",
+    client: "SAPOK TECH",
+    summary: "The company site for SAPOK TECH — services, solutions (OneGrid, SAPOK Pay, SAPOK AI, WITHU) and how to engage the team.",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS"],
+    cover: "/work/covers/sapok.jpg",
+    status: "In progress",
+  },
+  {
     slug: "church-homecells",
     title: "Homecell MS",
     category: "Web Apps",
@@ -423,9 +459,11 @@ export const projects: Project[] = [
       "Dashboard, history and failure drill-down",
       "Single .exe install with tray mode for scheduled campaigns",
     ],
-    stack: ["Python", "pywebview", "Next.js", "openpyxl", "Recharts", "PyInstaller"],
-    cover: "/work/covers/mass-email.jpg",
+    stack: ["Python", "pywebview (desktop shell)", "openpyxl", "cryptography", "pystray", "PyInstaller", "Next.js UI", "Recharts"],
+    cover: "/work/covers/bulkmail.jpg",
+    gallery: ["/work/bulkmail-dashboard.png", "/work/brand/mass-email-logo.png"],
     repo: "https://github.com/RHV-IT/Mass-email-sender",
+    status: "Windows desktop app",
   },
   {
     slug: "epilux",
@@ -619,11 +657,16 @@ export interface CVProject {
 
 export const cvProjects: CVProject[] = [
   {
-    title: "Sapok OneGrid (formerly Nexora) — Multi-tenant Organisation Platform",
-    techStack: "NestJS • Prisma • PostgreSQL • Redis • BullMQ • Next.js • Tauri",
-    description: "Enterprise platform with a web control center for onboarding organisations, subscriptions and modules, and a single Tauri desktop app for every tenant — all on one NestJS core API with payroll workers.",
-    status: "In development",
-    link: "sapok-control-center.vercel.app",
+    title: "Sapok OneGrid (formerly Nexora) — Organisational Management Desktop App",
+    techStack: "Tauri • React • NestJS • Prisma • PostgreSQL • Redis • BullMQ",
+    description: "SAPOK TECH's flagship solution: one multi-tenant Tauri desktop app for every organisation, where the signed-in session decides modules, roles and permissions — backed by a single NestJS core API with payroll workers.",
+    status: "In progress",
+  },
+  {
+    title: "Future Homes Properties — Real Estate Platform & Admin Panel",
+    techStack: "Next.js (full-stack) • MongoDB • shadcn/ui • Cloudinary • Paystack",
+    description: "Full-stack property platform for buying, renting and listing homes, with Cloudinary media, Paystack payments and an admin panel that controls everything on the website.",
+    link: "futurehomesproperties.vercel.app",
   },
   {
     title: "RHV IVF — IVF Clinic Management System",
@@ -644,13 +687,13 @@ export const cvProjects: CVProject[] = [
     title: "SAPOK Pay — Wallet, Ledger & Payout Platform",
     techStack: "NestJS • Prisma • PostgreSQL • Redis • Next.js",
     description: "Self-service merchant onboarding with instant wallets, merchant-issued API keys, ledger and payroll payout flows, and an operator console.",
-    status: "In development",
+    status: "In progress",
   },
   {
     title: "SAPOK AI — Permission-aware AI & Knowledge Retrieval",
     techStack: "FastAPI • PostgreSQL • Redis • fastembed (ONNX)",
     description: "Developer platform with API keys; local embeddings and retrieval that strictly respect the caller's RBAC permissions.",
-    status: "In development",
+    status: "In progress",
   },
   {
     title: "Church Homecell Management System",

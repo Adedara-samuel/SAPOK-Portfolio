@@ -10,7 +10,7 @@ export interface SceneMeta {
 }
 
 export const SCENES: SceneMeta[] = [
-  { id: "index", label: "Index", icon: Sparkles },
+  { id: "index", label: "Home", icon: Sparkles },
   { id: "about", label: "About", icon: UserRound },
   { id: "work", label: "Work", icon: BriefcaseBusiness },
   { id: "services", label: "Services", icon: Layers },

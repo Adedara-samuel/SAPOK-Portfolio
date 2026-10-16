@@ -24,7 +24,6 @@ export default function AboutScene({ go }: SceneProps) {
       <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
         <div className="space-y-8">
           <Reveal step={2} className="overflow-hidden rounded-3xl border border-line">
-            { }
             <img src="/images/hero-pics.jpeg" alt={`${profile.name} at work`} className="aspect-[4/3] w-full object-cover" />
           </Reveal>
           <Reveal step={3} className="space-y-4 text-[15px] leading-relaxed text-paper/85">
